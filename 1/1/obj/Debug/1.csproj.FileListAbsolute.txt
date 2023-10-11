@@ -5,3 +5,10 @@ C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\3\1\obj\Debug\1.csproj.Assemb
 C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\3\1\obj\Debug\1.csproj.CoreCompileInputs.cache
 C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\3\1\obj\Debug\1.exe
 C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\3\1\obj\Debug\1.pdb
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\bin\Debug\1.exe.config
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\bin\Debug\1.exe
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\bin\Debug\1.pdb
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\obj\Debug\1.csproj.AssemblyReference.cache
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\obj\Debug\1.csproj.CoreCompileInputs.cache
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\obj\Debug\1.exe
+C:\Users\b2h16\OneDrive\Máy tính\IT\OOP\Exercise\TeamExcrice\1\1\obj\Debug\1.pdb

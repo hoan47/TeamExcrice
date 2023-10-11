@@ -31,7 +31,7 @@ namespace _1
         public void InThongTinNhanVien()
         {
             Console.WriteLine("Ho va ten nhan vien: " + hoTen);
-            Console.WriteLine("Ma nhan vien: "+ ma);
+            Console.WriteLine("Ma nhan vien: " + ma);
             Console.WriteLine("Ngay thang nam sinh: " + ngayThangNamSinh.ToString("dd/MM/yyyy"));
             Console.WriteLine("Dia chi: " + diaChi);
             Console.WriteLine("He so luong: " + heSoLuong);
@@ -46,7 +46,7 @@ namespace _1
         {
             int soNgayKhongDiLam =  Math.Abs(SoNgayDiLam() - soNgayCuaThang) - soNgayChoPhepNghi;
             soNgayKhongDiLam = soNgayKhongDiLam < 0 ? 0 : soNgayKhongDiLam;
-            return luong / soNgayCuaThang * soNgayKhongDiLam;
+            return luong / (soNgayCuaThang - soNgayChoPhepNghi) * soNgayKhongDiLam;
         }
         public abstract decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang);
         public abstract void InThongTin();
