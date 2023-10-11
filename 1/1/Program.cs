@@ -11,6 +11,17 @@ namespace _1
         static void Main(string[] args)
         {
             CongTy a = new CongTy(new DateTime(2020, 05, 23), 5, 10000000);
+            KhoiTaoDanhSachNhanVien(a);
+
+            a.InDanhSachNhanVien();
+
+            a.LuongMotThangCongTyPhaiTra();
+
+            a.NhanVienGioiNhat();
+        }
+
+        private static void KhoiTaoDanhSachNhanVien(CongTy a)
+        {
             NhanVien[] danhSachNhanVien = {
                 new QuanLy("Bui Quang Hoan", "01", new DateTime(2004, 02, 04), "Dak Lak", 5, new DateTime(2020, 05, 04), 25, 25),
                 new QuanLy("Bui Quang Hoan", "02", new DateTime(2004, 02, 04), "Dak Lak", 6, new DateTime(2020, 05, 04), 26, 25),
@@ -41,32 +52,28 @@ namespace _1
                 new NhanSu("Bui Quang Hoan", "24", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
                 new NhanSu("Bui Quang Hoan", "25", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
             };
+            Random ngauNhien = new Random();
+            int batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
+            int ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
 
-            QuanLy[] quanLy = {
-                (QuanLy)danhSachNhanVien[0], 
-                (QuanLy)danhSachNhanVien[1]
-                };
-
-            for (int i = 5; i < danhSachNhanVien.Length; i++)
+            for (int i = batDau; i < ketThuc; i++)
             {
-                quanLy[0].ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
+                QuanLy quanLy = (QuanLy)danhSachNhanVien[0];
+                quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
             }
+            batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
+            ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
 
-            for (int i = 5; i < danhSachNhanVien.Length - 5; i++)
+            for (int i = batDau; i < ketThuc; i++)
             {
-                quanLy[1].ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
+                QuanLy quanLy = (QuanLy)danhSachNhanVien[1];
+                quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
             }
 
             foreach (NhanVien nhanVien in danhSachNhanVien)
             {
                 a.ThemNhanVien(nhanVien);
             }
-
-            a.InDanhSachNhanVien();
-
-            a.LuongMotThangCongTyPhaiTra();
-
-            a.NhanVienGioiNhat();
         }
     }
 }

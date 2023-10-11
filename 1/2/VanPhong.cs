@@ -6,8 +6,7 @@ namespace _2
     {
         public VanPhong(string hoTen, string ma, DateTime ngayThangNamSinh, string diaChi, float heSoLuong, DateTime ngayBatDauLamViec, int soLanDiemDanhDi, int soLanDiemDanhVe) : 
             base(hoTen, ma, ngayThangNamSinh, diaChi, heSoLuong, ngayBatDauLamViec, soLanDiemDanhDi, soLanDiemDanhVe)
-        {
-        }
+        { }
         public override void InThongTin()
         {
             Console.WriteLine("Cap bac: Van phong");

@@ -7,9 +7,21 @@ namespace _2
         static void Main(string[] args)
         {
             BenhVien a = new BenhVien(new DateTime(2020, 05, 23), 5, 10000000);
+
+            KhoiTaoDanhSachNhanVien(a);
+
+            a.InDanhSachNhanVien();
+
+            a.LuongMotThangCongTyPhaiTra();
+
+            a.NhanVienGioiNhat();
+        }
+
+        static void KhoiTaoDanhSachNhanVien(BenhVien a)
+        {
             NhanVien[] danhSachNhanVien = {
-                new QuanLy("Bui Quang Hoan", "01", new DateTime(2004, 02, 04), "Dak Lak", 5, new DateTime(2020, 05, 04), 25, 25, 200),
-                new QuanLy("Bui Quang Hoan", "02", new DateTime(2004, 02, 04), "Dak Lak", 6, new DateTime(2020, 05, 04), 26, 25, 60),
+                new QuanLy("Bui Quang Hoan", "01", new DateTime(2004, 02, 04), "Dak Lak", 5, new DateTime(2020, 05, 04), 25, 25),
+                new QuanLy("Bui Quang Hoan", "02", new DateTime(2004, 02, 04), "Dak Lak", 6, new DateTime(2020, 05, 04), 26, 25),
 
                 new BacSi("Bui Quang Hoan", "03", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 8),
                 new BacSi("Bui Quang Hoan", "04", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 8),
@@ -17,12 +29,12 @@ namespace _2
                 new BacSi("Bui Quang Hoan", "06", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 4),
                 new BacSi("Bui Quang Hoan", "07", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 4),
 
-                new YTa("Bui Quang Hoan", "08", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 10),
-                new YTa("Bui Quang Hoan", "09", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 9),
-                new YTa("Bui Quang Hoan", "11", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 8),
-                new YTa("Bui Quang Hoan", "12", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 10),
-                new YTa("Bui Quang Hoan", "13", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 11),
-                new YTa("Bui Quang Hoan", "14", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 7),
+                new YTa("Bui Quang Hoan", "08", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25),
+                new YTa("Bui Quang Hoan", "09", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
+                new YTa("Bui Quang Hoan", "11", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25),
+                new YTa("Bui Quang Hoan", "12", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
+                new YTa("Bui Quang Hoan", "13", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25),
+                new YTa("Bui Quang Hoan", "14", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
 
                 new VanPhong("Bui Quang Hoan", "15", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
                 new VanPhong("Bui Quang Hoan", "16", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25),
@@ -31,23 +43,84 @@ namespace _2
                 new VanPhong("Bui Quang Hoan", "19", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
                 new VanPhong("Bui Quang Hoan", "20", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25),
 
-                new DieuDuong("Bui Quang Hoan", "21", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25, 10, 5),
-                new DieuDuong("Bui Quang Hoan", "22", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25, 10, 4),
-                new DieuDuong("Bui Quang Hoan", "23", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25, 8, 4),
-                new DieuDuong("Bui Quang Hoan", "24", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 9, 3),
-                new DieuDuong("Bui Quang Hoan", "26", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25, 10, 2),
+                new DieuDuong("Bui Quang Hoan", "21", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
+                new DieuDuong("Bui Quang Hoan", "22", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
+                new DieuDuong("Bui Quang Hoan", "23", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
+                new DieuDuong("Bui Quang Hoan", "24", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25),
+                new DieuDuong("Bui Quang Hoan", "26", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
             };
+            BenhNhan[] danhSachBenhNhan = {
+                new BenhNhan("Nguyen Van An", "00", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "01", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "02", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "03", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "04", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "05", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "06", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "07", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "08", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "09", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "10", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "11", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "12", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "13", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "14", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "15", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "16", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "17", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "18", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "19", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "20", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+            };
+
+            Random random = new Random();
+            int batDau = random.Next(0, danhSachNhanVien.Length / 2);
+            int ketThuc = random.Next(batDau, danhSachNhanVien.Length);
+
+            for (int i = batDau; i < ketThuc; i++)
+            {
+                QuanLy quanly = (QuanLy)danhSachNhanVien[0];
+                quanly.ThemNhanVienQuanLy(danhSachNhanVien[i]);
+            }
+
+            batDau = random.Next(0, danhSachNhanVien.Length / 2);
+            ketThuc = random.Next(batDau, danhSachNhanVien.Length);
+
+            for (int i = batDau; i < ketThuc; i++) 
+            {
+                QuanLy quanly = (QuanLy)danhSachNhanVien[1];
+                quanly.ThemNhanVienQuanLy(danhSachNhanVien[i]);
+            }
+
+            for (int i = 0; i < danhSachNhanVien.Length; i++)
+            {
+                batDau = random.Next(0, danhSachBenhNhan.Length / 2);
+                ketThuc = random.Next(batDau, danhSachBenhNhan.Length);
+
+                for (int j = batDau; j < ketThuc; j++)
+                {
+                    if (danhSachNhanVien[i] is QuanLy)
+                    {
+                        QuanLy quanLy = (QuanLy)danhSachNhanVien[i];
+                        quanLy.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                    }
+                    else if (danhSachNhanVien[i] is YTa)
+                    {
+                        YTa yTa = (YTa)danhSachNhanVien[i];
+                        yTa.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                    }
+                    else if (danhSachNhanVien[i] is DieuDuong)
+                    {
+                        DieuDuong dieuDuong = (DieuDuong)danhSachNhanVien[i];
+                        dieuDuong.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                    }
+                }
+            }
 
             foreach (NhanVien nhanVien in danhSachNhanVien)
             {
                 a.ThemNhanVien(nhanVien);
             }
-
-            a.InDanhSachNhanVien();
-
-            a.LuongMotThangCongTyPhaiTra();
-
-            a.NhanVienGioiNhat();
         }
     }
 }

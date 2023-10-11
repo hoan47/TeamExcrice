@@ -22,7 +22,7 @@ namespace _1
         }
         public override decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang)
         {
-            decimal luong = luongCoBan * (decimal)heSoLuong;// + (1.5m * luongCoBan * soGioLamViec);
+            decimal luong = luongCoBan * (decimal)heSoLuong;
             return luong - TruLuong(luong, soNgayChoPhepNghi, soNgayCuaThang);
         }
     }
