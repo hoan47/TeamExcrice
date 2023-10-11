@@ -16,7 +16,10 @@ namespace _1
         }
         public void ThemNhanVienDeQuanLy(NhanVien nhanVien)
         {
-            danhSachNhanVienCanQuanLy.Add(nhanVien);
+            if (nhanVien is LapTrinhVien || nhanVien is ThietKe || nhanVien is KiemThu)
+            {
+                danhSachNhanVienCanQuanLy.Add(nhanVien);
+            }
         }
         public override void InThongTin()
         {

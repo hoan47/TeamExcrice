@@ -8,8 +8,8 @@ namespace _2
         {
             BenhVien a = new BenhVien(new DateTime(2020, 05, 23), 5, 10000000);
             NhanVien[] danhSachNhanVien = {
-                new QuanLy("Bui Quang Hoan", "01", new DateTime(2004, 02, 04), "Dak Lak", 5, new DateTime(2020, 05, 04), 25, 25),
-                new QuanLy("Bui Quang Hoan", "02", new DateTime(2004, 02, 04), "Dak Lak", 6, new DateTime(2020, 05, 04), 26, 25),
+                new QuanLy("Bui Quang Hoan", "01", new DateTime(2004, 02, 04), "Dak Lak", 5, new DateTime(2020, 05, 04), 25, 25, 200),
+                new QuanLy("Bui Quang Hoan", "02", new DateTime(2004, 02, 04), "Dak Lak", 6, new DateTime(2020, 05, 04), 26, 25, 60),
 
                 new BacSi("Bui Quang Hoan", "03", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 8),
                 new BacSi("Bui Quang Hoan", "04", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 8),
@@ -37,21 +37,6 @@ namespace _2
                 new DieuDuong("Bui Quang Hoan", "24", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 9, 3),
                 new DieuDuong("Bui Quang Hoan", "26", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25, 10, 2),
             };
-
-            QuanLy[] quanLy = {
-                (QuanLy)danhSachNhanVien[0], 
-                (QuanLy)danhSachNhanVien[1]
-                };
-
-            for (int i = 5; i < danhSachNhanVien.Length; i++)
-            {
-                quanLy[0].ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
-            }
-
-            for (int i = 5; i < danhSachNhanVien.Length - 5; i++)
-            {
-                quanLy[1].ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
-            }
 
             foreach (NhanVien nhanVien in danhSachNhanVien)
             {
