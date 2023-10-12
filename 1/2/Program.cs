@@ -84,28 +84,25 @@ namespace _2
                 new BenhNhan("Nguyen Van An", "28", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
                 new BenhNhan("Nguyen Van An", "29", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
             };
-            Random random = new Random();
-            int batDau = random.Next(0, danhSachNhanVien.Length / 2);
-            int ketThuc = random.Next(batDau, danhSachNhanVien.Length);
+            Random ngauNhien = new Random();
+            int batDau;
+            int ketThuc;
 
-            for (int i = batDau; i < ketThuc; i++)
+            for (int i = 0; i < 2; i++) 
             {
-                QuanLy quanly = (QuanLy)danhSachNhanVien[0];
-                quanly.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
-            }
-            batDau = random.Next(0, danhSachNhanVien.Length / 2);
-            ketThuc = random.Next(batDau, danhSachNhanVien.Length);
-
-            for (int i = batDau; i < ketThuc; i++) 
-            {
-                QuanLy quanly = (QuanLy)danhSachNhanVien[1];
-                quanly.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
+                batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
+                ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
+                for (int j = batDau; j < ketThuc; j++)
+                {
+                    QuanLy quanLy = (QuanLy)danhSachNhanVien[i];
+                    quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[j]);
+                }
             }
 
             for (int i = 0; i < danhSachNhanVien.Length; i++)
             {
-                batDau = random.Next(0, danhSachBenhNhan.Length / 2);
-                ketThuc = random.Next(batDau, danhSachBenhNhan.Length);
+                batDau = ngauNhien.Next(0, danhSachBenhNhan.Length / 2);
+                ketThuc = ngauNhien.Next(batDau, danhSachBenhNhan.Length);
 
                 for (int j = batDau; j < ketThuc; j++)
                 {

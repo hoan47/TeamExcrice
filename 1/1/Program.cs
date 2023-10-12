@@ -56,21 +56,18 @@ namespace _1
                 new NhanSu("Bui Quang Hoan", "25", new DateTime(2004, 02, 04), "Dak Lak", 1, new DateTime(2020, 05, 04), 25, 25),
             };
             Random ngauNhien = new Random();
-            int batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
-            int ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
+            int batDau;
+            int ketThuc;
 
-            for (int i = batDau; i < ketThuc; i++)
+            for (int i = 0; i < 2; i++)
             {
-                QuanLy quanLy = (QuanLy)danhSachNhanVien[0];
-                quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
-            }
-            batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
-            ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
-
-            for (int i = batDau; i < ketThuc; i++)
-            {
-                QuanLy quanLy = (QuanLy)danhSachNhanVien[1];
-                quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
+                batDau = ngauNhien.Next(0, danhSachNhanVien.Length / 2);
+                ketThuc = ngauNhien.Next(danhSachNhanVien.Length / 2, danhSachNhanVien.Length);
+                for (int j = batDau; j < ketThuc; j++)
+                {
+                    QuanLy quanLy = (QuanLy)danhSachNhanVien[i];
+                    quanLy.ThemNhanVienDeQuanLy(danhSachNhanVien[j]);
+                }
             }
 
             foreach (NhanVien nhanVien in danhSachNhanVien)
