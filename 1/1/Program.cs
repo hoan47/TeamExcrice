@@ -13,13 +13,9 @@ namespace _1
             CongTy a = new CongTy(new DateTime(2020, 05, 23), 3, 10000000);
 
             KhoiTaoDanhSachNhanVien(a);
-
             a.InDanhSachNhanVien();
-
             a.LuongMotThangCongTyPhaiTra();
-
             a.NhanVienGioiNhat();
-
             Console.ReadKey();
         }
 

@@ -9,13 +9,9 @@ namespace _2
             BenhVien a = new BenhVien(new DateTime(2020, 05, 29), 5, 10000000);
 
             KhoiTaoDanhSachNhanVien(a);
-
             a.InDanhSachNhanVien();
-
             a.LuongMotThangCongTyPhaiTra();
-
             a.NhanVienGioiNhat();
-
             Console.ReadKey();
         }
 

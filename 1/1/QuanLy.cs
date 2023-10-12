@@ -9,6 +9,7 @@ namespace _1
     class QuanLy : NhanVien
     {
         private List<NhanVien> danhSachNhanVienCanQuanLy;
+
         public QuanLy(string hoTen, string ma, DateTime ngayThangNamSinh, string diaChi, float heSoLuong, DateTime ngayBatDauLamViec, int soLanDiemDanhDi, int soLanDiemDanhVe) : 
             base(hoTen, ma, ngayThangNamSinh, diaChi, heSoLuong, ngayBatDauLamViec, soLanDiemDanhDi, soLanDiemDanhVe)
         {

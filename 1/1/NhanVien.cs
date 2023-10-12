@@ -12,7 +12,7 @@ namespace _1
         private string ma;
         private DateTime ngayThangNamSinh;
         private string diaChi;
-        private protected float heSoLuong;
+        private float heSoLuong;
         private DateTime ngayBatDauLamViec;
         private int soLanDiemDanhDi;
         private int soLanDiemDanhVe;

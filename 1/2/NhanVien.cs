@@ -5,7 +5,7 @@ namespace _2
     abstract class NhanVien : ThongTinNguoi
     {
         private string maSoNhanVien;
-        private protected float heSoLuong;
+        private float heSoLuong;
         private DateTime ngayBatDauLamViec;
         private int soLanDiemDanhDi;
         private int soLanDiemDanhVe;
