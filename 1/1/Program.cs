@@ -10,7 +10,8 @@ namespace _1
     {
         static void Main(string[] args)
         {
-            CongTy a = new CongTy(new DateTime(2020, 05, 23), 5, 10000000);
+            CongTy a = new CongTy(new DateTime(2020, 05, 23), 3, 10000000);
+
             KhoiTaoDanhSachNhanVien(a);
 
             a.InDanhSachNhanVien();
@@ -33,11 +34,11 @@ namespace _1
                 new LapTrinhVien("Bui Quang Hoan", "07", new DateTime(2004, 02, 04), "Dak Lak", 4, new DateTime(2020, 05, 04), 25, 25, 4),
 
                 new ThietKe("Bui Quang Hoan", "08", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 2000000),
-                new ThietKe("Bui Quang Hoan", "09", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 2000000),
-                new ThietKe("Bui Quang Hoan", "11", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 2000000),
-                new ThietKe("Bui Quang Hoan", "12", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 2000000),
-                new ThietKe("Bui Quang Hoan", "13", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 2000000),
-                new ThietKe("Bui Quang Hoan", "14", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 2000000),
+                new ThietKe("Bui Quang Hoan", "09", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 1500000),
+                new ThietKe("Bui Quang Hoan", "11", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 200000),
+                new ThietKe("Bui Quang Hoan", "12", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 200000),
+                new ThietKe("Bui Quang Hoan", "13", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 200000),
+                new ThietKe("Bui Quang Hoan", "14", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 200000),
 
                 new KiemThu("Bui Quang Hoan", "15", new DateTime(2004, 02, 04), "Dak Lak", 2, new DateTime(2020, 05, 04), 25, 25, 5),
                 new KiemThu("Bui Quang Hoan", "2", new DateTime(2004, 02, 04), "Dak Lak", 3, new DateTime(2020, 05, 04), 25, 25, 8),

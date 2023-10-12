@@ -25,7 +25,7 @@ namespace _2
             Console.WriteLine();
         }
 
-        public void ThemNhanVienQuanLy(NhanVien nhanVien)
+        public void ThemNhanVienDeQuanLy(NhanVien nhanVien)
         {
             if (nhanVien is BacSi || nhanVien is YTa || nhanVien is DieuDuong || nhanVien is VanPhong)
             {
@@ -33,15 +33,14 @@ namespace _2
             }
         }
 
-        public void ThemBenhNhanChuaTri(BenhNhan benhNhan)
+        public void ThemBenhNhanDeChuaTri(BenhNhan benhNhan)
         {
             danhSachBenhNhanChuaTri.Add(benhNhan);
         }
 
-        public override decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang)
+        public override decimal TienThuong()
         {
-            decimal luong = luongCoBan * (decimal)heSoLuong;
-            return luong - TruLuong(luong, soNgayChoPhepNghi, soNgayCuaThang) + danhSachBenhNhanChuaTri.Count * 10000;
+            return danhSachBenhNhanChuaTri.Count * 10000;
         }
     }
 }

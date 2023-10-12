@@ -14,6 +14,7 @@ namespace _1
         {
             danhSachNhanVienCanQuanLy = new List<NhanVien>();
         }
+
         public void ThemNhanVienDeQuanLy(NhanVien nhanVien)
         {
             if (nhanVien is LapTrinhVien || nhanVien is ThietKe || nhanVien is KiemThu)
@@ -21,17 +22,17 @@ namespace _1
                 danhSachNhanVienCanQuanLy.Add(nhanVien);
             }
         }
+
         public override void InThongTin()
         {
             Console.WriteLine("Cap bac: Quan ly");
             InThongTinNhanVien();
             Console.WriteLine($"So nhan vien hien dang quan ly: {danhSachNhanVienCanQuanLy.Count}.\n");
         }
-        public override decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang)
+
+        public override decimal TienThuong()
         {
-            decimal luong = luongCoBan * (decimal)heSoLuong;
-            return luong - TruLuong(luong, soNgayChoPhepNghi, soNgayCuaThang) + 
-                (danhSachNhanVienCanQuanLy.Count >= 10 ? danhSachNhanVienCanQuanLy.Count * 100000 : 0);
+            return  danhSachNhanVienCanQuanLy.Count >= 10 ? danhSachNhanVienCanQuanLy.Count * 100000 : 0;
         }
     }
 }

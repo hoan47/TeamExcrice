@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace _2
 {
@@ -8,47 +11,71 @@ namespace _2
         private DateTime thoiDiem;
         private int soNgayChoNghiCuaThang;
         private decimal luongCoBan;
-        private List<KeyValuePair<NhanVien, decimal>> danhSachNhanVien;
+        private List<KeyValuePair<NhanVien, Luong>> danhSachNhanVien;
 
         public BenhVien(DateTime thoiDiem, int soNgayChoNghiCuaThang, decimal luongCoBan)
         {
             this.thoiDiem = thoiDiem;
             this.soNgayChoNghiCuaThang = soNgayChoNghiCuaThang;
             this.luongCoBan = luongCoBan;
-            danhSachNhanVien = new List<KeyValuePair<NhanVien, decimal>>();
+            danhSachNhanVien = new List<KeyValuePair<NhanVien, Luong>>();
         }
+
         public void ThemNhanVien(NhanVien nhanVien)
         {
-            danhSachNhanVien.Add(new KeyValuePair<NhanVien, decimal>
-                (nhanVien, nhanVien.Luong(luongCoBan, soNgayChoNghiCuaThang, DateTime.DaysInMonth(thoiDiem.Year, thoiDiem.Month))));       
+            decimal soLuong = nhanVien.Luong(luongCoBan);
+            Luong luong = new Luong(soLuong, nhanVien.TruLuong(soLuong, soNgayChoNghiCuaThang, DateTime.DaysInMonth(thoiDiem.Year, thoiDiem.Month)), nhanVien.TienThuong());
+            danhSachNhanVien.Add(new KeyValuePair<NhanVien, Luong>(nhanVien, luong));
         }
+
         public void InDanhSachNhanVien()
         {
-            Console.WriteLine($"Danh sach nhan vien benh vien tai thoi diem: {thoiDiem.ToString("dd/MM/yyyy")}\n");
-            foreach(KeyValuePair<NhanVien, decimal> nhanVien in danhSachNhanVien)
+            Console.WriteLine($"Danh sach nhan vien cong ty tai thoi diem: {thoiDiem.ToString("dd/MM/yyyy")}\n");
+            foreach (KeyValuePair<NhanVien, Luong> nhanVien in danhSachNhanVien)
             {
                 nhanVien.Key.InThongTin();
-            }    
+            }
         }
+
         public void LuongMotThangCongTyPhaiTra()
         {
             decimal luong = 0;
-            foreach (KeyValuePair<NhanVien, decimal> nhanVien in danhSachNhanVien)
+            foreach (KeyValuePair<NhanVien, Luong> nhanVien in danhSachNhanVien)
             {
-                luong = luong + nhanVien.Value;
+                luong = luong + nhanVien.Value.tienLuong;
             }
-            Console.WriteLine($"Luong thang {thoiDiem.ToString("MM")} benh vien phai tra la: " + string.Format("{0:N0}", luong) + " VND");
+            Console.WriteLine($"\nLuong thang {thoiDiem.ToString("MM")} cong ty phai tra la: " + string.Format("{0:N0}", luong) + " VND\n");
         }
+
         public void NhanVienGioiNhat()
         {
-            danhSachNhanVien.Sort((a, b) => b.Value.CompareTo(a.Value));
+            danhSachNhanVien.Sort((a, b) => b.Value.tienThuong.CompareTo(a.Value.tienThuong));
             Console.WriteLine("\n\nDanh sach 3 nhan vien la viec gioi nhat:\n");
-            for(int i = 0; i < 3 && i < danhSachNhanVien.Count; i++)
+            for (int i = 0; i < 3 && i < danhSachNhanVien.Count; i++)
             {
                 danhSachNhanVien[i].Key.InThongTin();
-                Console.WriteLine("Luong: " + string.Format("{0:N0}", Math.Round(danhSachNhanVien[i].Value)));
+                Console.WriteLine("Luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.luong));
+                Console.WriteLine("Tien thuong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienThuong));
+                Console.WriteLine("Tru luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.truLuong));
+                Console.WriteLine("Tien luong nhan duoc: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienLuong));
                 Console.WriteLine();
-            }    
+            }
+        }
+
+        private struct Luong
+        {
+            public decimal luong;
+            public decimal tienThuong;
+            public decimal truLuong;
+            public decimal tienLuong;
+
+            public Luong(decimal luong, decimal truLuong, decimal tienThuong)
+            {
+                this.luong = luong;
+                this.truLuong = truLuong;
+                this.tienThuong = tienThuong;
+                tienLuong = luong + tienThuong - truLuong;
+            }
         }
     }
 }

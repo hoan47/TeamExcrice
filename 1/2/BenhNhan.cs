@@ -16,11 +16,13 @@ namespace _2
             this.maSoBenhNhan = maSoBenhNhan;
             this.tinhTrang = tinhTrang;
         }
+
         public ETinhTrangBenh TinhTrang
         {
             get { return tinhTrang; }
             private set { }
         }
+
         public enum ETinhTrangBenh
         {
             Nhe,

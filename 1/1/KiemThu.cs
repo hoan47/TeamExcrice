@@ -15,15 +15,16 @@ namespace _1
         {
             this.soLoiTimRa = soLoiTimRa;
         }
+
         public override void InThongTin()
         {
             Console.WriteLine("Cap bac: Kiem thu");
             InThongTinNhanVien();
         }
-        public override decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang)
+
+        public override decimal TienThuong()
         {
-            decimal luong = luongCoBan * (decimal)heSoLuong + (soLoiTimRa * 200000);
-            return luong - TruLuong(luong, soNgayChoPhepNghi, soNgayCuaThang);
+            return soLoiTimRa * 200000;
         }
     }
 }

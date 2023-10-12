@@ -6,7 +6,7 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            BenhVien a = new BenhVien(new DateTime(2020, 05, 23), 5, 10000000);
+            BenhVien a = new BenhVien(new DateTime(2020, 05, 29), 5, 10000000);
 
             KhoiTaoDanhSachNhanVien(a);
 
@@ -60,19 +60,28 @@ namespace _2
                 new BenhNhan("Nguyen Van An", "07", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
                 new BenhNhan("Nguyen Van An", "08", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
                 new BenhNhan("Nguyen Van An", "09", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
-                new BenhNhan("Nguyen Van An", "10", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "11", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "12", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "13", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "14", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "15", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "16", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "17", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "18", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "19", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-                new BenhNhan("Nguyen Van An", "20", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
-            };
+                new BenhNhan("Nguyen Van An", "10", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "11", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "12", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "13", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "14", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "15", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "16", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "17", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "18", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "19", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
+                new BenhNhan("Nguyen Van An", "20", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.DacBiet),
 
+                new BenhNhan("Nguyen Van An", "21", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "22", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "23", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "24", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "25", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "26", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "27", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "28", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+                new BenhNhan("Nguyen Van An", "29", new DateTime(2004, 05, 09), "Gia Lai", BenhNhan.ETinhTrangBenh.Nhe),
+            };
             Random random = new Random();
             int batDau = random.Next(0, danhSachNhanVien.Length / 2);
             int ketThuc = random.Next(batDau, danhSachNhanVien.Length);
@@ -80,16 +89,15 @@ namespace _2
             for (int i = batDau; i < ketThuc; i++)
             {
                 QuanLy quanly = (QuanLy)danhSachNhanVien[0];
-                quanly.ThemNhanVienQuanLy(danhSachNhanVien[i]);
+                quanly.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
             }
-
             batDau = random.Next(0, danhSachNhanVien.Length / 2);
             ketThuc = random.Next(batDau, danhSachNhanVien.Length);
 
             for (int i = batDau; i < ketThuc; i++) 
             {
                 QuanLy quanly = (QuanLy)danhSachNhanVien[1];
-                quanly.ThemNhanVienQuanLy(danhSachNhanVien[i]);
+                quanly.ThemNhanVienDeQuanLy(danhSachNhanVien[i]);
             }
 
             for (int i = 0; i < danhSachNhanVien.Length; i++)
@@ -102,17 +110,17 @@ namespace _2
                     if (danhSachNhanVien[i] is QuanLy)
                     {
                         QuanLy quanLy = (QuanLy)danhSachNhanVien[i];
-                        quanLy.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                        quanLy.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
                     else if (danhSachNhanVien[i] is YTa)
                     {
                         YTa yTa = (YTa)danhSachNhanVien[i];
-                        yTa.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                        yTa.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
                     else if (danhSachNhanVien[i] is DieuDuong)
                     {
                         DieuDuong dieuDuong = (DieuDuong)danhSachNhanVien[i];
-                        dieuDuong.ThemBenhNhanChuaTri(danhSachBenhNhan[j]);
+                        dieuDuong.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
                 }
             }

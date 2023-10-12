@@ -12,6 +12,7 @@ namespace _2
         {
             danhSachBenhNhanChuaTri = new List<BenhNhan>();
         }
+
         public override void InThongTin()
         {
             Console.WriteLine("Cap bac: Dieu duong");
@@ -19,20 +20,21 @@ namespace _2
             Console.WriteLine("So benh nhan dang chua tri: " + danhSachBenhNhanChuaTri.Count);
             Console.WriteLine();
         }
-        public void ThemBenhNhanChuaTri(BenhNhan benhNhan)
+
+        public void ThemBenhNhanDeChuaTri(BenhNhan benhNhan)
         {
             danhSachBenhNhanChuaTri.Add(benhNhan);
         }
-        public override decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang)
+
+        public override decimal TienThuong()
         {
             int soCaDacBiet = 0;
 
-            foreach(BenhNhan benhNhan in danhSachBenhNhanChuaTri)
+            foreach (BenhNhan benhNhan in danhSachBenhNhanChuaTri)
             {
                 soCaDacBiet = benhNhan.TinhTrang == BenhNhan.ETinhTrangBenh.DacBiet ? soCaDacBiet + 1 : soCaDacBiet;
             }
-            decimal luong = luongCoBan * (decimal)heSoLuong + danhSachBenhNhanChuaTri.Count * 100000 + soCaDacBiet * 20000;
-            return luong - TruLuong(luong, soNgayChoPhepNghi, soNgayCuaThang);
+            return danhSachBenhNhanChuaTri.Count * 100000 + soCaDacBiet * 20000;
         }
     }
 }

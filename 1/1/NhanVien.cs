@@ -28,6 +28,7 @@ namespace _1
             this.soLanDiemDanhDi = soLanDiemDanhDi;
             this.soLanDiemDanhVe = soLanDiemDanhVe;
         }
+
         public void InThongTinNhanVien()
         {
             Console.WriteLine("Ho va ten nhan vien: " + hoTen);
@@ -38,17 +39,29 @@ namespace _1
             Console.WriteLine("Ngay bat dau lam viec: " +ngayBatDauLamViec.ToString("dd/MM/yyyy"));
             Console.WriteLine();
         }
+
         public int SoNgayDiLam()
         {
             return Math.Min(soLanDiemDanhDi, soLanDiemDanhVe);
         }
+
         public decimal TruLuong(decimal luong, int soNgayChoPhepNghi, int soNgayCuaThang)
         {
             int soNgayKhongDiLam =  Math.Abs(SoNgayDiLam() - soNgayCuaThang) - soNgayChoPhepNghi;
             soNgayKhongDiLam = soNgayKhongDiLam < 0 ? 0 : soNgayKhongDiLam;
             return luong / (soNgayCuaThang - soNgayChoPhepNghi) * soNgayKhongDiLam;
         }
-        public abstract decimal Luong(decimal luongCoBan, int soNgayChoPhepNghi, int soNgayCuaThang);
+
+        public decimal Luong(decimal luongCoBan)
+        {
+            return luongCoBan * (decimal)heSoLuong;
+        }
+
+        public virtual decimal TienThuong()
+        {
+            return 0;
+        }
+
         public abstract void InThongTin();
     }
 }
