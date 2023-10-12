@@ -55,10 +55,10 @@ namespace _1
             for(int i = 0; i < 3 && i < danhSachNhanVien.Count; i++)
             {
                 danhSachNhanVien[i].Key.InThongTin();
-                Console.WriteLine("Luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.luong));
-                Console.WriteLine("Tien thuong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienThuong));
-                Console.WriteLine("Tru luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.truLuong));
-                Console.WriteLine("Tien luong nhan duoc: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienLuong));
+                Console.WriteLine("Luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.luong) + " VND");
+                Console.WriteLine("Tien thuong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienThuong) + " VND");
+                Console.WriteLine("Tru luong: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.truLuong) + " VND");
+                Console.WriteLine("Tien luong nhan duoc: " + string.Format("{0:N0}", danhSachNhanVien[i].Value.tienLuong) + " VND\n");
                 Console.WriteLine();
             }    
         }

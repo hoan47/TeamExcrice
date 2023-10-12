@@ -19,6 +19,8 @@ namespace _1
             a.LuongMotThangCongTyPhaiTra();
 
             a.NhanVienGioiNhat();
+
+            Console.ReadKey();
         }
 
         private static void KhoiTaoDanhSachNhanVien(CongTy a)

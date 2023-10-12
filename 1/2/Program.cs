@@ -15,6 +15,8 @@ namespace _2
             a.LuongMotThangCongTyPhaiTra();
 
             a.NhanVienGioiNhat();
+
+            Console.ReadKey();
         }
 
         static void KhoiTaoDanhSachNhanVien(BenhVien a)
