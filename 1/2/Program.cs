@@ -99,26 +99,26 @@ namespace _2
                 }
             }
 
-            for (int i = 0; i < danhSachNhanVien.Length; i++)
+            foreach (NhanVien nhanVien in danhSachNhanVien)
             {
                 batDau = ngauNhien.Next(0, danhSachBenhNhan.Length / 2);
                 ketThuc = ngauNhien.Next(batDau, danhSachBenhNhan.Length);
 
                 for (int j = batDau; j < ketThuc; j++)
                 {
-                    if (danhSachNhanVien[i] is QuanLy)
+                    if (nhanVien is QuanLy)
                     {
-                        QuanLy quanLy = (QuanLy)danhSachNhanVien[i];
+                        QuanLy quanLy = (QuanLy)nhanVien;
                         quanLy.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
-                    else if (danhSachNhanVien[i] is YTa)
+                    else if (nhanVien is YTa)
                     {
-                        YTa yTa = (YTa)danhSachNhanVien[i];
+                        YTa yTa = (YTa)nhanVien;
                         yTa.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
-                    else if (danhSachNhanVien[i] is DieuDuong)
+                    else if (nhanVien is DieuDuong)
                     {
-                        DieuDuong dieuDuong = (DieuDuong)danhSachNhanVien[i];
+                        DieuDuong dieuDuong = (DieuDuong)nhanVien;
                         dieuDuong.ThemBenhNhanDeChuaTri(danhSachBenhNhan[j]);
                     }
                 }
