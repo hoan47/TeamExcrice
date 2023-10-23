@@ -10,6 +10,8 @@ namespace Đồ_án_cuối_kì
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello");
+            Console.ReadKey();
         }
     }
 }
