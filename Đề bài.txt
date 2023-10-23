@@ -1,0 +1,36 @@
+"1. Quan lí thue nha tro
+        - Phong tro: 
+                + Dien tich, noi that(dien may, go), gia ca, dia chi phong, 
+                + Phong cho nam hay nu, Phong duoc nuoi cho meo hay khong
+                + Loi di rieng, gio giac tu do ? 
+                + Duoc o bao nhieu nguoi 
+                + Yeu cau rieng? 
+                + Cua chu cho thue nao? 
+
+        - Nguoi cho thue: 
+                + Thong tin co ban : nghe nghiep, ......
+
+        - Nguoi thue: 
+                + Thong tin co ban: nghe nghiep, tuoi, gioi tinh….
+        
+        - Nguoi moi gioi: 
+                + Thong tin co ban: cmnd….
+                + Thuoc cong ty moi gioi nao 
+                
+        - Cong ty moi gioi: 
+                + Dia chi, ma so thue ….
+        
+        - Hop dong: 
+                + tien dat coc
+                + Phong
+                + Ben cho thue
+                + Ben thue 
+                + Thoi han hop dong, 
+                + Thong tin boi thuong : tuy theo tung loai phong mua do boi thuong khac nhau, 
+                
+        * - Khach bo hop dong thi se bi chu nha report, chu nha lam sai thi bi khach review 
+           - Khach tra nha truoc hop dong: hoac la kiem nguoi khac thay vao, hoac la den hop dong 
+           - Chu nha lay lai nha truoc thoi han thi den tien cho nguoi thue 
+           - Nguoi thue lam hu hong do dac thi den tien cho chu nha 
+           - Tinh tien dien nuoc , goi xe hang thang cho chu nha 
+           -Tim kiem nha tro theo thong tin yeu cau: vi tri, gia ca…"
