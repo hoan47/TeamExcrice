@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Đồ_án_cuối_kì
+namespace DoAnCuoiKi
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Helloooooo");
-            Console.ReadKey();
         }
     }
 }

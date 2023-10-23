@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A7266E53-0233-405F-BF03-54993DE0147A}</ProjectGuid>
+    <ProjectGuid>{99EBE126-9C26-4989-BE5A-EB23E8EE2642}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Đồ_án_cuối_kì</RootNamespace>
-    <AssemblyName>Đồ án cuối kì</AssemblyName>
+    <RootNamespace>DoAnCuoiKi</RootNamespace>
+    <AssemblyName>DoAnCuoiKi</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
