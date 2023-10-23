@@ -37,7 +37,7 @@ namespace _2
 
         public decimal TruLuong(decimal luong, int soNgayChoPhepNghi, int soNgayCuaThang)
         {
-            int soNgayKhongDiLam =  Math.Abs(SoNgayDiLam() - soNgayCuaThang) - soNgayChoPhepNghi;
+            int soNgayKhongDiLam =  Math.Abs(soNgayCuaThang - SoNgayDiLam() - soNgayCuaThang) - soNgayChoPhepNghi;
             soNgayKhongDiLam = soNgayKhongDiLam < 0 ? 0 : soNgayKhongDiLam;
             return luong / (soNgayCuaThang - soNgayChoPhepNghi) * soNgayKhongDiLam;
         }
