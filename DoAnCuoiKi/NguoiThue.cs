@@ -10,7 +10,8 @@ namespace DoAnCuoiKi
     {
         private string ngheNghiep;
 
-        public NguoiThue(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, string ngheNghiep)
+        public NguoiThue(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, 
+            string ngheNghiep)
             : base(ten, laNam, tuoi, diaChi, soCMND, soDT)
         {
             this.ngheNghiep = ngheNghiep;

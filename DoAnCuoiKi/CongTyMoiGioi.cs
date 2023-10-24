@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKi
 {
-    class CongTyMoiGioi
+    public class CongTyMoiGioi
     {
         private string tenCongTy;
         private string maSoThue;
