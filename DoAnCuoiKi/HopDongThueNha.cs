@@ -14,7 +14,8 @@ namespace DoAnCuoiKi
         private NguoiThue nguoiThue;
         private DateTime thoiHan;
         private string thongTinBoiThuong;
-        public Action<HopDongThueNha> EphongDaDuocThue;
+        public event Action<HopDongThueNha> EDaThue;
+
         public HopDongThueNha(int tienDatCoc, PhongTro phongTro, NguoiChoThue nguoiChoThue, NguoiThue nguoiThue, DateTime thoiHan, string thongTinBoiThuong)
         {
             this.tienDatCoc = tienDatCoc;
@@ -23,7 +24,9 @@ namespace DoAnCuoiKi
             this.nguoiThue = nguoiThue;
             this.thoiHan = thoiHan;
             this.thongTinBoiThuong = thongTinBoiThuong;
+            DaThue = false;
         }
+        public bool DaThue { get; private set; }
         public decimal TienDatCoc
         {
             get { return tienDatCoc; }
@@ -41,37 +44,24 @@ namespace DoAnCuoiKi
             get { return nguoiChoThue; }
             private set { }
         }
-        public NguoiThue NguoiThue
-        {
-            get { return nguoiThue; }
-            private set { }
-        }
-        public DateTime ThoiHan
-        {
-            get { return thoiHan; }
-            private set { }
-        }
-        public string ThongTinBoiThuong
-        {
-            get { return thongTinBoiThuong; }
-            private set { }
-        }
-
         public void ThuePhong()
         {
             if (DateTime.Now >= thoiHan)
             {
-                Console.WriteLine("Hop dong het han");
+                Console.WriteLine("Hop dong het han.");
             }
-            else if (phongTro.DaThue)
+            else if (DaThue == true)
             {
-                Console.WriteLine("Phong da duoc thue.");
+                Console.WriteLine("Phong hien da co nguoi thue.");
             }
             else
             {
-                Console.WriteLine("Thuê phòng thành công.");
-                phongTro.DaThue = true;
-                EphongDaDuocThue?.Invoke(this);
+                Console.WriteLine("Thue phong thanh cong.");
+                DaThue = true;
+                if (EDaThue != null)
+                {
+                    EDaThue.Invoke(this);
+                }
             }
         }
     }

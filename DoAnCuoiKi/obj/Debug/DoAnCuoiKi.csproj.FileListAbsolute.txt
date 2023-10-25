@@ -1,0 +1,7 @@
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.exe.config
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.exe
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.pdb
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.csproj.AssemblyReference.cache
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.csproj.CoreCompileInputs.cache
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.exe
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.pdb

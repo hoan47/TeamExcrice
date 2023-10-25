@@ -9,28 +9,35 @@ namespace DoAnCuoiKi
     public class NguoiMoiGioi : Nguoi
     {
         private CongTyMoiGioi congTyMoiGioi;
-        private List<PhongTro> danhSachPhongTro;
+        private List<HopDongThueNha> danhSachHopDong;
 
         public NguoiMoiGioi(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, 
             CongTyMoiGioi congTyMoiGioi)
             : base(ten, laNam, tuoi, diaChi, soCMND, soDT)
         {
             this.congTyMoiGioi = congTyMoiGioi;
-            danhSachPhongTro = new List<PhongTro>();
+            danhSachHopDong = new List<HopDongThueNha>();
         }
-        public void ThemPhongTro(HopDongThueNha hopDong)
+        public void ThemHopDong(HopDongThueNha hopDong)
         {
-            danhSachPhongTro.Add(hopDong.PhongTro);
-            hopDong.EphongDaDuocThue += PhongDaDuocThue;
+            danhSachHopDong.Add(hopDong);
+            hopDong.EDaThue += PhongDaDuocThue;
         }
         public void ChoThuePhongTro(HopDongThueNha hopDong)
         {
-            hopDong.ThuePhong();
+            if(danhSachHopDong.Contains(hopDong))
+            {
+                hopDong.ThuePhong();
+            }
+            else
+            {
+                Console.WriteLine("Hop dong khong duoc moi gioi lam viec");
+            }
         }
         public void PhongDaDuocThue(HopDongThueNha hopDong)
         {
-            hopDong.EphongDaDuocThue -= PhongDaDuocThue;
-            danhSachPhongTro.Remove(hopDong.PhongTro);
+            hopDong.EDaThue -= PhongDaDuocThue;
+            danhSachHopDong.Remove(hopDong);
         }
     }
 }

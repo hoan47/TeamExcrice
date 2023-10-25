@@ -8,7 +8,6 @@ namespace DoAnCuoiKi
 {
     public class PhongTro
     {
-        private bool daThue;
         private float dienTich;
         private string noiThat;
         private decimal gia;
@@ -25,7 +24,6 @@ namespace DoAnCuoiKi
         public PhongTro(float dienTich, string noiThat, decimal gia, string diaChi, bool danhChoNam, bool danhChoNu, bool duocNuoiThuCung, bool loiDiRieng,
                         bool gioGiacTuDo, int sucChua, string yeuCauRieng, NguoiChoThue nguoiChoThue)
         {
-            daThue = false;
             this.dienTich = dienTich;
             this.noiThat = noiThat;
             this.gia = gia;
@@ -38,11 +36,6 @@ namespace DoAnCuoiKi
             this.sucChua = sucChua;
             this.yeuCauRieng = yeuCauRieng;
             this.nguoiChoThue = nguoiChoThue;
-        }
-        public bool DaThue
-        {
-            get { return daThue; }
-            set { daThue = value; }
         }
         public NguoiChoThue NguoiChoThue
         {
