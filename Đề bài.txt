@@ -33,4 +33,4 @@
            - Chu nha lay lai nha truoc thoi han thi den tien cho nguoi thue 
            - Nguoi thue lam hu hong do dac thi den tien cho chu nha 
            - Tinh tien dien nuoc , goi xe hang thang cho chu nha 
-           -Tim kiem nha tro theo thong tin yeu cau: vi tri, gia ca…"
+           - Tim kiem nha tro theo thong tin yeu cau: vi tri, gia ca…"

@@ -10,7 +10,10 @@ namespace DoAnCuoiKi
     {
         public NguoiChoThue(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT)
             : base(ten, laNam, tuoi, diaChi, soCMND, soDT)
+        { }
+        public void ChoThuePhong(HopDongThueNha hopDong)
         {
+            hopDong.ThuePhong();
         }
     }
 }

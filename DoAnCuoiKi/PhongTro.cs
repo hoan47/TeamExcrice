@@ -8,6 +8,7 @@ namespace DoAnCuoiKi
 {
     public class PhongTro
     {
+        private bool daThue;
         private float dienTich;
         private string noiThat;
         private decimal gia;
@@ -21,10 +22,10 @@ namespace DoAnCuoiKi
         private string yeuCauRieng;
         private NguoiChoThue nguoiChoThue;
 
-        public PhongTro(float dienTich, string noiThat, decimal gia, string diaChi,
-                        bool danhChoNam, bool danhChoNu, bool duocNuoiThuCung, bool loiDiRieng,
+        public PhongTro(float dienTich, string noiThat, decimal gia, string diaChi, bool danhChoNam, bool danhChoNu, bool duocNuoiThuCung, bool loiDiRieng,
                         bool gioGiacTuDo, int sucChua, string yeuCauRieng, NguoiChoThue nguoiChoThue)
         {
+            daThue = false;
             this.dienTich = dienTich;
             this.noiThat = noiThat;
             this.gia = gia;
@@ -38,6 +39,29 @@ namespace DoAnCuoiKi
             this.yeuCauRieng = yeuCauRieng;
             this.nguoiChoThue = nguoiChoThue;
         }
+        public bool DaThue
+        {
+            get { return daThue; }
+            set { daThue = value; }
+        }
+        public NguoiChoThue NguoiChoThue
+        {
+            get { return nguoiChoThue; }
+            private set { }
+        }
+        public void ThongTin()
+        {
+            Console.WriteLine("Dien tich: " + dienTich);
+            Console.WriteLine("Noi that: " + noiThat);
+            Console.WriteLine("Gia: " + gia);
+            Console.WriteLine("Dia chi: " + diaChi);
+            Console.WriteLine("Danh cho nam: " + danhChoNam);
+            Console.WriteLine("Danh cho nu: " + danhChoNu);
+            Console.WriteLine("Duoc nuoi thu cung: " + duocNuoiThuCung);
+            Console.WriteLine("Loi di rieng: " + loiDiRieng);
+            Console.WriteLine("Gio giac tu do: " + gioGiacTuDo);
+            Console.WriteLine("Suc chua: " + sucChua);
+            Console.WriteLine("Yeu cau rieng: " + yeuCauRieng);
+        } 
     }
-
 }

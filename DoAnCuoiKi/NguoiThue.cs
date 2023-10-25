@@ -16,5 +16,9 @@ namespace DoAnCuoiKi
         {
             this.ngheNghiep = ngheNghiep;
         }
+        public void ThuePhong(HopDongThueNha hopDong)
+        {
+            hopDong.NguoiChoThue.ChoThuePhong(hopDong);
+        }
     }
 }

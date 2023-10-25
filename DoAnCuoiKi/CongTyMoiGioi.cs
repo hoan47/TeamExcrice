@@ -11,12 +11,18 @@ namespace DoAnCuoiKi
         private string tenCongTy;
         private string maSoThue;
         private string diaChi;
+        private List<NguoiMoiGioi> danhSachNguoiMoiGioi;
 
         public CongTyMoiGioi(string tenCongTy, string maSoThue, string diaChi)
         {
             this.tenCongTy = tenCongTy;
             this.maSoThue = maSoThue;
             this.diaChi = diaChi;
+            danhSachNguoiMoiGioi = new List<NguoiMoiGioi>();
+        }
+        public void ThemNguoiMoiGIoi(NguoiMoiGioi nguoiMoiGioi)
+        {
+            danhSachNguoiMoiGioi.Add(nguoiMoiGioi);
         }
     }
 }
