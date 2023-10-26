@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CongTyMoiGioi.cs" />
     <Compile Include="HopDongThueNha.cs" />
+    <Compile Include="NganHang.cs" />
     <Compile Include="Nguoi.cs" />
     <Compile Include="NguoiChoThue.cs" />
     <Compile Include="NguoiMoiGioi.cs" />

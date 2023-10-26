@@ -14,8 +14,9 @@ namespace DoAnCuoiKi
         protected string diaChi;
         protected string soCMND;
         protected string soDT;
+        protected NganHang nganHang;
 
-        public Nguoi(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT)
+        public Nguoi(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, NganHang nganHang)
         {
             this.ten = ten;
             this.laNam = laNam;
@@ -23,6 +24,12 @@ namespace DoAnCuoiKi
             this.diaChi = diaChi;
             this.soCMND = soCMND;
             this.soDT = soDT;
+            this.nganHang = nganHang;
+        }
+        public NganHang NganHang
+        {
+            get { return nganHang; }
+            private set { }
         }
     }
 }

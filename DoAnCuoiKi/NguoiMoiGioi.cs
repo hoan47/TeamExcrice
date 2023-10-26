@@ -12,9 +12,9 @@ namespace DoAnCuoiKi
         private List<HopDongThueNha> danhSachHopDong;
         public event Action<NguoiMoiGioi, HopDongThueNha> EThanhTich;
 
-        public NguoiMoiGioi(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, 
+        public NguoiMoiGioi(string ten, bool laNam, int tuoi, string diaChi, string soCMND, string soDT, NganHang nganHang,
             CongTyMoiGioi congTyMoiGioi)
-            : base(ten, laNam, tuoi, diaChi, soCMND, soDT)
+            : base(ten, laNam, tuoi, diaChi, soCMND, soDT, nganHang)
         {
             this.congTyMoiGioi = congTyMoiGioi;
             danhSachHopDong = new List<HopDongThueNha>();
@@ -45,11 +45,13 @@ namespace DoAnCuoiKi
             if(danhSachHopDong.Contains(hopDong))
             {
                 HopDongThueNha.EKetQuaThue ketQua = hopDong.ThuePhong();
+
+                Console.WriteLine(ketQua);
                 if (ketQua == HopDongThueNha.EKetQuaThue.ThanhCong)
                 {
+                    hopDong.NguoiChoThue.EBaoCaoKhachHang += congTyMoiGioi.ChuNhaBaoCaoKhachHang;
                     EThanhTich.Invoke(this, hopDong);
                 }
-                Console.WriteLine(ketQua);
             }
             else
             {

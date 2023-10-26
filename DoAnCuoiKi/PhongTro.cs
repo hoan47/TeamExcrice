@@ -36,25 +36,36 @@ namespace DoAnCuoiKi
             this.sucChua = sucChua;
             this.yeuCauRieng = yeuCauRieng;
             this.nguoiChoThue = nguoiChoThue;
+            DanhSachDanhGia = new List<DanhGia>();
         }
+        public List<DanhGia> DanhSachDanhGia { get; private set; }
         public NguoiChoThue NguoiChoThue
         {
             get { return nguoiChoThue; }
             private set { }
         }
-        public void ThongTin()
+        public void ThemDanhGia(DanhGia danhGia)
         {
-            Console.WriteLine("Dien tich: " + dienTich);
-            Console.WriteLine("Noi that: " + noiThat);
-            Console.WriteLine("Gia: " + gia);
-            Console.WriteLine("Dia chi: " + diaChi);
-            Console.WriteLine("Danh cho nam: " + danhChoNam);
-            Console.WriteLine("Danh cho nu: " + danhChoNu);
-            Console.WriteLine("Duoc nuoi thu cung: " + duocNuoiThuCung);
-            Console.WriteLine("Loi di rieng: " + loiDiRieng);
-            Console.WriteLine("Gio giac tu do: " + gioGiacTuDo);
-            Console.WriteLine("Suc chua: " + sucChua);
-            Console.WriteLine("Yeu cau rieng: " + yeuCauRieng);
-        } 
+            DanhSachDanhGia.Add(danhGia);
+        }
+        public class DanhGia
+        {
+            public ESao sao { get; private set; }
+            public string noiDung;
+
+            public DanhGia(ESao sao, string noiDung)
+            {
+                this.sao = sao;
+                this.noiDung = noiDung;
+            }
+            public enum ESao
+            {
+                sao1,
+                sao2,
+                sao3,
+                sao4,
+                sao5,
+            }
+        }
     }
 }
