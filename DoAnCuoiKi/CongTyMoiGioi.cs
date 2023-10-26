@@ -63,8 +63,7 @@ namespace DoAnCuoiKi
             {
                 nguoiMoiGioi.EThanhTich -= ThemThanhTich;
                 Console.WriteLine("Them thanh cong thanh tich cho nhan vien.");
-                HopDongThueNha hopDongThueNha = hopDong;
-                nhanVien.ThemThanhTich(hopDongThueNha);
+                nhanVien.ThemThanhTich(hopDong);
             }
         }
         private class NhanVienMoiGioi
