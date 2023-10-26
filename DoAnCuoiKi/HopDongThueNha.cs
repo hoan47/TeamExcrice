@@ -14,7 +14,7 @@ namespace DoAnCuoiKi
         private NguoiThue nguoiThue;
         private DateTime thoiHan;
         private string thongTinBoiThuong;
-        public event Action<HopDongThueNha> EDaThue;
+        public event Action<HopDongThueNha> EThuePhong;
 
         public HopDongThueNha(int tienDatCoc, PhongTro phongTro, NguoiChoThue nguoiChoThue, NguoiThue nguoiThue, DateTime thoiHan, string thongTinBoiThuong)
         {
@@ -44,25 +44,28 @@ namespace DoAnCuoiKi
             get { return nguoiChoThue; }
             private set { }
         }
-        public void ThuePhong()
+        public EKetQuaThue ThuePhong()
         {
             if (DateTime.Now >= thoiHan)
             {
-                Console.WriteLine("Hop dong het han.");
+                return EKetQuaThue.HetHan;
             }
             else if (DaThue == true)
             {
-                Console.WriteLine("Phong hien da co nguoi thue.");
+                return EKetQuaThue.DaCoNguoiThue;
             }
             else
             {
-                Console.WriteLine("Thue phong thanh cong.");
                 DaThue = true;
-                if (EDaThue != null)
-                {
-                    EDaThue.Invoke(this);
-                }
+                EThuePhong?.Invoke(this);
+                return EKetQuaThue.ThanhCong;
             }
+        }
+        public enum EKetQuaThue
+        {
+            HetHan,
+            DaCoNguoiThue,
+            ThanhCong
         }
     }
 }

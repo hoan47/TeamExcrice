@@ -13,7 +13,7 @@ namespace DoAnCuoiKi
         { }
         public void ChoThuePhong(HopDongThueNha hopDong)
         {
-            hopDong.ThuePhong();
+            Console.WriteLine(hopDong.ThuePhong());
         }
     }
 }
