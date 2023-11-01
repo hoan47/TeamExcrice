@@ -1,0 +1,7 @@
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.AssemblyReference.cache
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe.config
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.pdb
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
+D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb

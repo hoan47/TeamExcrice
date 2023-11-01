@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99EBE126-9C26-4989-BE5A-EB23E8EE2642}</ProjectGuid>
+    <ProjectGuid>{57E168A0-3AA9-4217-BA73-1DA0E613F1DE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DoAnCuoiKi</RootNamespace>
-    <AssemblyName>DoAnCuoiKi</AssemblyName>
+    <RootNamespace>DoAnCuoiKy</RootNamespace>
+    <AssemblyName>DoAnCuoiKy</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChuChoThue.cs" />
+    <Compile Include="HopDongThueXe.cs" />
+    <Compile Include="KhachThueXe.cs" />
+    <Compile Include="NganHang.cs" />
+    <Compile Include="Nguoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xe.cs" />
+    <Compile Include="XeBayCho.cs" />
+    <Compile Include="XeBonCho.cs" />
+    <Compile Include="XeMay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
