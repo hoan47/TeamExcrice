@@ -1,7 +1,0 @@
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.exe.config
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.exe
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\bin\Debug\DoAnCuoiKi.pdb
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.csproj.AssemblyReference.cache
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.csproj.CoreCompileInputs.cache
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.exe
-C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKi\obj\Debug\DoAnCuoiKi.pdb
