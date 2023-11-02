@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class XeBonCho:Xe
+    class XeBonCho : Xe
     {
-        public XeBonCho(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, MucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia) : base(hangXe, namMua, soKilomet, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
+        public XeBonCho(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, 
+            decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia) 
+            : base(hangXe, namMua, soKilomet, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
+        { }
+        public override void XuatThongTinXe()
         {
-            loaiXe = Xe.PhanLoai.bonCho;
+            Console.WriteLine("Loai xe:  Xe bon cho");
+            base.XuatThongTinXe();
         }
     }
 }

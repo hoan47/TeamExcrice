@@ -10,7 +10,7 @@ namespace DoAnCuoiKy
     {
         private KhachThueXe khachThue;
         private ChuChoThue chuThue;
-        private Xe.PhanLoai phanLoai;
+        private Xe xeChoThue;
         private DateTime ngayThue;
         private int soNgay;
         private decimal giaThueChinhThuc;
@@ -24,113 +24,43 @@ namespace DoAnCuoiKy
         private string danhGia;
         private decimal chiPhiDen = 0;
 
-        public HopDongThueXe(KhachThueXe khachThue, ChuChoThue chuThue,Xe.PhanLoai phanLoai, int soNgay, DateTime ngayThue)
+        public HopDongThueXe(KhachThueXe khachThue, ChuChoThue chuThue, Xe xeChoThue, int soNgay, DateTime ngayThue)
         {
             this.khachThue = khachThue;
             this.chuThue = chuThue;
-            this.phanLoai = phanLoai;
+            this.xeChoThue = xeChoThue;
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
         }
-        protected void TimXeMay(decimal gia,ChuChoThue chuThue)
+        public enum EUuDaiChoKhach
         {
-            XeMay xeMay;
-            xeMay=khachThue.YeuCauTimXeMay(gia, chuThue);
-            if (xeMay == null)
-                Console.WriteLine("Khong co xe theo yeu cau");
-            else
-            {
-                giaThueChinhThuc = xeMay.giaThueMotNgay * soNgay;
-                tienCoc = xeMay.tienCoc;
-                tienGiaHan = xeMay.giaThueMotNgay;
-                uuDai = xeMay.uuDai;
-                tangGia = xeMay.tangGia;
-                tienXuotXe = xeMay.giaDenXuotXe;
-                tienBeBanh = xeMay.giaDenBeBanh;
-                tienHuDen = xeMay.giaDenHuDen;
-            }
+            Co,
+            Khong
         }
-        protected void TimXeBonCho(decimal gia, ChuChoThue chuThue)
+        public enum ETangGiaTheoDip
         {
-            XeBonCho xeBonCho;
-            xeBonCho=khachThue.YeuCauTimXeBonCho(gia, chuThue);
-            if (xeBonCho == null)
-                Console.WriteLine("Khong co xe theo yeu cau");
-            else
-            {
-                giaThueChinhThuc = xeBonCho.giaThueMotNgay * soNgay;
-                tienCoc = xeBonCho.tienCoc;
-                tienGiaHan = xeBonCho.giaThueMotNgay;
-                uuDai = xeBonCho.uuDai;
-                tangGia = xeBonCho.tangGia;
-                tienXuotXe = xeBonCho.giaDenXuotXe;
-                tienBeBanh = xeBonCho.giaDenBeBanh;
-                tienHuDen = xeBonCho.giaDenHuDen;
-            }
+            Co,
+            Khong
         }
-        protected void TimXeBayCho(decimal gia, ChuChoThue chuThue)
-        {
-            XeBayCho xeBayCho;
-            xeBayCho=khachThue.YeuCauTimXeBayCho(gia, chuThue);
-            if (xeBayCho == null)
-                Console.WriteLine("Khong co xe theo yeu cau");
-            else
-            {
-                giaThueChinhThuc = xeBayCho.giaThueMotNgay * soNgay;
-                tienCoc = xeBayCho.tienCoc;
-                tienGiaHan = xeBayCho.giaThueMotNgay;
-                uuDai = xeBayCho.uuDai;
-                tangGia = xeBayCho.tangGia;
-                tienXuotXe = xeBayCho.giaDenXuotXe;
-                tienBeBanh = xeBayCho.giaDenBeBanh;
-                tienHuDen = xeBayCho.giaDenHuDen;
-            }
-        }
-        public enum UuDaiChoKhach
-        {
-            co,
-            khong
-        }
-        public enum TangGiaTheoDip
-        {
-            co,
-            khong
-        }
-        protected UuDaiChoKhach UuDai()
+        protected EUuDaiChoKhach UuDai()
         {
             if (ngayThue.Day == khachThue.ngaySinh.Day && ngayThue.Month == khachThue.ngaySinh.Month || khachThue.soLanThueXe >= 3)
-                return UuDaiChoKhach.co;
+                return EUuDaiChoKhach.Co;
             else
-                return UuDaiChoKhach.khong;
+                return EUuDaiChoKhach.Khong;
         }
-        protected TangGiaTheoDip TangGia()
+        protected ETangGiaTheoDip TangGia()
         {
             if (ngayThue.Month >= 4 && ngayThue.Month <= 6 || ngayThue.Month == 2)
-                return TangGiaTheoDip.co;
+                return ETangGiaTheoDip.Co;
             else
-                return TangGiaTheoDip.khong;
-        }
-        protected void LoaiXeThue(decimal gia,ChuChoThue chuThue)
-        {
-            if(phanLoai==Xe.PhanLoai.may)
-            {
-                TimXeMay(gia, chuThue);
-            }
-            else if(phanLoai==Xe.PhanLoai.bonCho)
-            {
-                TimXeBonCho(gia,chuThue);
-            }
-            else if(phanLoai==Xe.PhanLoai.bayCho)
-            {
-                TimXeBayCho(gia, chuThue);
-            }
+                return ETangGiaTheoDip.Khong;
         }
         protected void KhuyenMaiVaTangGia(decimal gia, ChuChoThue chuThue)
         {
-            LoaiXeThue(gia,chuThue);
-            if (UuDai() == UuDaiChoKhach.co)
+            if (UuDai() == EUuDaiChoKhach.Co)
                 giaThueChinhThuc -= uuDai;
-            if (TangGia() == TangGiaTheoDip.co)
+            if (TangGia() == ETangGiaTheoDip.Co)
                 giaThueChinhThuc += tangGia;
         }
         protected bool ThanhToanTienCoc()
@@ -162,9 +92,9 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("So tien thue khach phai tra: " + giaThueChinhThuc + " dong");
             if (ThanhToan(gia,chuThue) == true)
-                Console.WriteLine("Thue xe thanh cong");
+                Console.WriteLine("Thue xe thanh Cong");
             else
-                Console.WriteLine("Thue xe khong thanh cong");
+                Console.WriteLine("Thue xe khong thanh Cong");
         }
         protected bool TraXeTre(int soNgayTre)
         {
@@ -197,11 +127,11 @@ namespace DoAnCuoiKy
             Console.WriteLine("Chi phi phat sinh phai tra: " + chiPhiDen+ " dong");
             if (kiemTra== true)
             {
-                Console.WriteLine("Tra xe thanh cong");
+                Console.WriteLine("Tra xe thanh Cong");
             }
             else
             {
-                Console.WriteLine("Khong thanh cong");
+                Console.WriteLine("Khong thanh Cong");
                 Console.WriteLine("Chi phi phat sinh chua duoc thanh toan");
             }
         }

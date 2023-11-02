@@ -8,12 +8,11 @@ namespace DoAnCuoiKy
 {
     class Xe
     {
-        public PhanLoai loaiXe;
         protected string hangXe;
         protected DateTime namMua;
         protected double soKilomet;
         protected bool baoHiem;
-        protected MucDich mucDich;
+        protected EMucDich mucDich;
         public decimal giaThueMotNgay;
         public decimal tienCoc;
         public decimal giaDenXuotXe;
@@ -22,7 +21,7 @@ namespace DoAnCuoiKy
         public decimal uuDai;
         public decimal tangGia;
 
-        public Xe(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, MucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia)
+        public Xe(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia)
         {
             this.hangXe = hangXe;
             this.namMua = namMua;
@@ -37,22 +36,15 @@ namespace DoAnCuoiKy
             this.uuDai = uuDai;
             this.tangGia = tangGia;
         }
-        public void XuatThongTinXe()
+        public virtual void XuatThongTinXe()
         {
-            Console.WriteLine("Loai xe: " + loaiXe);
             Console.WriteLine("Hang xe: " + hangXe);
             Console.WriteLine("Nam mua: " + namMua.ToString("dd/MM/yyyy"));
             Console.WriteLine("So kilomet: " + soKilomet);
             Console.WriteLine("Muc dich: " + mucDich);
             Console.WriteLine("Gia: " + giaThueMotNgay);
         }
-        public enum PhanLoai
-        {
-            may,
-            bonCho,
-            bayCho
-        }
-        public enum MucDich
+        public enum EMucDich
         {
             cuoi,
             duLich,

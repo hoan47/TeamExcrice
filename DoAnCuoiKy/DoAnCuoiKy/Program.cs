@@ -16,20 +16,20 @@ namespace DoAnCuoiKy
            // NganHang nganHangD = new NganHang("22110331", 10000000);
             Xe[] danhSachXe =
             {
-                new XeMay("Honda", new DateTime(2020, 4, 5), 160, true, Xe.MucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
-                new XeMay("Yamaha", new DateTime(2020, 4, 5), 160, true, Xe.MucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
-                new XeMay("Honda", new DateTime(2020, 4, 5), 160, true, Xe.MucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
-                new XeMay("Suzuki", new DateTime(2020, 4, 5), 160, true, Xe.MucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
+                new XeMay("Honda", new DateTime(2020, 4, 5), 160, true, Xe.EMucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
+                new XeMay("Yamaha", new DateTime(2020, 4, 5), 160, true, Xe.EMucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
+                new XeMay("Honda", new DateTime(2020, 4, 5), 160, true, Xe.EMucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
+                new XeMay("Suzuki", new DateTime(2020, 4, 5), 160, true, Xe.EMucDich.tapLai, 500000, 100000, 70000, 100000, 100000, 150000, 100000),
 
-                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.MucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
-                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.MucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
-                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.MucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
-                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.MucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
+                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.EMucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
+                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.EMucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
+                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.EMucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
+                new XeBonCho("Vinfast Fadil", new DateTime(2021, 1, 1), 240, true, Xe.EMucDich.duLich, 15000000, 5000000, 1000000, 5000000, 3000000, 2000000, 1000000),
 
-                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.MucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
-                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.MucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
-                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.MucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
-                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.MucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000)
+                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.EMucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
+                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.EMucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
+                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.EMucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000),
+                new XeBayCho("Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.EMucDich.cuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000)
             };
             ChuChoThue chu = new ChuChoThue("Tran Van H", "Tp Ho Chi Minh", "0555441221", new DateTime(1990, 1, 1), nganHangA);
            // ChuChoThue chu1 = new ChuChoThue("Nguyen Son", "Tp Ho Chi Minh", "0555441221", new DateTime(1990, 1, 1), nganHangA);

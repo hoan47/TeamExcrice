@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class XeBayCho:Xe
+    class XeBayCho : Xe
     {
-        public XeBayCho(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, MucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia) : base(hangXe, namMua, soKilomet, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
+        public XeBayCho(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, 
+            decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia) 
+            : base(hangXe, namMua, soKilomet, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
+        { }
+        public override void XuatThongTinXe()
         {
-            loaiXe = Xe.PhanLoai.bayCho;
+            Console.WriteLine("Loai xe:  Xe bay cho");
         }
-
     }
 }

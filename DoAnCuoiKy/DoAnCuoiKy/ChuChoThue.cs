@@ -6,107 +6,44 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class ChuChoThue:Nguoi
+    class ChuChoThue : Nguoi
     {
-        private List<XeMay> danhSachXeMay;
-        private List<XeBonCho> danhSachXeBonCho;
-        private List<XeBayCho> danhSachXeBayCho;
-        public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang) 
+        private List<Xe>[] danhSachXe;
+        public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
-            danhSachXeMay = new List<XeMay>();
-            danhSachXeBonCho=new List<XeBonCho>();
-            danhSachXeBayCho=new List<XeBayCho>();
+            danhSachXe = new List<Xe>[3];
         }
-        public void ThemXeMay(XeMay xe)
+        public void ThemXe(Xe xe)
         {
-            danhSachXeMay.Add(xe);
-        }
-        public void ThemXeBonCho(XeBonCho xe)
-        {
-            danhSachXeBonCho.Add(xe);
-        }
-        public void ThemXeBayCho(XeBayCho xe)
-        {
-            danhSachXeBayCho.Add(xe);
-        }
-        public XeMay ChuTimXeMay(decimal gia)
-        {
-            bool d = false;
-            XeMay xeMay;
-            XeMay[] danhSachXeTimThay = new XeMay[danhSachXeMay.Count];
-            int i = 0;
-            foreach (XeMay xe in danhSachXeMay)
+            if(xe is XeMay)
             {
-                if (xe.giaThueMotNgay == gia)
-                {
-                    danhSachXeTimThay[i] = xe;
-                    i++;
-                    d = true;
-                }
+                danhSachXe[(int)EPhanLoai.XeMay].Add(xe);
             }
-            if (d == true)
+            else if(xe is XeBonCho)
             {
-                Random random = new Random();
-                int viTri = random.Next(0, i);
-                xeMay = danhSachXeTimThay[viTri];
-                return xeMay;
-            }
-            else 
-                return null;
-        }
-        public XeBonCho ChuTimXeBonCho(decimal gia)
-        {
-            bool d = false;
-            XeBonCho xeBonCho;
-            XeBonCho[] danhSachXeTimThay = new XeBonCho[danhSachXeBonCho.Count];
-            int i = 0;
-            foreach (XeBonCho xe in danhSachXeBonCho)
-            {
-                if (xe.giaThueMotNgay == gia)
-                {
-                    danhSachXeTimThay[i] = xe;
-                    i++;
-                    d = true;
-                }
-            }
-            if (d == true)
-            {
-                Random random = new Random();
-                int viTri = random.Next(0, i);
-                xeBonCho = danhSachXeTimThay[viTri];
-                return xeBonCho;
+                danhSachXe[(int)EPhanLoai.XeBonCho].Add(xe);
             }
             else
-                return null;
+            {
+                danhSachXe[(int)EPhanLoai.XeBayCho].Add(xe);
+            }
         }
-        public XeBayCho ChuTimXeBayCho(decimal gia)
+        public void TimXe(EPhanLoai loaiXe, decimal gia)
         {
-            bool d = false;
-            XeBayCho xeBayCho;
-            XeBayCho[] danhSachXeTimThay = new XeBayCho[danhSachXeBayCho.Count];
-            int i = 0;
-            foreach (XeBayCho xe in danhSachXeBayCho)
+            foreach (XeMay xe in danhSachXe[(int)loaiXe])
             {
-                if (xe.giaThueMotNgay == gia)
-                {
-                    danhSachXeTimThay[i] = xe;
-                    i++;
-                    d = true;
-                }
+                xe.XuatThongTinXe();
             }
-            if (d == true)
-            {
-                Random random = new Random();
-                int viTri = random.Next(0, i);
-                xeBayCho = danhSachXeTimThay[viTri];
-                return xeBayCho;
-            }
-            else
-                return null;
         }
         public override void DanhGiaNguoi(string danhGia)
         {
             Console.WriteLine("Chu cho thue danh gia khach hang: " + danhGia);
+        }
+        public enum EPhanLoai
+        {
+            XeMay = 0,
+            XeBonCho = 1,
+            XeBayCho = 2
         }
     }
 }
