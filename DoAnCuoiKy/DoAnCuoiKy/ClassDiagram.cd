@@ -1,22 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DoAnCuoiKy.ChuChoThue">
-    <Position X="6.75" Y="6.75" Width="1.75" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Enum Name="DoAnCuoiKy.ChuChoThue.EPhanLoai" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>ChuChoThue.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAIAEAAAAAAAAAABAAAAAAAA=</HashCode>
-      <FileName>ChuChoThue.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DoAnCuoiKy.HopDongThueXe">
     <Position X="11.5" Y="3" Width="1.5" />
     <Compartments>
@@ -35,7 +18,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gUoAgAAAAAABAAIBAAAAlAJABQQAQAAEAAAgIQAAIAA=</HashCode>
+      <HashCode>gQIAAAAAAAABAAAAAAAAgAIABQQAQAAEAAAgAQAAIAA=</HashCode>
       <FileName>HopDongThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,7 +33,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AABAAAKAAAAAAAAAAAABAIAAIgAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>KhachThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -111,6 +94,40 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeMay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoAnCuoiKy.ChuChoThue">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="DoAnCuoiKy.ChuChoThue.EPhanLoai" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ChuChoThue.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="DoAnCuoiKy.ChuChoThue.LichSuThueXe">
+        <Compartments>
+          <Compartment Name="Nested Types" Collapsed="false" />
+        </Compartments>
+        <NestedTypes>
+          <Class Name="DoAnCuoiKy.ChuChoThue.LichSuThueXe.Khach">
+            <TypeIdentifier>
+              <NewMemberFileName>ChuChoThue.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>ChuChoThue.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAIAEAAAAAAAQAABAAAAAAAA=</HashCode>
+      <FileName>ChuChoThue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

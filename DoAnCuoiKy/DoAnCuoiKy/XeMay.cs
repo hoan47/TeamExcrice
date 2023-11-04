@@ -15,6 +15,7 @@ namespace DoAnCuoiKy
         public override void XuatThongTinXe()
         {
             Console.WriteLine("Loai xe:  Xe may");
+            base.XuatThongTinXe();
         }
     }
 }

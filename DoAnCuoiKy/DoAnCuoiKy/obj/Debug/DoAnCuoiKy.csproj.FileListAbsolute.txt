@@ -5,3 +5,10 @@ D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe
 D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.pdb
 D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
 D:\de1_oop\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe.config
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.pdb
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.AssemblyReference.cache
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
+C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb

@@ -1,0 +1,32 @@
+- Chủ cho thuê: 
+    - Thông tin cơ bản: họ tên, địa chỉ, dthoai….
+
+- Xe: 
+    - Xe(máy, 4 chỗ, 7 chỗ). xe cưới, xe du lịch, xe tập lái…
+    - Thông tin: Loại xe, hãng xe, số chỗ, năm mua, số km đã đi, có bảo hiểm hay ko? 
+    - Giá thuê
+- 
+- Khách thuê xe: 
+    - Thông tin cơ bản: họ tên, địa chỉ, số dthoai…
+    - 
+- Hợp đồng thuê xe: 
+    - khách thuê
+    - xe thuê
+    - số ngày, mục đích, tiền cọc, ngày thuê…
+    - thanh toán hợp đồng
+    - Trả xe: check(xe ok hay ko ok), feed back cho chủ xe (comment, sao)…
+    - khuyến mãi
+    - Thuê tài xế 
+- Đánh giá: 
+    - Đánh giá dành cho xe 
+    - Đánh giá cho chủ xe 
+    - Đánh giá cho ng thuê
+- Chi phí phát sinh: 
+    - Xướt xe 
+    - Bể bánh
+    - Hư đèn….
+
+- Ưu đãi: 
+    - khuyến mãi theo dịp (…)
+    - Tăng giá theo dịp (hè, tết, …)
+    - khuyến mãi cho khách quen 
