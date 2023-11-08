@@ -11,7 +11,7 @@ namespace DoAnCuoiKy
         protected string hoTen;
         protected string diaChi;
         protected string soDienThoai;
-        public DateTime ngaySinh;
+        protected DateTime ngaySinh;
         protected NganHang nganHang;
         public Nguoi(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
         {
@@ -25,10 +25,6 @@ namespace DoAnCuoiKy
         {
             get { return nganHang; }
             private set { }
-        }
-        public virtual void DanhGiaNguoi(string danhGia)
-        {
-
         }
     }
 }

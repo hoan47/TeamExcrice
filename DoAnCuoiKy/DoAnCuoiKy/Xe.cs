@@ -8,6 +8,7 @@ namespace DoAnCuoiKy
 {
     class Xe
     {
+        private ChuChoThue chuXe;
         protected string hangXe;
         protected DateTime namMua;
         protected double soKilomet;
@@ -21,8 +22,9 @@ namespace DoAnCuoiKy
         public decimal uuDai;
         public decimal tangGia;
 
-        public Xe(string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia)
+        public Xe(ChuChoThue chuXe, string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia)
         {
+            this.chuXe = chuXe;
             this.hangXe = hangXe;
             this.namMua = namMua;
             this.soKilomet = soKilomet;
@@ -35,7 +37,10 @@ namespace DoAnCuoiKy
             this.giaDenHuDen = giaDenHuDen;
             this.uuDai = uuDai;
             this.tangGia = tangGia;
+
+            this.chuXe.ThemXe(this);
         }
+        public ChuChoThue ChuXe{ get { return chuXe; } }
         public virtual void XuatThongTinXe()
         {
             Console.WriteLine("Hang xe: " + hangXe);
@@ -44,11 +49,18 @@ namespace DoAnCuoiKy
             Console.WriteLine("Muc dich: " + mucDich);
             Console.WriteLine("Gia: " + giaThueMotNgay);
         }
+        public enum EPhanLoai
+        {
+            XeMay = 0,
+            XeBonCho = 1,
+            XeBayCho = 2
+        }
         public enum EMucDich
         {
-            cuoi,
-            duLich,
-            tapLai
+            DuLich,
+            DamCuoi,
+            TapLai,
+            Khac
         }
     }
 }

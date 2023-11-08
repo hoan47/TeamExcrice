@@ -21,8 +21,8 @@ namespace DoAnCuoiKy
         private decimal tienXuotXe;
         private decimal tienBeBanh;
         private decimal tienHuDen;
-        private string danhGia;
         private decimal chiPhiDen = 0;
+        private string danhGia;
 
         public HopDongThueXe(KhachThueXe khachThue, ChuChoThue chuThue, Xe xeChoThue, int soNgay, DateTime ngayThue)
         {
@@ -32,7 +32,6 @@ namespace DoAnCuoiKy
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
         }
-
         public enum EUuDaiChoKhach
         {
             Co,
