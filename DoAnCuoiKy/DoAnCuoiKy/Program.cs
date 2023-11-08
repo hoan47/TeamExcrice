@@ -36,7 +36,14 @@ namespace DoAnDamCuoiKy
                 new XeBayCho(chuXe3, "Mitsubishi Xpander", new DateTime(2020, 2, 3), 240, true, Xe.EMucDich.DamCuoi, 25000000, 7000000, 8000000, 10000000, 5000000, 5000000, 3500000)
             };
 
-            chuXe1.TimXe(Xe.EPhanLoai.XeMay, 0, 500000);
+            KhachThueXe khach1=new KhachThueXe("Dang Thi Thanh Hoa", "Ninh Thuan", "0654225413", new DateTime(2004,11,8),nganHang1,"Kinh doanh");
+            Xe xeDuocChon=khach1.KhachYeuCauTimVaChonXe(chuXe1, Xe.EPhanLoai.XeMay, 100000, 500000);
+            Console.WriteLine("Xe duoc thue");
+            xeDuocChon.XuatThongTinXe();
+            HopDongThueXe hopDong1 = new HopDongThueXe(khach1, chuXe1,xeDuocChon, 3, new DateTime(2023, 11, 8));
+            hopDong1.ThanhToan();
+            hopDong1.KetQuaTraXe(true,false,false,2);
+            Console.ReadKey();
         }
     }
 }

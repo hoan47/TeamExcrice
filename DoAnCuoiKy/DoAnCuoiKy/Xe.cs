@@ -48,6 +48,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("So kilomet: " + soKilomet);
             Console.WriteLine("Muc dich: " + mucDich);
             Console.WriteLine("Gia: " + giaThueMotNgay);
+            Console.WriteLine();
         }
         public enum EPhanLoai
         {

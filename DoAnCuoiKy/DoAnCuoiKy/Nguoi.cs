@@ -26,5 +26,9 @@ namespace DoAnCuoiKy
             get { return nganHang; }
             private set { }
         }
+        public virtual void DanhGia()
+        {
+
+        }
     }
 }

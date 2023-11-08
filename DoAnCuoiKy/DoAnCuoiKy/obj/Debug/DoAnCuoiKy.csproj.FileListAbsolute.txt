@@ -12,3 +12,10 @@ C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\D
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe.config
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.pdb
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
