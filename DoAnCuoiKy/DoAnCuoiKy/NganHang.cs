@@ -16,6 +16,7 @@ namespace DoAnCuoiKy
             this.soTaiKhoan = soTaiKhoan;
             this.soDu = soDu;
         }
+        public string SoTaiKhoan { get { return soTaiKhoan; } }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
             if (soDu >= tien)

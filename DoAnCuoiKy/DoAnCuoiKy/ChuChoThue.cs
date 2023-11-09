@@ -15,6 +15,7 @@ namespace DoAnCuoiKy
         {
             KhoiTaoDanhSachXe();
         }
+        
         private void KhoiTaoDanhSachXe()
         {
             danhSachXe = new List<Xe>[3];

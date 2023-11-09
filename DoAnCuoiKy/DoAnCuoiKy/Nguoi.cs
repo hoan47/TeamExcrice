@@ -21,6 +21,14 @@ namespace DoAnCuoiKy
             this.ngaySinh = ngaySinh;
             this.nganHang = nganHang;
         }
+        public void ThongTin()
+        {
+            Console.WriteLine("Ho ten: " + hoTen);
+            Console.WriteLine("Dia chi: " + diaChi);
+            Console.WriteLine("So dien thoai: " + soDienThoai);
+            Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
+            Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan);
+        }
         public NganHang NganHang
         {
             get { return nganHang; }
