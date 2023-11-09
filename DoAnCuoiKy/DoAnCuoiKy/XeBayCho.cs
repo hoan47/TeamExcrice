@@ -8,9 +8,9 @@ namespace DoAnCuoiKy
 {
     class XeBayCho : Xe
     {
-        public XeBayCho(ChuChoThue chuXe, string hangXe, DateTime namMua, double soKilomet, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, 
+        public XeBayCho(ChuChoThue chuXe, string hangXe, DateTime namMua, double kilometDaDi, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, 
             decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia) 
-            : base(chuXe, hangXe, namMua, soKilomet, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
+            : base(chuXe, hangXe, namMua, kilometDaDi, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia)
         { }
         public override void XuatThongTinXe()
         {
