@@ -10,9 +10,26 @@ namespace DoAnCuoiKy
     {
         private string ngheNghiep;
         public DateTime NgaySinh { get { return ngaySinh; } }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc98e4d757c46dd81dd185aac1e3eafc68f03c02
         public KhachThueXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang, string ngheNghiep) : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             this.ngheNghiep = ngheNghiep;
+        }
+        protected Xe KhachChonXe(List<Xe> danhSach)
+        {
+            Random random = new Random();
+            int viTri = random.Next(0, danhSach.Count);
+            Xe xe = danhSach[viTri];
+            return xe;
+        }
+        public Xe KhachYeuCauTimVaChonXe(ChuChoThue chu,Xe.EPhanLoai loaiXe, decimal giaTu, decimal giaDen)
+        {
+            List<Xe> danhSachTimKiem =chu.TimXe(loaiXe, giaTu, giaDen);
+            Xe xeDuocChon=KhachChonXe(danhSachTimKiem);
+            return xeDuocChon;
         }
     }
 }

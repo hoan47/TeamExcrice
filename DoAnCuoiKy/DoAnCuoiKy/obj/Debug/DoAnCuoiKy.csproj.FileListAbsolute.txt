@@ -12,6 +12,7 @@ C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\D
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
+<<<<<<< HEAD
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\CsvHelper.dll
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.HashCode.dll
@@ -30,3 +31,12 @@ C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\S
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.ResolveComReference.cache
 C:\Users\b2h16\OneDrive\Máy tính\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CopyComplete
+=======
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe.config
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.exe
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\DoAnCuoiKy.pdb
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
+>>>>>>> cc98e4d757c46dd81dd185aac1e3eafc68f03c02
