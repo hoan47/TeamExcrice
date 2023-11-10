@@ -73,9 +73,10 @@
     <Compile Include="HopDongThueXe.cs" />
     <Compile Include="KhachThueXe.cs" />
     <Compile Include="NganHang.cs" />
-    <Compile Include="Nguoi.cs" />
+    <Compile Include="ThongTinCoBan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaiXe.cs" />
     <Compile Include="Xe.cs" />
     <Compile Include="XeBayCho.cs" />
     <Compile Include="XeBonCho.cs" />

@@ -5,8 +5,20 @@
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
+    <NestedTypes>
+      <Enum Name="DoAnCuoiKy.HopDongThueXe.EUuDaiChoKhach" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>HopDongThueXe.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="DoAnCuoiKy.HopDongThueXe.ETangGiaTheoDip" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>HopDongThueXe.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAABQAAAAAEAAAAAQAAIAA=</HashCode>
+      <HashCode>AEAAAAAAABAAAAQAAAAAkAAAEQAAAAAECAAAIQAQIAA=</HashCode>
       <FileName>HopDongThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,11 +29,11 @@
       <FileName>NganHang.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoAnCuoiKy.Nguoi">
+  <Class Name="DoAnCuoiKy.ThongTinCoBan">
     <Position X="8.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABABAAAUAAAAAAAAAAAAEAAAQAAAAAAAAAAAAgACAAA=</HashCode>
-      <FileName>Nguoi.cs</FileName>
+      <HashCode>ABABAAAUAAAAAAAQAAABEAAEQAAAAAAAAAAAAgAAAAI=</HashCode>
+      <FileName>ThongTinCoBan.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.Xe">
@@ -42,7 +54,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>kAAAAAIAAAAgAAAAAgAAAAABACQEQAAIAAACBAAEAAQ=</HashCode>
+      <HashCode>kAQAALAAACAiAAAIAgAABABBACQEQAAIBCACBAAkAgQ=</HashCode>
       <FileName>Xe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -75,18 +87,18 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAEAAAEAAAAAABAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAEAAAEAAAAAABAAAAAQAA=</HashCode>
       <FileName>ChuChoThue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.KhachThueXe">
     <Position X="9.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>KhachThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoAnDamCuoiKy.Program">
+  <Class Name="DoAnCuoiKy.Program">
     <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>

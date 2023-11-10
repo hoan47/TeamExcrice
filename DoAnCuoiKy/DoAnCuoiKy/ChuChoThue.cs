@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class ChuChoThue : Nguoi
+    class ChuChoThue : ThongTinCoBan
     {
         private List<Xe>[] danhSachXe;
         public List<Xe>[] DanhSachXe { get { return danhSachXe; } }

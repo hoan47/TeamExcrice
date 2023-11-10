@@ -13,7 +13,7 @@ namespace DoAnCuoiKy
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
-        static public void Read(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<Xe> danhSachXe)
+        static public void Read(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<Xe> danhSachXe)
         {
             try
             {
@@ -40,6 +40,9 @@ namespace DoAnCuoiKy
                         case "Chủ cho thuê":
                             duLieu = "Chủ cho thuê";
                             break;
+                        case "Tài xế":
+                            duLieu = "Tài xế";
+                            break;
                         case "Xe máy":
                             duLieu = "Xe máy";
                             break;
@@ -63,9 +66,18 @@ namespace DoAnCuoiKy
                             danhSachNganHang.Add(new NganHang((string)bangTinh.Cells[i, 1].Text, Convert.ToDecimal(bangTinh.Cells[i, 2].Value)));
                             break;
                         case "Chủ cho thuê":
+                        case "Tài xế":
                             nganHang = danhSachNganHang.Find(x => x.SoTaiKhoan == bangTinh.Cells[i, 5].Text);
                             DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
-                            danhSachChuXe.Add(new ChuChoThue(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
+                            switch (duLieu)
+                            {
+                                case "Chủ cho thuê":
+                                    danhSachChuXe.Add(new ChuChoThue(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
+                                    break;
+                                case "Tài xế":
+                                    danhSachChuXe.Add(new ChuChoThue(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
+                                    break;
+                            }
                             break;
                         case "Xe máy":
                         case "Xe bốn chỗ":

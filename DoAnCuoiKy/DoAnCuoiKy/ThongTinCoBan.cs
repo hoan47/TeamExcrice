@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class Nguoi
+    class ThongTinCoBan
     {
         protected string hoTen;
         protected string diaChi;
@@ -18,7 +18,7 @@ namespace DoAnCuoiKy
         public string SoDienThoai { get { return soDienThoai; } }
         public DateTime NgaySinh { get { return ngaySinh; } }
         public NganHang NganHang { get { return nganHang; } }
-        public Nguoi(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
+        public ThongTinCoBan(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
         {
             this.hoTen = hoTen;
             this.diaChi = diaChi;

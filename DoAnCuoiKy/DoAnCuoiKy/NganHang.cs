@@ -18,7 +18,7 @@ namespace DoAnCuoiKy
         }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
-            if (soDu >= tien)
+            if (soDu >= tien && tien != 0)
             {
                 soDu -= tien;
                 nguoiNhan.NhanTien(tien);
