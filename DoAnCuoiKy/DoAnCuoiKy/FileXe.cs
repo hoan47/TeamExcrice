@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
-using static System.Net.Mime.MediaTypeNames;
+using Microsoft.Office.Interop.Excel;
 
 namespace DoAnCuoiKy
 {
@@ -13,7 +13,7 @@ namespace DoAnCuoiKy
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
-        static public void Read(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<Xe> danhSachXe)
+        static public void Read(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<Xe> danhSachXe)
         {
             try
             {
@@ -43,6 +43,9 @@ namespace DoAnCuoiKy
                         case "Tài xế":
                             duLieu = "Tài xế";
                             break;
+                        case "Khách thuê xe":
+                            duLieu = "Khách thuê xe";
+                            break;
                         case "Xe máy":
                             duLieu = "Xe máy";
                             break;
@@ -67,6 +70,7 @@ namespace DoAnCuoiKy
                             break;
                         case "Chủ cho thuê":
                         case "Tài xế":
+                        case "Khách thuê xe":
                             nganHang = danhSachNganHang.Find(x => x.SoTaiKhoan == bangTinh.Cells[i, 5].Text);
                             DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
                             switch (duLieu)
@@ -75,7 +79,10 @@ namespace DoAnCuoiKy
                                     danhSachChuXe.Add(new ChuChoThue(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
                                     break;
                                 case "Tài xế":
-                                    danhSachChuXe.Add(new ChuChoThue(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
+                                    danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
+                                    break;
+                                case "Khách thuê xe":
+                                    danhSachKhachThueXe.Add(new KhachThueXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
                                     break;
                             }
                             break;
@@ -141,41 +148,44 @@ namespace DoAnCuoiKy
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauRa);
-                Excel.Application excel = new Excel.Application();
-                excel.Visible = true;
-                Excel.Workbook trang = excel.Workbooks.Add();
-                Excel.Worksheet bangTinh = (Excel.Worksheet)trang.Sheets[1];
+                Application excel = new Excel.Application();
+                Workbook trang = excel.Workbooks.Add();
+                Worksheet bangTinh = (Excel.Worksheet)trang.Sheets[1];
                 int hang = 1;
                 string[] duLieuChuChoThue = { "Họ tên", "Địa chỉ", "Số điện thoại", "Ngày sinh", "Ngân hàng" };
 
-                for (int i = 1; i <= duLieuChuChoThue.Length; i++)
-                {
-                    bangTinh.Cells[hang, i].Value = duLieuChuChoThue[i - 1];
-                }
-                hang++;
+                bangTinh.Cells[hang, 1].Value = "Danh sách chủ cho thuê.";
+                bangTinh.Cells[hang++, 1].Interior.Color = XlRgbColor.rgbDarkGrey;
                 foreach (ChuChoThue chuXe in danhSachChuXe)
                 {
+                    for (int i = 1; i <= duLieuChuChoThue.Length; i++)
+                    {
+                        bangTinh.Cells[hang, i].Value = duLieuChuChoThue[i - 1];
+                        bangTinh.Cells[hang, i].Interior.Color = XlRgbColor.rgbPaleTurquoise;
+                    }
+                    hang++;
                     bangTinh.Cells[hang, 1].Value = chuXe.HoTen;
+                    bangTinh.Cells[hang, 1].Interior.Color = XlRgbColor.rgbDarkOrange;
                     bangTinh.Cells[hang, 2].Value = chuXe.DiaChi;
                     bangTinh.Cells[hang, 3].Value = chuXe.SoDienThoai;
                     bangTinh.Cells[hang, 4].Value = chuXe.NgaySinh.ToString("dd/MM/yyyy");
                     bangTinh.Cells[hang++, 5].Value = chuXe.NganHang.SoTaiKhoan;
-                    hang = NewMethod(bangTinh, hang, chuXe, Xe.EPhanLoai.XeMay, "xe máy");
-                    hang = NewMethod(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBonCho, "xe bốn chỗ");
-                    hang = NewMethod(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBayCho, "xe bảy chỗ");
+                    hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeMay, "xe máy");
+                    hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBonCho, "xe bốn chỗ");
+                    hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBayCho, "xe bảy chỗ");
                 }
                 bangTinh.UsedRange.Columns.AutoFit();
                 bangTinh.SaveAs(duongDan);
                 trang.Close();
                 excel.Quit();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Error.WriteLine("Error output: " + e);
                 throw;
             }
 
-            int NewMethod(Excel.Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
+            int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
             {
                 string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xức xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
 
@@ -186,8 +196,10 @@ namespace DoAnCuoiKy
                 for (int i = 2; i <= duLieuXe.Length + 1; i++)
                 {
                     bangTinh.Cells[hang, i].Value = duLieuXe[i - 2];
+                    bangTinh.Cells[hang, i].Interior.Color = XlRgbColor.rgbYellowGreen;
                 }
-                bangTinh.Cells[hang++, 1] = "Danh sách " + chuXe.DanhSachXe[(int)phanLoai].Count.ToString() + ' ' + loaiXe + " của " + chuXe.HoTen;
+                bangTinh.Cells[hang, 1] = "Danh sách " + chuXe.DanhSachXe[(int)phanLoai].Count.ToString() + ' ' + loaiXe + " của " + chuXe.HoTen;
+                bangTinh.Cells[hang++, 1].Interior.Color = XlRgbColor.rgbPaleGoldenrod;
                 foreach (Xe xe in chuXe.DanhSachXe[(int)phanLoai])
                 {
                     bangTinh.Cells[hang, 2].Value = xe.HangXe;

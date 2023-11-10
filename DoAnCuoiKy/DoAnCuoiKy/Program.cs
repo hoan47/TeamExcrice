@@ -13,9 +13,10 @@ namespace DoAnCuoiKy
             List<NganHang> danhSachNganHang = new List<NganHang>();
             List<ChuChoThue> danhSachChuChoThue = new List<ChuChoThue>();
             List<TaiXe> danhSachTaiXe = new List<TaiXe>();
+            List<KhachThueXe> danhSachKhachThueXe = new List<KhachThueXe>();
             List<Xe> danhSachXe = new List<Xe>();
 
-            FileXe.Read(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachXe);
+            FileXe.Read(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachKhachThueXe, danhSachXe);
             FileXe.Write(danhSachChuChoThue);
         }
     }
