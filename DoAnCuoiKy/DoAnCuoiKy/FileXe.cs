@@ -15,12 +15,15 @@ namespace DoAnCuoiKy
         const string duongDanDauRa = "Output.xlsx";
         static public void Doc(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<Xe> danhSachXe)
         {
+            Application excel = null;
+            Workbook trang = null;
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauVao);
-                Application excel = new Application();
-                Workbook trang = excel.Workbooks.Open(duongDan);
+
+                excel = new Application();
+                trang = excel.Workbooks.Open(duongDan);
                 Worksheet bangTinh = trang.Sheets[1];
                 string duLieu = string.Empty;
                 DateTime ngayThangNam;
@@ -131,23 +134,30 @@ namespace DoAnCuoiKy
                             break;
                     }
                 }
-                trang.Close();
-                excel.Quit();
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine("Error input: " + e);
                 throw;
             }
+            finally
+            {
+                trang?.Close();
+                excel?.Quit();
+            }
         }
         static public void Viet(List<ChuChoThue> danhSachChuXe)
         {
+            Application excel = null;
+            Workbook trang = null;
+
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauRa);
-                Application excel = new Application();
-                Workbook trang = excel.Workbooks.Add();
+
+                excel = new Application();
+                trang = excel.Workbooks.Add();
                 Worksheet bangTinh = (Worksheet)trang.Sheets[1];
                 int hang = 1;
                 string[] duLieuChuChoThue = { "Họ tên", "Địa chỉ", "Số điện thoại", "Ngày sinh", "Ngân hàng" };
@@ -174,61 +184,63 @@ namespace DoAnCuoiKy
                 }
                 bangTinh.UsedRange.Columns.AutoFit();
                 bangTinh.SaveAs(duongDan);
-                trang.Close();
-                excel.Quit();
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine("Error output: " + e);
                 throw;
             }
-
-            int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
+            finally
             {
-                string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xức xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
-
-                if (chuXe.DanhSachXe[(int)phanLoai].Count == 0)
-                {
-                    return hang++;
-                }
-                for (int i = 2; i <= duLieuXe.Length + 1; i++)
-                {
-                    bangTinh.Cells[hang, i].Value = duLieuXe[i - 2];
-                    bangTinh.Cells[hang, i].Interior.Color = XlRgbColor.rgbYellowGreen;
-                }
-                bangTinh.Cells[hang, 1] = "Danh sách " + chuXe.DanhSachXe[(int)phanLoai].Count.ToString() + ' ' + loaiXe + " của " + chuXe.HoTen;
-                bangTinh.Cells[hang++, 1].Interior.Color = XlRgbColor.rgbPaleGoldenrod;
-                foreach (Xe xe in chuXe.DanhSachXe[(int)phanLoai])
-                {
-                    bangTinh.Cells[hang, 2].Value = xe.HangXe;
-                    bangTinh.Cells[hang, 3].Value = xe.NamMua.ToString("dd/MM/yyyy");
-                    bangTinh.Cells[hang, 4].Value = xe.KilometDaDi;
-                    bangTinh.Cells[hang, 5].Value = xe.BaoHiem ? "Có" : "Không";
-                    switch(xe.MucDich)
-                    {
-                        case Xe.EMucDich.DamCuoi:
-                            bangTinh.Cells[hang, 6].Value = "Đám cưới";
-                            break;
-                        case Xe.EMucDich.DuLich:
-                            bangTinh.Cells[hang, 6].Value = "Du lịch";
-                            break;
-                        case Xe.EMucDich.TapLai:
-                            bangTinh.Cells[hang, 6].Value = "Tập lái";
-                            break;
-                        default:
-                            bangTinh.Cells[hang, 6].Value = "Khác";
-                            break;
-                    }
-                    bangTinh.Cells[hang, 7].Value = xe.GiaThueMotNgay;
-                    bangTinh.Cells[hang, 8].Value = xe.TienCoc;
-                    bangTinh.Cells[hang, 9].Value = xe.GiaDenXuotXe;
-                    bangTinh.Cells[hang, 10].Value = xe.GiaDenBeBanh;
-                    bangTinh.Cells[hang, 11].Value = xe.GiaDenHuDen;
-                    bangTinh.Cells[hang, 12].Value = xe.UuDai;
-                    bangTinh.Cells[hang++, 13].Value = xe.TangGia;
-                }
-                return hang;
+                trang?.Close();
+                excel?.Quit();
             }
+        }
+        private static int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
+        {
+            string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xức xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
+
+            if (chuXe.DanhSachXe[(int)phanLoai].Count == 0)
+            {
+                return hang++;
+            }
+            for (int i = 2; i <= duLieuXe.Length + 1; i++)
+            {
+                bangTinh.Cells[hang, i].Value = duLieuXe[i - 2];
+                bangTinh.Cells[hang, i].Interior.Color = XlRgbColor.rgbYellowGreen;
+            }
+            bangTinh.Cells[hang, 1] = "Danh sách " + chuXe.DanhSachXe[(int)phanLoai].Count.ToString() + ' ' + loaiXe + " của " + chuXe.HoTen;
+            bangTinh.Cells[hang++, 1].Interior.Color = XlRgbColor.rgbPaleGoldenrod;
+            foreach (Xe xe in chuXe.DanhSachXe[(int)phanLoai])
+            {
+                bangTinh.Cells[hang, 2].Value = xe.HangXe;
+                bangTinh.Cells[hang, 3].Value = xe.NamMua.ToString("dd/MM/yyyy");
+                bangTinh.Cells[hang, 4].Value = xe.KilometDaDi;
+                bangTinh.Cells[hang, 5].Value = xe.BaoHiem ? "Có" : "Không";
+                switch (xe.MucDich)
+                {
+                    case Xe.EMucDich.DamCuoi:
+                        bangTinh.Cells[hang, 6].Value = "Đám cưới";
+                        break;
+                    case Xe.EMucDich.DuLich:
+                        bangTinh.Cells[hang, 6].Value = "Du lịch";
+                        break;
+                    case Xe.EMucDich.TapLai:
+                        bangTinh.Cells[hang, 6].Value = "Tập lái";
+                        break;
+                    default:
+                        bangTinh.Cells[hang, 6].Value = "Khác";
+                        break;
+                }
+                bangTinh.Cells[hang, 7].Value = xe.GiaThueMotNgay;
+                bangTinh.Cells[hang, 8].Value = xe.TienCoc;
+                bangTinh.Cells[hang, 9].Value = xe.GiaDenXuotXe;
+                bangTinh.Cells[hang, 10].Value = xe.GiaDenBeBanh;
+                bangTinh.Cells[hang, 11].Value = xe.GiaDenHuDen;
+                bangTinh.Cells[hang, 12].Value = xe.UuDai;
+                bangTinh.Cells[hang++, 13].Value = xe.TangGia;
+            }
+            return hang;
         }
     }
 }
