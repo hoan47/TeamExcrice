@@ -16,8 +16,8 @@ namespace DoAnCuoiKy
             List<KhachThueXe> danhSachKhachThueXe = new List<KhachThueXe>();
             List<Xe> danhSachXe = new List<Xe>();
 
-            FileXe.Read(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachKhachThueXe, danhSachXe);
-            FileXe.Write(danhSachChuChoThue);
+            FileXe.Doc(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachKhachThueXe, danhSachXe);
+            FileXe.Viet(danhSachChuChoThue);
         }
     }
 }

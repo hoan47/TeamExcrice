@@ -13,23 +13,21 @@ namespace DoAnCuoiKy
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
-        static public void Read(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<Xe> danhSachXe)
+        static public void Doc(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<Xe> danhSachXe)
         {
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauVao);
-                Excel.Application excel = new Excel.Application();
-                Excel.Workbook trang = excel.Workbooks.Open(duongDan);
-                Excel.Worksheet bangTinh = trang.Sheets[1];
-                int hangToiDa = bangTinh.UsedRange.Rows.Count + 1;
-                int cotToiDa = bangTinh.UsedRange.Columns.Count + 1;
+                Application excel = new Application();
+                Workbook trang = excel.Workbooks.Open(duongDan);
+                Worksheet bangTinh = trang.Sheets[1];
                 string duLieu = string.Empty;
                 DateTime ngayThangNam;
                 Xe.EMucDich mucDich;
                 NganHang nganHang;
 
-                for (int i = 1; i < hangToiDa; i++)
+                for (int i = 1; i < bangTinh.UsedRange.Rows.Count + 1; i++)
                 {
                     i = i + 2;
                     switch (bangTinh.Cells[i - 2, 1].Text)
@@ -63,7 +61,7 @@ namespace DoAnCuoiKy
                             i = i - 2;
                             break;
                     }
-                    switch (duLieu)
+                    switch (duLieu.Trim())
                     {
                         case "Ngân hàng":
                             danhSachNganHang.Add(new NganHang((string)bangTinh.Cells[i, 1].Text, Convert.ToDecimal(bangTinh.Cells[i, 2].Value)));
@@ -142,15 +140,15 @@ namespace DoAnCuoiKy
                 throw;
             }
         }
-        static public void Write(List<ChuChoThue> danhSachChuXe)
+        static public void Viet(List<ChuChoThue> danhSachChuXe)
         {
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauRa);
-                Application excel = new Excel.Application();
+                Application excel = new Application();
                 Workbook trang = excel.Workbooks.Add();
-                Worksheet bangTinh = (Excel.Worksheet)trang.Sheets[1];
+                Worksheet bangTinh = (Worksheet)trang.Sheets[1];
                 int hang = 1;
                 string[] duLieuChuChoThue = { "Họ tên", "Địa chỉ", "Số điện thoại", "Ngày sinh", "Ngân hàng" };
 
@@ -172,7 +170,7 @@ namespace DoAnCuoiKy
                     bangTinh.Cells[hang++, 5].Value = chuXe.NganHang.SoTaiKhoan;
                     hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeMay, "xe máy");
                     hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBonCho, "xe bốn chỗ");
-                    hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBayCho, "xe bảy chỗ");
+                    hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBayCho, "xe bảy chỗ") + 1;
                 }
                 bangTinh.UsedRange.Columns.AutoFit();
                 bangTinh.SaveAs(duongDan);
