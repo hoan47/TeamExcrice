@@ -10,13 +10,12 @@ namespace DoAnCuoiKy
     {
         private string soTaiKhoan;
         private decimal soDu;
-
+        public string SoTaiKhoan { get { return soTaiKhoan; } }
         public NganHang(string soTaiKhoan, decimal soDu)
         {
             this.soTaiKhoan = soTaiKhoan;
             this.soDu = soDu;
         }
-        public string SoTaiKhoan { get { return soTaiKhoan; } }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
             if (soDu >= tien)

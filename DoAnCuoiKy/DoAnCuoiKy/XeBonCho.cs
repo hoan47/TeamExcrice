@@ -14,7 +14,7 @@ namespace DoAnCuoiKy
         { }
         public override void XuatThongTinXe()
         {
-            Console.WriteLine("Loai xe:  Xe bon cho");
+            Console.WriteLine("Loai xe: Xe bon cho");
             base.XuatThongTinXe();
         }
     }

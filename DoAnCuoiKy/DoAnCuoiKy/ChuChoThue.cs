@@ -9,7 +9,7 @@ namespace DoAnCuoiKy
     class ChuChoThue : Nguoi
     {
         private List<Xe>[] danhSachXe;
-
+        public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
         public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
@@ -55,7 +55,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("Ket qua tim kiem: ");
             foreach (Xe xe in danhSachXe[(int)loaiXe])
             {
-                if (giaTu <= xe.giaThueMotNgay && xe.giaThueMotNgay <= giaDen)
+                if (giaTu <= xe.GiaThueMotNgay && xe.GiaThueMotNgay <= giaDen)
                 {
                     Console.WriteLine("\nXe thu: " + (danhSachXeTimDuoc.Count + 1).ToString());
                     xe.XuatThongTinXe();

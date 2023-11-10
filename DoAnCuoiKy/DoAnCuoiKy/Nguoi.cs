@@ -13,6 +13,11 @@ namespace DoAnCuoiKy
         protected string soDienThoai;
         protected DateTime ngaySinh;
         protected NganHang nganHang;
+        public string HoTen { get { return hoTen; } }
+        public string DiaChi { get { return diaChi; } }
+        public string SoDienThoai { get { return soDienThoai; } }
+        public DateTime NgaySinh { get { return ngaySinh; } }
+        public NganHang NganHang { get { return nganHang; } }
         public Nguoi(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
         {
             this.hoTen = hoTen;
@@ -28,15 +33,6 @@ namespace DoAnCuoiKy
             Console.WriteLine("So dien thoai: " + soDienThoai);
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
             Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan);
-        }
-        public NganHang NganHang
-        {
-            get { return nganHang; }
-            private set { }
-        }
-        public virtual void DanhGia()
-        {
-
         }
     }
 }
