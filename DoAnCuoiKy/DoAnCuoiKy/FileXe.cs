@@ -198,7 +198,7 @@ namespace DoAnCuoiKy
         }
         private static int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
         {
-            string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xức xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
+            string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xước xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
 
             if (chuXe.DanhSachXe[(int)phanLoai].Count == 0)
             {

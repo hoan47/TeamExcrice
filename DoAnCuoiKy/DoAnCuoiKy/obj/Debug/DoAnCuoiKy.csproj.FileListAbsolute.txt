@@ -40,3 +40,21 @@ C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.c
 C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.exe
 C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.pdb
 >>>>>>> cc98e4d757c46dd81dd185aac1e3eafc68f03c02
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\CsvHelper.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Buffers.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Memory.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\CsvHelper.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Buffers.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Memory.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.ResolveComReference.cache
+C:\Users\LENOVO\Desktop\TeamExcrice\DoAnCuoiKy\DoAnCuoiKy\obj\Debug\DoAnCuoiKy.csproj.CopyComplete
