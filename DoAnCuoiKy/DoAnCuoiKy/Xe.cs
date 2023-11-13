@@ -21,6 +21,7 @@ namespace DoAnCuoiKy
         private decimal giaDenHuDen;
         private decimal uuDai;
         private decimal tangGia;
+        public QuanLyDanhGia danhGia;
         public ChuChoThue ChuXe { get { return chuXe; } }
         public string HangXe { get { return hangXe; } }
         public DateTime NamMua { get { return namMua; } }
@@ -51,6 +52,7 @@ namespace DoAnCuoiKy
             this.uuDai = uuDai;
             this.tangGia = tangGia;
             this.chuXe?.ThemXe(this);
+            danhGia = new QuanLyDanhGia();
         }
         public virtual void XuatThongTinXe()
         {

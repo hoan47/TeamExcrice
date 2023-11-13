@@ -9,13 +9,14 @@ namespace DoAnCuoiKy
     class ChuChoThue : ThongTinCoBan
     {
         private List<Xe>[] danhSachXe;
+        public QuanLyDanhGia danhGia;
         public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
         public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             KhoiTaoDanhSachXe();
+            danhGia = new QuanLyDanhGia();
         }
-        
         private void KhoiTaoDanhSachXe()
         {
             danhSachXe = new List<Xe>[3];
