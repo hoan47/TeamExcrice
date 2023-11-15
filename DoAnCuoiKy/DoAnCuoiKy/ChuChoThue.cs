@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,11 @@ namespace DoAnCuoiKy
     {
         private List<Xe>[] danhSachXe;
         public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
+        private KhachQuen khachQuen;
+        public KhachQuen KhachHangQuen
+        {
+            get { return khachQuen; }
+        }
         public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
@@ -70,6 +76,21 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("Danh gia cua chu cho khach hang: ");
             base.DanhGiaNguoi(sao, noiDung);
+        }
+        public class KhachQuen
+        {
+            Dictionary<KhachThueXe, int> soLanDaThue=new Dictionary<KhachThueXe, int>();
+            public void ThueXe(KhachThueXe khach)
+            {
+                if (soLanDaThue.ContainsKey(khach) == false)
+                    soLanDaThue.Add(khach, 1);
+                else
+                    soLanDaThue[khach]+=1;
+            }
+            public int SoLanThueXe(KhachThueXe khach)
+            {
+                return soLanDaThue.TryGetValue(khach, out int soLanThue) ? soLanThue:0;
+            }
         }
     }
 }

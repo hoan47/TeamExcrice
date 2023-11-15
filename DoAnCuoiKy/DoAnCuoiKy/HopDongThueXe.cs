@@ -27,7 +27,11 @@ namespace DoAnCuoiKy
         }
         private decimal TienKhuyenMai()
         {
-            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? -xeChoThue.UuDai : 0;
+            if ((ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month) || chuThue.KhachHangQuen.SoLanThueXe(khachThue) >= 3)
+            {
+                return -xeChoThue.UuDai;
+            }
+            return 0;
         }
         private decimal TienTangGia()
         {
@@ -120,7 +124,8 @@ namespace DoAnCuoiKy
             if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, chiPhiDen) == true || chiPhiDen == 0)
             {
                 Console.WriteLine("Thanh cong tong chi phi phat sinh phai tra: " + chiPhiDen);
-            }    
+                chuThue.KhachHangQuen.ThueXe(khachThue);
+            }
             else
             {
                 Console.WriteLine("That bai!");
