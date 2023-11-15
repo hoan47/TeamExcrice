@@ -19,5 +19,12 @@ namespace DoAnCuoiKy
         {
             danhSachDanhGia.Add(danhGia);
         }
+        public void XuatToanBoDanhGia()
+        {
+            foreach (DanhGia danhGia in DanhSachDanhGia)
+            {
+                danhGia.ThongTin();
+            }
+        }
     }
 }

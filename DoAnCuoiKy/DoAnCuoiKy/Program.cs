@@ -19,8 +19,9 @@ namespace DoAnCuoiKy
             FileXe.Doc(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachKhachThueXe, danhSachXe);
             FileXe.Viet(danhSachChuChoThue);
             KhachThueXe k = new KhachThueXe("Dang Thi Thanh Hoa", "Ninh Thuan", "0554246232", new DateTime(2004, 10, 15), new NganHang("254", 10000000));
-            k.DanhGiaXe(ThongTinCoBan.EDanhGiaSao.Nam, "Xe dep");
-            k.DanhGiaNguoi(ThongTinCoBan.EDanhGiaSao.Nam, "Chu de thuong");
+            k.danhGia.ThemDanhGia(new DanhGia("de thuong",DanhGia.EDanhGia.sao5));
+            k.danhGia.XuatToanBoDanhGia();
+            QuanLyDanhGia d = new QuanLyDanhGia();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DoAnCuoiKy
     class ChuChoThue : ThongTinCoBan
     {
         private List<Xe>[] danhSachXe;
-        public QuanLyDanhGia danhGia;
+        private QuanLyDanhGia danhGia;
         public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
         private KhachQuen khachQuen;
         public KhachQuen KhachHangQuen
