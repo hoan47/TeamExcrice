@@ -1,108 +1,154 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DoAnCuoiKy.HopDongThueXe">
-    <Position X="11.5" Y="3" Width="1.5" />
+    <Position X="14.75" Y="2" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
-    <NestedTypes>
-      <Enum Name="DoAnCuoiKy.HopDongThueXe.EUuDaiChoKhach" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>HopDongThueXe.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="DoAnCuoiKy.HopDongThueXe.ETangGiaTheoDip" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>HopDongThueXe.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AEAAAAAAABAAAAQAAAAAkAAAEQAAAAAECAAAIQAQIAA=</HashCode>
       <FileName>HopDongThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.NganHang">
-    <Position X="13.75" Y="3" Width="1.5" />
+    <Position X="12" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAgAAAQAAAAAIAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>NganHang.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.ThongTinCoBan">
-    <Position X="8.25" Y="3" Width="1.5" />
+    <Position X="9.25" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>ABABAAAUAAAAAAAQAAABEAAEQAAAAAAAAAAAAgAAAAI=</HashCode>
       <FileName>ThongTinCoBan.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.Xe">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="4.25" Y="2" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="DoAnCuoiKy.Xe.EPhanLoai" Collapsed="true">
+      <Enum Name="DoAnCuoiKy.Xe.EPhanLoai">
         <TypeIdentifier>
           <NewMemberFileName>Xe.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
-      <Enum Name="DoAnCuoiKy.Xe.EMucDich" Collapsed="true">
+      <Enum Name="DoAnCuoiKy.Xe.EMucDich">
         <TypeIdentifier>
           <NewMemberFileName>Xe.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>kAQAALAAACAiAAAIAgAABABBACQEQAAIBCACBAAkAgQ=</HashCode>
+      <HashCode>kAYAALAAACAiAAAIAgAABABBACQEQAAIBCACBAAkAgQ=</HashCode>
       <FileName>Xe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeBayCho">
-    <Position X="2.5" Y="7.75" Width="1.5" />
+    <Position X="1.5" Y="8.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeBayCho.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeBonCho">
-    <Position X="4.75" Y="4.75" Width="1.5" />
+    <Position X="1.5" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeBonCho.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeMay">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="1.5" Y="4.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeMay.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.ChuChoThue">
-    <Position X="6.25" Y="7" Width="1.5" />
+    <Position X="6.75" Y="6.5" Width="2" />
     <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
+    <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="6.125" />
+        <Point X="7.583" Y="6.125" />
+        <Point X="7.583" Y="6.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAEAAAEAAAAAABAAAAAQAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAIAAAAIAEAAAEAAAAAABAAAAAQAA=</HashCode>
       <FileName>ChuChoThue.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.KhachThueXe">
-    <Position X="9.75" Y="6.75" Width="1.5" />
+    <Position X="11.75" Y="6.5" Width="2" />
+    <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="6.125" />
+        <Point X="12.75" Y="6.125" />
+        <Point X="12.75" Y="6.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAIAAACAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>KhachThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.Program">
-    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Position X="10" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoAnCuoiKy.TaiXe">
+    <Position X="9.25" Y="6.5" Width="2" />
+    <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAA=</HashCode>
+      <FileName>TaiXe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoAnCuoiKy.DanhGia">
+    <Position X="17.5" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="DoAnCuoiKy.DanhGia.EDanhGia">
+        <TypeIdentifier>
+          <NewMemberFileName>DanhGia.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DanhGia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoAnCuoiKy.QuanLyDanhGia">
+    <Position X="14.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>QuanLyDanhGia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoAnCuoiKy.FileXe">
+    <Position X="17.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAABAAAAACCAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileXe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

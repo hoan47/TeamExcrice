@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChuChoThue.cs" />
+    <Compile Include="DanhGia.cs" />
+    <Compile Include="QuanLyDanhGia.cs" />
     <Compile Include="FileXe.cs" />
     <Compile Include="HopDongThueXe.cs" />
     <Compile Include="KhachThueXe.cs" />
