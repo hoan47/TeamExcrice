@@ -18,15 +18,5 @@ namespace DoAnCuoiKy
         {
             return chu.TimXe(loaiXe, giaTu, giaDen);
         }
-        public void DanhGiaXe(EDanhGiaSao sao,string noiDung)
-        {
-            XuatSao(sao);
-            Console.WriteLine("Danh gia cua khach hang ve xe: "+noiDung);
-        }
-        public override void DanhGiaNguoi(EDanhGiaSao sao, string noiDung)
-        {
-            Console.WriteLine("Danh gia cua khach hang danh cho chu: ");
-            base.DanhGiaNguoi(sao, noiDung);
-        }
     }
 }

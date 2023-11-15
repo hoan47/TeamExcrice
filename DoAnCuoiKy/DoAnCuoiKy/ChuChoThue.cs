@@ -73,11 +73,6 @@ namespace DoAnCuoiKy
                 + giaDen.ToString()  + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
-        public override void DanhGiaNguoi(EDanhGiaSao sao, string noiDung)
-        {
-            Console.WriteLine("Danh gia cua chu cho khach hang: ");
-            base.DanhGiaNguoi(sao, noiDung);
-        }
         public class KhachQuen
         {
             Dictionary<KhachThueXe, int> soLanDaThue=new Dictionary<KhachThueXe, int>();
