@@ -44,8 +44,8 @@ namespace DoAnCuoiKy
                         case "Tài xế":
                             duLieu = "Tài xế";
                             break;
-                        case "Khách thuê xe":
-                            duLieu = "Khách thuê xe";
+                        case "Khách thuê xe":
+                            duLieu = "Khách thuê xe";
                             break;
                         case "Xe máy":
                             duLieu = "Xe máy";
@@ -64,14 +64,14 @@ namespace DoAnCuoiKy
                             i = i - 2;
                             break;
                     }
-                    switch (duLieu.Trim())
+                    switch (duLieu)
                     {
                         case "Ngân hàng":
                             danhSachNganHang.Add(new NganHang((string)bangTinh.Cells[i, 1].Text, Convert.ToDecimal(bangTinh.Cells[i, 2].Value)));
                             break;
                         case "Chủ cho thuê":
                         case "Tài xế":
-                        case "Khách thuê xe":
+                        case "Khách thuê xe":
                             nganHang = danhSachNganHang.Find(x => x.SoTaiKhoan == bangTinh.Cells[i, 5].Text);
                             DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
                             switch (duLieu)
@@ -82,7 +82,7 @@ namespace DoAnCuoiKy
                                 case "Tài xế":
                                     danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
                                     break;
-                                case "Khách thuê xe":
+                                case "Khách thuê xe":
                                     danhSachKhachThueXe.Add(new KhachThueXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, nganHang));
                                     break;
                             }
@@ -198,7 +198,7 @@ namespace DoAnCuoiKy
         }
         private static int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
         {
-            string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xước xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá" };
+            string[] duLieuXe = { "Hãng xe", "Năm mua", "Số kilomet Đã đi", "Bảo hiểm", "Mục đích", "Giá thuê một ngày", "Tiền cọc", "Giá đền xước xe", "Giá đền bể bánh", "Giá đền hư đèn", "Ưu đãi", "Tăng giá", "Đã thuê" };
 
             if (chuXe.DanhSachXe[(int)phanLoai].Count == 0)
             {
@@ -238,7 +238,8 @@ namespace DoAnCuoiKy
                 bangTinh.Cells[hang, 10].Value = xe.GiaDenBeBanh;
                 bangTinh.Cells[hang, 11].Value = xe.GiaDenHuDen;
                 bangTinh.Cells[hang, 12].Value = xe.UuDai;
-                bangTinh.Cells[hang++, 13].Value = xe.TangGia;
+                bangTinh.Cells[hang, 13].Value = xe.TangGia;
+                bangTinh.Cells[hang++, 14].Value = xe.DaThue;
             }
             return hang;
         }

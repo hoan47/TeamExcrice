@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -17,11 +17,11 @@ namespace DoAnCuoiKy
             List<Xe> danhSachXe = new List<Xe>();
 
             FileXe.Doc(danhSachNganHang, danhSachChuChoThue, danhSachTaiXe, danhSachKhachThueXe, danhSachXe);
+
+            HopDongThueXe hopDong = new HopDongThueXe(danhSachKhachThueXe[0], danhSachChuChoThue[0], danhSachTaiXe[0], danhSachXe[8], 30, new DateTime(2023, 11, 18));
+            hopDong.ThanhToan();
+
             FileXe.Viet(danhSachChuChoThue);
-            KhachThueXe k = new KhachThueXe("Dang Thi Thanh Hoa", "Ninh Thuan", "0554246232", new DateTime(2004, 10, 15), new NganHang("254", 10000000));
-            k.danhGia.ThemDanhGia(new DanhGia("de thuong",DanhGia.EDanhGia.sao5));
-            k.danhGia.XuatToanBoDanhGia();
-            QuanLyDanhGia d = new QuanLyDanhGia();
         }
     }
 }

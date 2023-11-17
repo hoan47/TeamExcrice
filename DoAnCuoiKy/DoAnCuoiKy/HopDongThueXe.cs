@@ -15,7 +15,6 @@ namespace DoAnCuoiKy
         private Xe xeChoThue;
         private DateTime ngayThue;
         private int soNgay;
-        private bool trangThai;
 
         public HopDongThueXe(KhachThueXe khachThue, ChuChoThue chuThue, TaiXe taiXe, Xe xeChoThue, int soNgay, DateTime ngayThue)
         {
@@ -25,38 +24,14 @@ namespace DoAnCuoiKy
             this.xeChoThue = xeChoThue;
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
-            this.trangThai = false;
         }
         private decimal TienKhuyenMai()
         {
-            if ((ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month) || chuThue.KhachHangQuen.SoLanThueXe(khachThue) >= 3)
-            {
-                return -xeChoThue.UuDai;
-            }
-            return 0;
+            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? chuThue.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
         }
         private decimal TienTangGia()
         {
-            return ngayThue.Month >= 4 && ngayThue.Month <= 6 || ngayThue.Month == 2 ? xeChoThue.TangGia : 0;
-        }
-        public void ThanhToan()
-        {
-            if (trangThai == false)
-            {
-                decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay;
-
-                Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
-                if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
-                {
-                    Console.WriteLine("Thue xe thanh cong");
-                    taiXe.TrangThai(true);
-                }
-                else
-                {
-                    Console.WriteLine("Thue xe khong thanh cong");
-                }
-            }
-            throw new Exception("Xe da co nguoi thue");
+            return 4 <= ngayThue.Month && ngayThue.Month <= 6 ? xeChoThue.TangGia : ngayThue.Month == 2 ? xeChoThue.TangGia * 2 : 0;
         }
         private decimal TienGiaHanTraXe(int soNgayTre)
         {
@@ -80,6 +55,29 @@ namespace DoAnCuoiKy
             }
             return chiPhiDen + TienGiaHanTraXe(soNgayTre);
         }
+        public void ThanhToan()
+        {
+            if (xeChoThue.DaThue == false)
+            {
+                decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay;
+
+                Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
+                if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
+                {
+                    Console.WriteLine("Thue xe thanh cong");
+                    taiXe.TrangThai(true);
+                    xeChoThue.DaThueXe();
+                }
+                else
+                {
+                    Console.WriteLine("Thue xe khong thanh cong");
+                }
+            }
+            else
+            {
+                throw new Exception("Xe da co nguoi thue");
+            }
+        }
         public void CacChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
         {
             if (kiemTraXuot == true)
@@ -99,7 +97,7 @@ namespace DoAnCuoiKy
                 Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0) + " VND");
             }
         }
-        public void TraXe(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
+        public void KetThucThueXe(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
         {
             decimal chiPhiDen = TongChiPhiPhatSinh(kiemTraXuot, kiemTraBeBanh, kiemTraHuDen, soNgayTre);
 
@@ -122,6 +120,7 @@ namespace DoAnCuoiKy
             if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, chiPhiDen) == true || chiPhiDen == 0)
             {
                 taiXe.TrangThai(false);
+                xeChoThue.TraXe();
                 Console.WriteLine("Thanh cong tong chi phi phat sinh phai tra: " + chiPhiDen);
                 chuThue.KhachHangQuen.ThueXe(khachThue);
             }

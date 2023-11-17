@@ -10,6 +10,7 @@ namespace DoAnCuoiKy
     {
         private string noiDung;
         private EDanhGia sao;
+
         public DanhGia(string noiDung, EDanhGia sao)
         {
             this.noiDung = noiDung;

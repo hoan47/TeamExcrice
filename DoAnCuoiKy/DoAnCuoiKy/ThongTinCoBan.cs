@@ -8,11 +8,11 @@ namespace DoAnCuoiKy
 {
     class ThongTinCoBan
     {
-        protected string hoTen;
-        protected string diaChi;
-        protected string soDienThoai;
-        protected DateTime ngaySinh;
-        protected NganHang nganHang;
+        private string hoTen;
+        private string diaChi;
+        private string soDienThoai;
+        private DateTime ngaySinh;
+        private NganHang nganHang;
         public string HoTen { get { return hoTen; } }
         public string DiaChi { get { return diaChi; } }
         public string SoDienThoai { get { return soDienThoai; } }

@@ -21,7 +21,8 @@ namespace DoAnCuoiKy
         private decimal giaDenHuDen;
         private decimal uuDai;
         private decimal tangGia;
-        public QuanLyDanhGia danhGia;
+        private QuanLyDanhGia danhGia;
+        private bool daThue;
         public ChuChoThue ChuXe { get { return chuXe; } }
         public string HangXe { get { return hangXe; } }
         public DateTime NamMua { get { return namMua; } }
@@ -33,8 +34,10 @@ namespace DoAnCuoiKy
         public decimal GiaDenXuotXe { get { return giaDenXuotXe; } }
         public decimal GiaDenBeBanh { get { return giaDenBeBanh; } }
         public decimal GiaDenHuDen { get { return giaDenHuDen; } }
-        public decimal UuDai { get { return uuDai; } private set { uuDai = value; } }
-        public decimal TangGia { get { return tangGia; } private set { TangGia = value; } }
+        public decimal UuDai { get { return uuDai; } }
+        public decimal TangGia { get { return tangGia; } }
+        public QuanLyDanhGia DanhGia { get { return danhGia; } }
+        public bool DaThue { get { return daThue; } }
 
         public Xe(ChuChoThue chuXe, string hangXe, DateTime namMua, double kilometDaDi, bool baoHiem, EMucDich mucDich, decimal giaThueMotNgay, decimal tienCoc, decimal giaDenXuotXe, decimal giaDenBeBanh, decimal giaDenHuDen, decimal uuDai, decimal tangGia)
         {
@@ -53,6 +56,15 @@ namespace DoAnCuoiKy
             this.tangGia = tangGia;
             this.chuXe?.ThemXe(this);
             danhGia = new QuanLyDanhGia();
+            daThue = false;
+        }
+        public void DaThueXe()
+        {
+            daThue = true;
+        }
+        public void TraXe()
+        {
+            daThue = false;
         }
         public virtual void XuatThongTinXe()
         {

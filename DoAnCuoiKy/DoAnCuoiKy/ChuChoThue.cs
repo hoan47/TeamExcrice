@@ -11,17 +11,17 @@ namespace DoAnCuoiKy
     {
         private List<Xe>[] danhSachXe;
         private QuanLyDanhGia danhGia;
+        private KhachQuen khachHangQuen;
         public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
-        private KhachQuen khachQuen;
-        public KhachQuen KhachHangQuen
-        {
-            get { return khachQuen; }
-        }
+        public QuanLyDanhGia DanhGia { get { return danhGia; } }
+        public KhachQuen KhachHangQuen { get { return khachHangQuen; } }
+
         public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             KhoiTaoDanhSachXe();
             danhGia = new QuanLyDanhGia();
+            khachHangQuen = new KhachQuen();
         }
         private void KhoiTaoDanhSachXe()
         {
@@ -75,17 +75,26 @@ namespace DoAnCuoiKy
         }
         public class KhachQuen
         {
-            Dictionary<KhachThueXe, int> soLanDaThue=new Dictionary<KhachThueXe, int>();
+            Dictionary<KhachThueXe, int> soLanDaThue;
+
+            public KhachQuen()
+            {
+                soLanDaThue = new Dictionary<KhachThueXe, int>();
+            }
             public void ThueXe(KhachThueXe khach)
             {
                 if (soLanDaThue.ContainsKey(khach) == false)
+                {
                     soLanDaThue.Add(khach, 1);
+                }
                 else
-                    soLanDaThue[khach]+=1;
+                {
+                    soLanDaThue[khach] += 1;
+                }
             }
             public int SoLanThueXe(KhachThueXe khach)
             {
-                return soLanDaThue.TryGetValue(khach, out int soLanThue) ? soLanThue:0;
+                return soLanDaThue[khach];
             }
         }
     }
