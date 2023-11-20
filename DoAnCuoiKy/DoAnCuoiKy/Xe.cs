@@ -68,12 +68,21 @@ namespace DoAnCuoiKy
         }
         public virtual void XuatThongTinXe()
         {
+            Console.WriteLine(daThue == true ? "Xe da co nguoi thue" : " Xe chua co nguoi thue");
             Console.WriteLine("Hang xe: " + HangXe);
             Console.WriteLine("Nam mua: " + NamMua.ToString("dd/MM/yyyy"));
             Console.WriteLine("So kilomet: " + KilometDaDi);
             Console.WriteLine("Muc dich: " + MucDich);
             Console.WriteLine("Gia: " + GiaThueMotNgay);
             Console.WriteLine();
+        }
+        static public void XuatDanhSachXe(List<Xe> danhSachXe)
+        {
+            for (int i = 0; i < danhSachXe.Count; i++)
+            {
+                Console.WriteLine("So thu tu: " + (i + 1).ToString());
+                danhSachXe[i].XuatThongTinXe();
+            }
         }
         public enum EPhanLoai
         {

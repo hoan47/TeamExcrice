@@ -13,10 +13,13 @@ namespace DoAnCuoiKy
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
-        static public void Doc(List<NganHang> danhSachNganHang, List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<Xe> danhSachXe)
+
+        static public bool Doc(List<ChuChoThue> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe)
         {
             Application excel = null;
             Workbook trang = null;
+            bool docThanhCong = false;
+
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
@@ -27,8 +30,9 @@ namespace DoAnCuoiKy
                 Worksheet bangTinh = trang.Sheets[1];
                 string duLieu = string.Empty;
                 DateTime ngayThangNam;
-                Xe.EMucDich mucDich;
+                List<NganHang> danhSachNganHang = new List<NganHang>();
                 NganHang nganHang;
+                List<Xe> danhSachXe = new List<Xe>();
 
                 for (int i = 1; i < bangTinh.UsedRange.Rows.Count + 1; i++)
                 {
@@ -92,40 +96,25 @@ namespace DoAnCuoiKy
                         case "Xe bảy chỗ":
                             ChuChoThue chuChoThue = danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text);
                             DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
-                            switch (bangTinh.Cells[i, 6].Text)
-                            {
-                                case "Du lịch":
-                                    mucDich = Xe.EMucDich.DuLich;
-                                    break;
-                                case "Đám cưới":
-                                    mucDich = Xe.EMucDich.DamCuoi;
-                                    break;
-                                case "Tập lái":
-                                    mucDich = Xe.EMucDich.TapLai;
-                                    break;
-                                default:
-                                    mucDich = Xe.EMucDich.Khac;
-                                    break;
-                            }
                             switch (duLieu)
                             {
                                 case "Xe máy":
                                     danhSachXe.Add(new XeMay(chuChoThue, bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, mucDich, Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
+                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].text, i), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
                                     break;
                                 case "Xe bốn chỗ":
                                     danhSachXe.Add(new XeBonCho(chuChoThue, bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, mucDich, Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
+                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].text, i), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
                                     break;
                                 case "Xe bảy chỗ":
                                     danhSachXe.Add(new XeBayCho(chuChoThue, bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, mucDich, Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
+                                        bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].text, i), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
                                         Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
@@ -134,22 +123,40 @@ namespace DoAnCuoiKy
                             break;
                     }
                 }
+                docThanhCong = true;
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine("Error input: " + e);
-                throw;
             }
             finally
             {
                 trang?.Close();
                 excel?.Quit();
             }
+            return docThanhCong;
+
+            Xe.EMucDich MucDichCuaXe(string duLieu, int i)
+            {
+                Dictionary<string, Xe.EMucDich> mapping = new Dictionary<string, Xe.EMucDich>
+                {
+                    {"Du lịch", Xe.EMucDich.DuLich},
+                    {"Đám cưới", Xe.EMucDich.DamCuoi},
+                    {"Tập lái", Xe.EMucDich.TapLai},
+                };
+                if (mapping.TryGetValue(duLieu, out Xe.EMucDich ketQua))
+                {
+                    return ketQua;
+                }
+                return Xe.EMucDich.Khac;
+            }
         }
-        static public void Viet(List<ChuChoThue> danhSachChuXe)
+
+        static public bool Viet(List<ChuChoThue> danhSachChuXe)
         {
             Application excel = null;
             Workbook trang = null;
+            bool docThanhCong = false;
 
             try
             {
@@ -184,17 +191,18 @@ namespace DoAnCuoiKy
                 }
                 bangTinh.UsedRange.Columns.AutoFit();
                 bangTinh.SaveAs(duongDan);
+                docThanhCong = true;
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine("Error output: " + e);
-                throw;
             }
             finally
             {
                 trang?.Close();
                 excel?.Quit();
             }
+            return docThanhCong;
         }
         private static int VietXe(Worksheet bangTinh, int hang, ChuChoThue chuXe, Xe.EPhanLoai phanLoai, string loaiXe)
         {

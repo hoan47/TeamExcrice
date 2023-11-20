@@ -13,7 +13,7 @@ namespace DoAnCuoiKy
             : base(chuXe, hangXe, namMua, kilometDaDi, baoHiem, mucDich, giaThueMotNgay, tienCoc, giaDenXuotXe, giaDenBeBanh, giaDenHuDen, uuDai, tangGia) { }
         public override void XuatThongTinXe()
         {
-            Console.WriteLine("Loai xe: sXe may");
+            Console.WriteLine("Loai xe: Xe may");
             base.XuatThongTinXe();
         }
     }

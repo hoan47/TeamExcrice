@@ -73,6 +73,20 @@ namespace DoAnCuoiKy
                 + giaDen.ToString()  + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
+        static public void XuatToanBoChuXe(List<ChuChoThue> danhSachChuChoThue)
+        {
+            Console.WriteLine("\nDanh sach tat ca cac chu cho thue xe:");
+            for (int i = 0; i < danhSachChuChoThue.Count; i++)
+            {
+                Console.WriteLine("So thu tu: " + (i + 1).ToString());
+                danhSachChuChoThue[i].ThongTin();
+            }
+        }
+        public override void ThongTin()
+        {
+            base.ThongTin();
+            Console.WriteLine("Hien co " + danhSachXe.Sum(ds => ds.Count) + " xe cho thue\n");
+        }
         public class KhachQuen
         {
             Dictionary<KhachThueXe, int> soLanDaThue;

@@ -26,7 +26,7 @@ namespace DoAnCuoiKy
             this.ngaySinh = ngaySinh;
             this.nganHang = nganHang;
         }
-        public void ThongTin()
+        public virtual void ThongTin()
         {
             Console.WriteLine("Ho ten: " + hoTen);
             Console.WriteLine("Dia chi: " + diaChi);
