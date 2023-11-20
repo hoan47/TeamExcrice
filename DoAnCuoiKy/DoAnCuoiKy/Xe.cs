@@ -68,7 +68,6 @@ namespace DoAnCuoiKy
         }
         public virtual void XuatThongTinXe()
         {
-            Console.WriteLine(daThue == true ? "Xe da co nguoi thue" : " Xe chua co nguoi thue");
             Console.WriteLine("Hang xe: " + HangXe);
             Console.WriteLine("Nam mua: " + NamMua.ToString("dd/MM/yyyy"));
             Console.WriteLine("So kilomet: " + KilometDaDi);
@@ -76,13 +75,22 @@ namespace DoAnCuoiKy
             Console.WriteLine("Gia: " + GiaThueMotNgay);
             Console.WriteLine();
         }
-        static public void XuatDanhSachXe(List<Xe> danhSachXe)
+        static public void XuatDanhSachXe(List<Xe> danhSachXe, bool daThue)
         {
-            for (int i = 0; i < danhSachXe.Count; i++)
+            int soThuTu = 1;
+            foreach (Xe xe in danhSachXe)
             {
-                Console.WriteLine("So thu tu: " + (i + 1).ToString());
-                danhSachXe[i].XuatThongTinXe();
+                if (xe.daThue == daThue)
+                {
+                    Console.WriteLine("So thu tu: " + soThuTu++.ToString());
+                    xe.XuatThongTinXe();
+                }
             }
+        }
+
+        public static new Xe KhoiTaoXe(ChuChoThue chuChoThue)
+        {
+            return new Xe(chuChoThue, DauVaoBanPhim.String("Ten xe: "), DauVaoBanPhim.DateTime_("Nam thang ngay mua: "), DauVaoBanPhim.Double("Kilomet da di: "), DauVaoBanPhim.Bool("Xe co bao hiem khong (true hoac false): "), DauVaoBanPhim.MucDich(), DauVaoBanPhim.Decimal("Gia thue 1 ngay: "), DauVaoBanPhim.Decimal("Tien coc: "), DauVaoBanPhim.Decimal("Den suc xe: "), DauVaoBanPhim.Decimal("Den be banh xe: "), DauVaoBanPhim.Decimal("Den hu den xe: "), DauVaoBanPhim.Decimal("Uun dai: "), DauVaoBanPhim.Decimal("Tang gia: "));
         }
         public enum EPhanLoai
         {

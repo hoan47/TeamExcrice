@@ -75,7 +75,7 @@ namespace DoAnCuoiKy
         }
         static public void XuatToanBoChuXe(List<ChuChoThue> danhSachChuChoThue)
         {
-            Console.WriteLine("\nDanh sach tat ca cac chu cho thue xe:");
+            Console.WriteLine("Danh sach tat ca cac chu cho thue xe:");
             for (int i = 0; i < danhSachChuChoThue.Count; i++)
             {
                 Console.WriteLine("So thu tu: " + (i + 1).ToString());

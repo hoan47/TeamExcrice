@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace DoAnCuoiKy
 {
-    static class FileXe
+    class FileXe
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
@@ -18,21 +19,22 @@ namespace DoAnCuoiKy
         {
             Application excel = null;
             Workbook trang = null;
+            Worksheet bangTinh = null;
             bool docThanhCong = false;
 
             try
             {
                 string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
                 string duongDan = Path.Combine(thuMuc, duongDanDauVao);
-
-                excel = new Application();
-                trang = excel.Workbooks.Open(duongDan);
-                Worksheet bangTinh = trang.Sheets[1];
                 string duLieu = string.Empty;
                 DateTime ngayThangNam;
                 List<NganHang> danhSachNganHang = new List<NganHang>();
                 NganHang nganHang;
                 List<Xe> danhSachXe = new List<Xe>();
+
+                excel = new Application();
+                trang = excel.Workbooks.Open(duongDan);
+                bangTinh = trang.Sheets[1];
 
                 for (int i = 1; i < bangTinh.UsedRange.Rows.Count + 1; i++)
                 {
@@ -131,8 +133,17 @@ namespace DoAnCuoiKy
             }
             finally
             {
-                trang?.Close();
-                excel?.Quit();
+                if (trang != null)
+                {
+                    trang.Close(false);
+                    Marshal.FinalReleaseComObject(trang);
+                }
+                if (excel != null)
+                {
+                    excel.Workbooks.Close();
+                    excel.Quit();
+                    Marshal.FinalReleaseComObject(excel);
+                }
             }
             return docThanhCong;
 

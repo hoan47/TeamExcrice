@@ -29,72 +29,84 @@ namespace DoAnCuoiKy
                 Console.WriteLine("Chuong trinh quan li thue xe vui long chon doi tuong.");
                 Console.WriteLine("1. " + doiTuong[0]);
                 Console.WriteLine("2. " + doiTuong[1]);
-
-                switch(SoNguyenBanPhim(1, 2, "Chon 1 hoac 2: "))
+                switch (DauVaoBanPhim.Int(1, 2, "Chon 1 hoac 2: "))
                 {
                     case 1:
-                        ChuongTrinhChuChoThue();
+                        ChuChoThue.XuatToanBoChuXe(danhSachChuChoThue);
+                        ChuChoThue chuChoThue = danhSachChuChoThue[DauVaoBanPhim.Int(1, danhSachChuChoThue.Count, "Chon 1 trong " + danhSachChuChoThue.Count.ToString() + " chu cho thue: ") - 1];
+                        Console.WriteLine("Ban co ten la: " + chuChoThue.HoTen);
+                        ChuongTrinhChuChoThue(chuChoThue);
                         break;
                     case 2:
-
                         break;
                 }
             }
 
-            void ChuongTrinhChuChoThue()
+            void ChuongTrinhChuChoThue(ChuChoThue chuChoThue)
             {
-                ChuChoThue.XuatToanBoChuXe(danhSachChuChoThue);
-                ChuChoThue chuChoThue = danhSachChuChoThue[SoNguyenBanPhim(1, danhSachChuChoThue.Count, "Chon 1 trong " + danhSachChuChoThue.Count.ToString() + " chu cho thue: ") - 1];
-                Console.WriteLine("\nBan co ten la: " + chuChoThue.HoTen);
                 Console.WriteLine("Ban muon: ");
                 Console.WriteLine("1. Xem xe cho thue.");
-                Console.WriteLine("2. Xem danh gia xe.");
+                Console.WriteLine("2. Them xe cho thue.");
+                Console.WriteLine("3. Xem danh gia xe.");
 
-                switch (SoNguyenBanPhim(1, 2, "Chon 1 trong 2: "))
+                switch (DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3: "))
                 {
                     case 1:
-                        Console.WriteLine("\n" + chuChoThue.HoTen + " muon xem loai xe:");
-                        Console.WriteLine("1. Xe may.");
-                        Console.WriteLine("2. Xe bon cho.");
-                        Console.WriteLine("3. Xe bay cho.");
-
-                        switch (SoNguyenBanPhim(1, 3, "Chon 1 trong 3: "))
-                        {
-                            case 1:
-                                Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeMay]);
-                                break;
-                            case 2:
-                                Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeBonCho]);
-                                break;
-                            case 3:
-                                Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeBayCho]);
-                                break;
-                        }
-                        throw new Exception("Tam Dung");
+                        ChuongTrinhXe();
+                        break;
                     case 2:
-                        throw new Exception("Tam Dung");
+                        ChuongTrinhKhoiTaoXe();
+                        break;
+                    case 3:
+                        break;
                 }
-            }
 
-            int SoNguyenBanPhim(int batDau, int ketThuc, string noiDung)
-            {
-                int giaTri;
-                while (true)
+                void ChuongTrinhXe()
                 {
-                    try
+                    Console.WriteLine(chuChoThue.HoTen + " muon xem loai xe:");
+                    Console.WriteLine("1. Xe may.");
+                    Console.WriteLine("2. Xe bon cho.");
+                    Console.WriteLine("3. Xe bay cho.");
+                    int luaChon = DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3 loai xe: ");
+
+                    Console.WriteLine("\nBan muon xem xe da co nguoi thue hay chua co:");
+                    Console.WriteLine("1. Da co nguoi thue");
+                    Console.WriteLine("2. Chua co nguoi thue");
+                    bool daThue = DauVaoBanPhim.Int(1, 2, "Chon 1 hoac 2: ") == 1 ? true : false;
+
+                    switch (luaChon)
                     {
-                        Console.Write(noiDung);
-                        giaTri = int.Parse(Console.ReadLine());
-                        if ((batDau <= giaTri && giaTri <= ketThuc) == false)
-                        {
-                            continue;
-                        }
-                        return giaTri;
+                        case 1:
+                            Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeMay], daThue);
+                            break;
+                        case 2:
+                            Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeBonCho], daThue);
+                            break;
+                        case 3:
+                            Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeBayCho], daThue);
+                            break;
                     }
-                    catch (FormatException)
+                    ChuongTrinhChuChoThue(chuChoThue);
+                }
+                void ChuongTrinhKhoiTaoXe()
+                {
+                    Console.WriteLine("Chon loai xe: ");
+                    Console.WriteLine("1. Xe may");
+                    Console.WriteLine("2. Xe bon cho");
+                    Console.WriteLine("3. Xe bay cho");
+                    switch (DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3 loai xe: "))
                     {
-                        continue;
+                        case 1:
+                            XeMay.KhoiTaoXe(chuChoThue);
+                            break;
+                        case 2:
+                            XeBonCho.KhoiTaoXe(chuChoThue);
+                            break;
+                        case 3:
+                            XeBayCho.KhoiTaoXe(chuChoThue);
+                            break;
                     }
+                    ChuongTrinhChuChoThue(chuChoThue);
                 }
             }
         }
