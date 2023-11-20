@@ -82,6 +82,17 @@ namespace DoAnCuoiKy
                 danhSachChuChoThue[i].ThongTin();
             }
         }
+        static public void XuatToanBoDanhGiaXe(List<Xe>[] danhSachXe)
+        {
+            foreach(List<Xe> xe in danhSachXe)
+            {
+                foreach(Xe xe_ in xe)
+                {
+                    xe_.XuatThongTinXe();
+                    xe_.DanhGia.XuatToanBoDanhGia();
+                }
+            }
+        }
         public override void ThongTin()
         {
             base.ThongTin();

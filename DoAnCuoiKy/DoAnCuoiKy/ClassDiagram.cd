@@ -42,28 +42,28 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>kQYAALAAACAiAAAIAgAABABBACQESABIBCACZAAmAgQ=</HashCode>
+      <HashCode>kQYAALAgACAiAAAIAgAABABBACQESABIBCACZAAmAgQ=</HashCode>
       <FileName>Xe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeBayCho">
     <Position X="1.5" Y="8.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeBayCho.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeBonCho">
     <Position X="1.5" Y="6.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAACAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeBonCho.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DoAnCuoiKy.XeMay">
     <Position X="1.5" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>XeMay.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,7 +88,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAIAAAACAAAAAAAAIAAAAgAEQAAEAAAAAAJAAAACQAA=</HashCode>
+      <HashCode>AAIAAAACAAAAAAAAIAAAAgAEQAAEAAAAAANAAAACQAA=</HashCode>
       <FileName>ChuChoThue.cs</FileName>
     </TypeIdentifier>
   </Class>

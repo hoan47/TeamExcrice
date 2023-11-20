@@ -23,7 +23,6 @@ namespace DoAnCuoiKy
             {
                 throw new Exception("Doc file that bai");
             }
-
             while (true)
             {
                 Console.WriteLine("Chuong trinh quan li thue xe vui long chon doi tuong.");
@@ -47,8 +46,7 @@ namespace DoAnCuoiKy
                 Console.WriteLine("Ban muon: ");
                 Console.WriteLine("1. Xem xe cho thue.");
                 Console.WriteLine("2. Them xe cho thue.");
-                Console.WriteLine("3. Xem danh gia xe.");
-
+                Console.WriteLine("3. Xem danh gia.");
                 switch (DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3: "))
                 {
                     case 1:
@@ -58,6 +56,21 @@ namespace DoAnCuoiKy
                         ChuongTrinhKhoiTaoXe();
                         break;
                     case 3:
+                        Console.WriteLine("Ban muon:");
+                        Console.WriteLine("1. Xem khach hang danh gia chu.");
+                        Console.WriteLine("2. Xem khach hang danh gia xe.");
+                        Console.WriteLine("3. Danh gia khach hang.");
+                        switch(DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3: "))
+                        {
+                            case 1:
+                                chuChoThue.DanhGia.XuatToanBoDanhGia();
+                                break;
+                            case 2:
+                                ChuChoThue.XuatToanBoDanhGiaXe(chuChoThue.DanhSachXe);
+                                break;
+                            case 3:
+                                break;
+                        }
                         break;
                 }
 
@@ -85,6 +98,16 @@ namespace DoAnCuoiKy
                         case 3:
                             Xe.XuatDanhSachXe(chuChoThue.DanhSachXe[(int)Xe.EPhanLoai.XeBayCho], daThue);
                             break;
+                    }
+                    if(daThue == false)
+                    {
+                        Console.WriteLine("Chon:\n1.De xoa xe.\n2.Quay lai.");
+                        if (DauVaoBanPhim.Int(1, 2, "Chon 1 hoac 2: ") == 1)
+                        {
+                            int soThuTu = DauVaoBanPhim.Int(1, chuChoThue.DanhSachXe[luaChon].Count, "Chon 1 trong " + chuChoThue.DanhSachXe[luaChon].Count + " can xoa: ");
+                            chuChoThue.DanhSachXe[luaChon - 1][soThuTu - 1] = null;
+                            chuChoThue.DanhSachXe[luaChon-1].RemoveAt(soThuTu - 1);
+                        }
                     }
                     ChuongTrinhChuChoThue(chuChoThue);
                 }
