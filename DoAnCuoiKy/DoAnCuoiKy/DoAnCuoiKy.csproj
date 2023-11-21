@@ -73,7 +73,7 @@
     <Compile Include="DanhGia.cs" />
     <Compile Include="DauVaoBanPhim.cs" />
     <Compile Include="QuanLyDanhGia.cs" />
-    <Compile Include="FileXe.cs" />
+    <Compile Include="DuLieu.cs" />
     <Compile Include="HopDongThueXe.cs" />
     <Compile Include="KhachThueXe.cs" />
     <Compile Include="NganHang.cs" />

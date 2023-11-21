@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace DoAnCuoiKy
 {
-    class FileXe
+    class DuLieu
     {
         const string duongDanDauVao = "Input.xlsx";
         const string duongDanDauRa = "Output.xlsx";
@@ -24,8 +24,6 @@ namespace DoAnCuoiKy
 
             try
             {
-                string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
-                string duongDan = Path.Combine(thuMuc, duongDanDauVao);
                 string duLieu = string.Empty;
                 DateTime ngayThangNam;
                 List<NganHang> danhSachNganHang = new List<NganHang>();
@@ -33,9 +31,8 @@ namespace DoAnCuoiKy
                 List<Xe> danhSachXe = new List<Xe>();
 
                 excel = new Application();
-                trang = excel.Workbooks.Open(duongDan);
+                trang = excel.Workbooks.Open(DuongDan(duongDanDauVao));
                 bangTinh = trang.Sheets[1];
-
                 for (int i = 1; i < bangTinh.UsedRange.Rows.Count + 1; i++)
                 {
                     i = i + 2;
@@ -133,17 +130,7 @@ namespace DoAnCuoiKy
             }
             finally
             {
-                if (trang != null)
-                {
-                    trang.Close(false);
-                    Marshal.FinalReleaseComObject(trang);
-                }
-                if (excel != null)
-                {
-                    excel.Workbooks.Close();
-                    excel.Quit();
-                    Marshal.FinalReleaseComObject(excel);
-                }
+                DongFile(excel, trang);
             }
             return docThanhCong;
 
@@ -162,7 +149,6 @@ namespace DoAnCuoiKy
                 return Xe.EMucDich.Khac;
             }
         }
-
         static public bool Viet(List<ChuChoThue> danhSachChuXe)
         {
             Application excel = null;
@@ -171,9 +157,6 @@ namespace DoAnCuoiKy
 
             try
             {
-                string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
-                string duongDan = Path.Combine(thuMuc, duongDanDauRa);
-
                 excel = new Application();
                 trang = excel.Workbooks.Add();
                 Worksheet bangTinh = (Worksheet)trang.Sheets[1];
@@ -201,7 +184,7 @@ namespace DoAnCuoiKy
                     hang = VietXe(bangTinh, hang, chuXe, Xe.EPhanLoai.XeBayCho, "xe bảy chỗ") + 1;
                 }
                 bangTinh.UsedRange.Columns.AutoFit();
-                bangTinh.SaveAs(duongDan);
+                bangTinh.SaveAs(DuongDan(duongDanDauRa));
                 docThanhCong = true;
             }
             catch (Exception e)
@@ -210,8 +193,7 @@ namespace DoAnCuoiKy
             }
             finally
             {
-                trang?.Close();
-                excel?.Quit();
+                DongFile(excel, trang);
             }
             return docThanhCong;
         }
@@ -261,6 +243,26 @@ namespace DoAnCuoiKy
                 bangTinh.Cells[hang++, 14].Value = xe.DaThue;
             }
             return hang;
+        }
+        private static string DuongDan(string tenFile)
+        {
+            string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
+            string duongDan = Path.Combine(thuMuc, tenFile);
+            return duongDan;
+        }
+        private static void DongFile(Application excel, Workbook trang)
+        {
+            if (trang != null)
+            {
+                trang.Close(false);
+                Marshal.FinalReleaseComObject(trang);
+            }
+            if (excel != null)
+            {
+                excel.Workbooks.Close();
+                excel.Quit();
+                Marshal.FinalReleaseComObject(excel);
+            }
         }
     }
 }
