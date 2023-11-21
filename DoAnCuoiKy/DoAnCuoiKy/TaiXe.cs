@@ -10,10 +10,13 @@ namespace DoAnCuoiKy
     {
         private bool daThue;
         public bool DaThue { get { return daThue; } }
-        public QuanLyDanhGia danhGia;
-        public TaiXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
+        private QuanLyDanhGia danhGia;
+        public QuanLyDanhGia DanhGia { get { return danhGia; } }
+        public TaiXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
-        { }
+        {
+            danhGia = new QuanLyDanhGia();
+        }
         public void TrangThai(bool daThue)
         {
             this.daThue = daThue;

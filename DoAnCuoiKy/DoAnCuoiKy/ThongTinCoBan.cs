@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class ThongTinCoBan
+    public class ThongTinCoBan
     {
         private string hoTen;
         private string diaChi;
@@ -25,6 +25,14 @@ namespace DoAnCuoiKy
             this.soDienThoai = soDienThoai;
             this.ngaySinh = ngaySinh;
             this.nganHang = nganHang;
+        }
+        static public void XuatDanhSachThongTin(List<ThongTinCoBan> danhSach)
+        {
+            for (int i = 0; i < danhSach.Count; i++)
+            {
+                Console.WriteLine("So thu tu: " + (i + 1).ToString());
+                danhSach[i].ThongTin();
+            }
         }
         public virtual void ThongTin()
         {

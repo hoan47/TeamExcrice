@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class NganHang
+    public class NganHang
     {
         private string soTaiKhoan;
         private decimal soDu;

@@ -73,14 +73,10 @@ namespace DoAnCuoiKy
                 + giaDen.ToString()  + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
-        static public void XuatToanBoChuXe(List<ChuChoThue> danhSachChuChoThue)
+        static public void XuatDanhSachChuChoThue(List<ChuChoThue> danhSachChuChoThue)
         {
-            Console.WriteLine("Danh sach tat ca cac chu cho thue xe:");
-            for (int i = 0; i < danhSachChuChoThue.Count; i++)
-            {
-                Console.WriteLine("So thu tu: " + (i + 1).ToString());
-                danhSachChuChoThue[i].ThongTin();
-            }
+            Console.WriteLine("Danh sach chu cho thue xe:");
+            XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
         }
         static public void XuatToanBoDanhGiaXe(List<Xe>[] danhSachXe)
         {
@@ -88,8 +84,11 @@ namespace DoAnCuoiKy
             {
                 foreach(Xe xe_ in xe)
                 {
-                    xe_.XuatThongTinXe();
-                    xe_.DanhGia.XuatToanBoDanhGia();
+                    if (xe_.DanhGia.DanhSachDanhGia.Count != 0)
+                    {
+                        xe_.XuatThongTinXe();
+                        xe_.DanhGia.XuatToanBoDanhGia();
+                    }
                 }
             }
         }
@@ -114,12 +113,16 @@ namespace DoAnCuoiKy
                 }
                 else
                 {
-                    soLanDaThue[khach] += 1;
+                    soLanDaThue[khach] ++;
                 }
             }
             public int SoLanThueXe(KhachThueXe khach)
             {
                 return soLanDaThue[khach];
+            }
+            public List<KhachThueXe> DanhSachKhachDaThueXe()
+            {
+                return soLanDaThue.Keys.ToList();
             }
         }
     }

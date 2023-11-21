@@ -21,9 +21,9 @@ namespace DoAnCuoiKy
         }
         public void XuatToanBoDanhGia()
         {
-            Console.WriteLine("Danh gia khach hang danh cho xe:");
             foreach (DanhGia danhGia in DanhSachDanhGia)
             {
+                Console.WriteLine("Danh gia:");
                 danhGia.ThongTin();
             }
         }

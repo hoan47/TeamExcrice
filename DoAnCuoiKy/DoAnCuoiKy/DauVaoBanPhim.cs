@@ -100,34 +100,43 @@ namespace DoAnCuoiKy
         }
         static public Xe.EMucDich MucDich()
         {
-            int giaTri;
-
+            Console.WriteLine("Muc dich mua xe: ");
+            Console.WriteLine("1. Du lich");
+            Console.WriteLine("2. Dam cuoi");
+            Console.WriteLine("3. Tap lai");
+            Console.WriteLine("4. Khac");
             while (true)
             {
-                try
+                switch (Int(1, 4, "Chon 1 trong 4: "))
                 {
-                    Console.WriteLine("Muc dich mua xe: ");
-                    Console.WriteLine("1. Du lich");
-                    Console.WriteLine("2. Dam cuoi");
-                    Console.WriteLine("3. Tap lai");
-                    Console.WriteLine("4. Khac");
-                    Console.Write("Chon 1 trong 4: ");
-                    giaTri = int.Parse(Console.ReadLine());
-                    switch (giaTri)
-                    {
-                        case 1:
-                            return Xe.EMucDich.DuLich;
-                        case 2:
-                            return Xe.EMucDich.DamCuoi;
-                        case 3:
-                            return Xe.EMucDich.TapLai;
-                        case 4:
-                            return Xe.EMucDich.Khac;
-                    }
+                    case 1:
+                        return Xe.EMucDich.DuLich;
+                    case 2:
+                        return Xe.EMucDich.DamCuoi;
+                    case 3:
+                        return Xe.EMucDich.TapLai;
+                    case 4:
+                        return Xe.EMucDich.Khac;
                 }
-                catch (FormatException)
+            }
+        }
+        public static DanhGia.EDanhGia DanhGia_()
+        {
+            Console.WriteLine("Ban danh gia may sao: ");
+            while (true)
+            {
+                switch (Int(1, 5, "Chon 1 trong 5 sao: "))
                 {
-                    continue;
+                    case 1:
+                        return DanhGia.EDanhGia.Sao1;
+                    case 2:
+                        return DanhGia.EDanhGia.Sao2;
+                    case 3:
+                        return DanhGia.EDanhGia.Sao3;
+                    case 4:
+                        return DanhGia.EDanhGia.Sao4;
+                    case 5:
+                        return DanhGia.EDanhGia.Sao5;
                 }
             }
         }

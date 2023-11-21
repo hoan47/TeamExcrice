@@ -75,7 +75,7 @@ namespace DoAnCuoiKy
             }
             else
             {
-                throw new Exception("Xe da co nguoi thue");
+                Console.WriteLine("Xe da co nguoi thue");
             }
         }
         public void CacChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)

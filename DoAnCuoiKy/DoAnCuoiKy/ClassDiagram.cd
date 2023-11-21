@@ -20,7 +20,7 @@
   <Class Name="DoAnCuoiKy.ThongTinCoBan">
     <Position X="9.25" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>ABABAAAUAAAAAAAQAAABEAAEQAAAAAAAAAAAAgAAAAI=</HashCode>
+      <HashCode>ABABAAAUAAAAACAQAAABEAAEQAAAAAAAAAAAAgAAAAI=</HashCode>
       <FileName>ThongTinCoBan.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -81,14 +81,14 @@
     </NestedTypes>
     <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
       <Path>
-        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="5.93" />
         <Point X="10.25" Y="6.125" />
         <Point X="7.583" Y="6.125" />
         <Point X="7.583" Y="6.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAIAAAACAAAAAAAAIAAAAgAEQAAEAAAAAANAAAACQAA=</HashCode>
+      <HashCode>AAIAAAACAAAAAAAAIAAAAAAEQAAEAAAAAAdAAAACQAA=</HashCode>
       <FileName>ChuChoThue.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -96,14 +96,14 @@
     <Position X="11.75" Y="6.5" Width="2" />
     <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
       <Path>
-        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="5.93" />
         <Point X="10.25" Y="6.125" />
         <Point X="12.75" Y="6.125" />
         <Point X="12.75" Y="6.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>EAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAIAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAACAAA=</HashCode>
       <FileName>KhachThueXe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -118,12 +118,12 @@
     <Position X="9.25" Y="6.5" Width="2" />
     <InheritanceLine Type="DoAnCuoiKy.ThongTinCoBan" FixedToPoint="true">
       <Path>
-        <Point X="10.25" Y="5.738" />
+        <Point X="10.25" Y="5.93" />
         <Point X="10.25" Y="6.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>ABIAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAA=</HashCode>
+      <HashCode>ABIAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAACAAA=</HashCode>
       <FileName>TaiXe.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -140,7 +140,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAEAAAIAABAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DanhGia.cs</FileName>
     </TypeIdentifier>
   </Class>
