@@ -167,13 +167,13 @@ namespace DoAnCuoiKy
                             }
                             break;
                         case 2:
-                            if (chuChoThue.DanhSachXe.Sum(ds => ds.Count) == 0)
+                            if (chuChoThue.DanhSachXe.Any(ds => ds.Any(xe => xe.DanhGia.DanhSachDanhGia.Count != 0)) == true)
                             {
-                                Console.WriteLine("khong co danh gia danh cho ban");
+                                ChuChoThue.XuatToanBoDanhGiaXe(chuChoThue.DanhSachXe);
                             }
                             else
                             {
-                                ChuChoThue.XuatToanBoDanhGiaXe(chuChoThue.DanhSachXe);
+                                Console.WriteLine("khong co danh gia danh cho ban");
                             }
                             break;
                         case 3:
