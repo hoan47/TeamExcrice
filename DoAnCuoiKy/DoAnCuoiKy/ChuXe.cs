@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -7,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    class ChuChoThue : ThongTinCoBan
+    internal class ChuXe : ThongTinCoBan
     {
+        private static string duongDanDuLieu = "DanhSachChuXe.xlsx";
         private List<Xe>[] danhSachXe;
         private QuanLyDanhGia danhGia;
         private KhachQuen khachHangQuen;
@@ -16,7 +18,7 @@ namespace DoAnCuoiKy
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
         public KhachQuen KhachHangQuen { get { return khachHangQuen; } }
 
-        public ChuChoThue(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
+        public ChuXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             KhoiTaoDanhSachXe();
@@ -73,7 +75,7 @@ namespace DoAnCuoiKy
                 + giaDen.ToString()  + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
-        static public void XuatDanhSachChuChoThue(List<ChuChoThue> danhSachChuChoThue)
+        static public void XuatDanhSachChuXe(List<ChuXe> danhSachChuChoThue)
         {
             Console.WriteLine("Danh sach chu cho thue xe:");
             XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
@@ -91,6 +93,12 @@ namespace DoAnCuoiKy
                     }
                 }
             }
+        }
+        static public List<ChuXe> DocDuLieu()
+        {
+            List<ChuXe> danhSachChuXe = new List<ChuXe>();
+            DocDuLieu(danhSachChuXe, null, null, duongDanDuLieu);
+            return danhSachChuXe;
         }
         public override void ThongTin()
         {

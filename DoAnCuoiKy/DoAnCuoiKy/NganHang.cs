@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace DoAnCuoiKy
 {
     public class NganHang
     {
+        private static string duongDanDuLieu = "DanhSachNganHang.xlsx";
         private string soTaiKhoan;
         private decimal soDu;
         public string SoTaiKhoan { get { return soTaiKhoan; } }
@@ -29,6 +31,32 @@ namespace DoAnCuoiKy
         private void NhanTien(decimal tien)
         {
             soDu += -tien;
+        }
+        static public List<NganHang> DocDuLieu()
+        {
+            List<NganHang> danhSachNganHang = null;
+            Application excel = null;
+            Workbook trang = null;
+            Worksheet bangTinh;
+
+            try
+            {
+                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
+                danhSachNganHang = new List<NganHang>();
+                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
+                {
+                    danhSachNganHang.Add(new NganHang((string)bangTinh.Cells[i, 1].Text, Convert.ToDecimal(bangTinh.Cells[i, 2].Value)));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Du lieu ngan hang loi: " + e.Message);
+            }
+            finally
+            {
+                Excel.Dong(excel, trang);
+            }
+            return danhSachNganHang;
         }
     }
 }

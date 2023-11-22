@@ -10,13 +10,13 @@ namespace DoAnCuoiKy
     class HopDongThueXe
     {
         private KhachThueXe khachThue;
-        private ChuChoThue chuThue;
+        private ChuXe chuThue;
         private TaiXe taiXe;
         private Xe xeChoThue;
         private DateTime ngayThue;
         private int soNgay;
 
-        public HopDongThueXe(KhachThueXe khachThue, ChuChoThue chuThue, TaiXe taiXe, Xe xeChoThue, int soNgay, DateTime ngayThue)
+        public HopDongThueXe(KhachThueXe khachThue, ChuXe chuThue, TaiXe taiXe, Xe xeChoThue, int soNgay, DateTime ngayThue)
         {
             this.khachThue = khachThue;
             this.chuThue = chuThue;

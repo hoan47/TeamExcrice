@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
     class KhachThueXe : ThongTinCoBan
     {
+        private static string duongDanDuLieu = "DanhSachKhachThueXe.xlsx";
         private QuanLyDanhGia danhGia;
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
         public KhachThueXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
@@ -15,13 +14,19 @@ namespace DoAnCuoiKy
         {
             danhGia = new QuanLyDanhGia();
         }
-        public List<Xe> KhachYeuCauTimVaChonXe(ChuChoThue chu, Xe.EPhanLoai loaiXe, decimal giaTu, decimal giaDen)
+        public List<Xe> KhachYeuCauTimVaChonXe(ChuXe chu, Xe.EPhanLoai loaiXe, decimal giaTu, decimal giaDen)
         {
             return chu.TimXe(loaiXe, giaTu, giaDen);
         }
         static public void XuatDanhSachKhachThueXe(List<KhachThueXe> danhSachKhachThueXe)
         {
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
+        }
+        static public List<KhachThueXe> DocDuLieu()
+        {
+            List<KhachThueXe> danhSachKhachThueXe = new List<KhachThueXe>();
+            DocDuLieu(null, null, danhSachKhachThueXe, duongDanDuLieu);
+            return danhSachKhachThueXe;
         }
     }
 }
