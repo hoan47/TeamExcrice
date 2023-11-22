@@ -21,5 +21,13 @@ namespace DoAnCuoiKy
         {
             this.daThue = daThue;
         }
+        public override void ThongTin()
+        {
+            base.ThongTin();
+        }
+        static public TaiXe ChonTaiXe(List<TaiXe>danhSachTaiXe)
+        {
+            return danhSachTaiXe[DauVaoBanPhim.Int(1, danhSachTaiXe.Count, "Chon 1 trong " + danhSachTaiXe.Count.ToString() + " tai xe: ") - 1];
+        }
     }
 }
