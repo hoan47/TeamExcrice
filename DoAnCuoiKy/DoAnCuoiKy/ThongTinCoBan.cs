@@ -30,6 +30,7 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine("So thu tu: " + (i + 1).ToString());
                 danhSach[i].ThongTin();
+                Console.WriteLine();
             }
         }
         public virtual void ThongTin()

@@ -25,6 +25,10 @@ namespace DoAnCuoiKy
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
         }
+        public static new HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuChoThue chuXe, Xe xeChoThue)
+        {
+            return new HopDongThueXe(khachThue, chuXe,TaiXe.ChonTaiXe(), xeChoThue,DauVaoBanPhim.Int(1,365,"Chon tu 1 toi 365 ngay: "),DauVaoBanPhim.DateTime_("Ngay thue xe: "));
+        }
         private decimal TienKhuyenMai()
         {
             return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? chuThue.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
@@ -128,6 +132,26 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine("That bai!");
             }    
+        }
+        public void XemHopDong()
+        {
+            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: ");
+            chuThue.ThongTin();
+            Console.WriteLine("Khach thue xe la: ");
+            khachThue.ThongTin();
+            Console.WriteLine("Thong tin loai xe hop dong: ");
+            xeChoThue.XuatThongTinXe();
+            Console.WriteLine();
+            Console.WriteLine("So ngay thue: "+soNgay);
+            Console.WriteLine("Ngay bat dau thue: "+ngayThue.ToString("dd/MM/yyyy"));
+            Console.WriteLine();
+            Console.WriteLine("Noi dung cac chi phi phat sinh bao gom: ");
+            Console.WriteLine("Chi phi gia han (tre han tra xe)= So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
+            Console.WriteLine("Tien boi thuong hu hong gom: ");
+            Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
+            Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
+            Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
+            Console.WriteLine();
         }
     }
 }

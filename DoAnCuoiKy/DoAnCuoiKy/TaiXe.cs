@@ -23,11 +23,19 @@ namespace DoAnCuoiKy
         {
             this.daThue = daThue;
         }
-        static public List<TaiXe> DocDuLieu()
+        static public List<TaiXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<TaiXe> danhSachTaiXe = new List<TaiXe>();
-            DocDuLieu(null, danhSachTaiXe, null, duongDanDuLieu);
+            DocDuLieu(null, danhSachTaiXe, null, danhSachNganHang,duongDanDuLieu);
             return danhSachTaiXe;
+        }
+        public override void ThongTin()
+        {
+            base.ThongTin();
+        }
+        static public TaiXe ChonTaiXe(List<TaiXe>danhSachTaiXe)
+        {
+            return danhSachTaiXe[DauVaoBanPhim.Int(1, danhSachTaiXe.Count, "Chon 1 trong " + danhSachTaiXe.Count.ToString() + " tai xe: ") - 1];
         }
     }
 }
