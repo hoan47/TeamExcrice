@@ -116,7 +116,6 @@ namespace DoAnCuoiKy
             {
                 Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 DateTime ngayThangNam;
-                List<NganHang> danhSachNganHang = NganHang.DocDuLieu();
 
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
                 {
@@ -124,26 +123,20 @@ namespace DoAnCuoiKy
                     if (danhSachXeMay != null)
                     {
                         danhSachXeMay.Add(new XeMay(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
+                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
                     }
                     else if (danhSachXeBonCho != null)
                     {
                         danhSachXeBonCho.Add(new XeBonCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
+                              bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
                     }
                     else
                     {
                         danhSachXeBayCho.Add(new XeBayCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
+                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value),  Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value)));
                     }
                 }
             }
@@ -165,7 +158,35 @@ namespace DoAnCuoiKy
             try
             {
                 Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
-                VietXe(bangTinh, chuXe, duongDanDuLieu, 1);
+                int hang = 1;
+                while (bangTinh.Cells[hang, 1].Value != null) hang++;
+                bangTinh.Cells[hang, 1].Value = chuXe.NganHang.SoTaiKhoan;
+                bangTinh.Cells[hang, 2].Value = hangXe;
+                bangTinh.Cells[hang, 3].Value = namMua.ToString("yyyy-MM-dd");
+                bangTinh.Cells[hang, 4].Value = kilometDaDi;
+                bangTinh.Cells[hang, 5].Value = baoHiem ? "Có" : "Không";
+                switch (mucDich)
+                {
+                    case EMucDich.DamCuoi:
+                        bangTinh.Cells[hang, 6].Value = "Đám cưới";
+                        break;
+                    case EMucDich.DuLich:
+                        bangTinh.Cells[hang, 6].Value = "Du lịch";
+                        break;
+                    case EMucDich.TapLai:
+                        bangTinh.Cells[hang, 6].Value = "Tập lái";
+                        break;
+                    default:
+                        bangTinh.Cells[hang, 6].Value = "Khác";
+                        break;
+                }
+                bangTinh.Cells[hang, 7].Value = giaThueMotNgay;
+                bangTinh.Cells[hang, 8].Value = tienCoc;
+                bangTinh.Cells[hang, 9].Value = giaDenXuotXe;
+                bangTinh.Cells[hang, 10].Value = giaDenBeBanh;
+                bangTinh.Cells[hang, 11].Value = giaDenHuDen;
+                bangTinh.Cells[hang, 12].Value = uuDai;
+                bangTinh.Cells[hang, 13].Value = tangGia;
                 Excel.LuuDuLieu(bangTinh, duongDanDuLieu);
             }
             catch (Exception e)
@@ -177,39 +198,6 @@ namespace DoAnCuoiKy
                 Excel.Dong(excel, trang);
             }
         }
-
-        public void VietXe(Worksheet bangTinh, ChuXe chuXe, string duongDanDuLieu, int hang)
-        {
-            while (bangTinh.Cells[hang, 1].Value != null) hang++;
-            bangTinh.Cells[hang, 1].Value = chuXe.NganHang.SoTaiKhoan;
-            bangTinh.Cells[hang, 2].Value = hangXe;
-            bangTinh.Cells[hang, 3].Value = namMua.ToString("yyyy-MM-dd");
-            bangTinh.Cells[hang, 4].Value = kilometDaDi;
-            bangTinh.Cells[hang, 5].Value = baoHiem ? "Có" : "Không";
-            switch (mucDich)
-            {
-                case EMucDich.DamCuoi:
-                    bangTinh.Cells[hang, 6].Value = "Đám cưới";
-                    break;
-                case EMucDich.DuLich:
-                    bangTinh.Cells[hang, 6].Value = "Du lịch";
-                    break;
-                case EMucDich.TapLai:
-                    bangTinh.Cells[hang, 6].Value = "Tập lái";
-                    break;
-                default:
-                    bangTinh.Cells[hang, 6].Value = "Khác";
-                    break;
-            }
-            bangTinh.Cells[hang, 7].Value = giaThueMotNgay;
-            bangTinh.Cells[hang, 8].Value = tienCoc;
-            bangTinh.Cells[hang, 9].Value = giaDenXuotXe;
-            bangTinh.Cells[hang, 10].Value = giaDenBeBanh;
-            bangTinh.Cells[hang, 11].Value = giaDenHuDen;
-            bangTinh.Cells[hang, 12].Value = uuDai;
-            bangTinh.Cells[hang, 13].Value = tangGia;
-        }
-
         protected void XoaXeTrongDuLieu(ChuXe chuXe, string duongDanDuLieu)
         {
             Application excel = null;

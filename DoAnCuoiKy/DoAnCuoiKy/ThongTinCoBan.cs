@@ -41,7 +41,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
             Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan);
         }
-        static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, string duongDanDuLieu)
+        static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, string duongDanDuLieu)
         {
             Application excel = null;
             Workbook trang = null;
@@ -51,7 +51,6 @@ namespace DoAnCuoiKy
             {
                 Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 DateTime ngayThangNam;
-                List<NganHang> danhSachNganHang = NganHang.DocDuLieu();
 
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
                 {

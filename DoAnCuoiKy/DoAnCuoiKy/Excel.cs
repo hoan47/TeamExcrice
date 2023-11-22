@@ -13,7 +13,6 @@ namespace DoAnCuoiKy
     internal class Excel
     {
         const string tenThuMucDauVao = "Input";
-    
         public static void KhoiTao(out Application excel, out Workbook trang, out Worksheet bangTinh, string tenDuongDan)
         {
             excel = new Application();

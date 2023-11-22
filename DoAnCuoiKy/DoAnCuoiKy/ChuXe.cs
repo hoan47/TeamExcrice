@@ -94,10 +94,10 @@ namespace DoAnCuoiKy
                 }
             }
         }
-        static public List<ChuXe> DocDuLieu()
+        static public List<ChuXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<ChuXe> danhSachChuXe = new List<ChuXe>();
-            DocDuLieu(danhSachChuXe, null, null, duongDanDuLieu);
+            DocDuLieu(danhSachChuXe, null, null, danhSachNganHang, duongDanDuLieu);
             return danhSachChuXe;
         }
         public override void ThongTin()
