@@ -10,7 +10,6 @@ namespace DoAnCuoiKy
 {
     internal class ChuXe : ThongTinCoBan
     {
-        private static string duongDanDuLieu = "DanhSachChuXe.xlsx";
         private List<Xe>[] danhSachXe;
         private QuanLyDanhGia danhGia;
         private KhachQuen khachHangQuen;
@@ -97,7 +96,7 @@ namespace DoAnCuoiKy
         static public List<ChuXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<ChuXe> danhSachChuXe = new List<ChuXe>();
-            DocDuLieu(danhSachChuXe, null, null, danhSachNganHang, duongDanDuLieu);
+            DocDuLieu(danhSachChuXe, null, null, danhSachNganHang, Excel.ELoaiDuLieu.ChuXe);
             return danhSachChuXe;
         }
         public override void ThongTin()

@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    public class DanhGia
+    internal class DanhGia
     {
-        private object nguoiDanhGia;
+        private ThongTinCoBan nguoiDanhGia;
         private string noiDung;
         private EDanhGia sao;
 
-        public DanhGia(object nguoiDanhGia, string noiDung, EDanhGia sao)
+        public DanhGia(ThongTinCoBan nguoiDanhGia, string noiDung, EDanhGia sao)
         {
             this.nguoiDanhGia = nguoiDanhGia;
             this.noiDung = noiDung;
             this.sao = sao;
         }
-        static public DanhGia KhoiTaoDanhGia(object nguoiDanhGia)
+        static public DanhGia KhoiTaoDanhGia(ThongTinCoBan nguoiDanhGia)
         {
             return new DanhGia(nguoiDanhGia, DauVaoBanPhim.String("Noi dung danh gia: "), DauVaoBanPhim.DanhGia_());
         }
         public void ThongTin()
         {
-            ThongTinCoBan thongTinCoBan = (ThongTinCoBan)nguoiDanhGia;
+            ThongTinCoBan thongTinCoBan = nguoiDanhGia;
             Console.WriteLine("Ten nguoi danh gia: " + thongTinCoBan.HoTen);
             Console.WriteLine("Ngan hang nguoi danh gia: " + thongTinCoBan.NganHang.SoTaiKhoan);
             Console.WriteLine("Noi dung: " + noiDung);

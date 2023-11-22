@@ -9,7 +9,6 @@ namespace DoAnCuoiKy
 {
     class TaiXe : ThongTinCoBan
     {
-        static private string duongDanDuLieu = "DanhSachTaiXe.xlsx";
         private bool daThue;
         public bool DaThue { get { return daThue; } }
         private QuanLyDanhGia danhGia;
@@ -26,7 +25,7 @@ namespace DoAnCuoiKy
         static public List<TaiXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<TaiXe> danhSachTaiXe = new List<TaiXe>();
-            DocDuLieu(null, danhSachTaiXe, null, danhSachNganHang,duongDanDuLieu);
+            DocDuLieu(null, danhSachTaiXe, null, danhSachNganHang, Excel.ELoaiDuLieu.TaiXe);
             return danhSachTaiXe;
         }
         public override void ThongTin()

@@ -41,15 +41,12 @@ namespace DoAnCuoiKy
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
             Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan);
         }
-        static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, string duongDanDuLieu)
+        static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Excel.ELoaiDuLieu loaiDuLieu)
         {
-            Application excel = null;
-            Workbook trang = null;
-            Worksheet bangTinh = null;
+            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
 
             try
             {
-                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 DateTime ngayThangNam;
 
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
@@ -71,11 +68,7 @@ namespace DoAnCuoiKy
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine("Du lieu chu xe loi: " + e.Message);
-            }
-            finally
-            {
-                Excel.Dong(excel, trang);
+                throw new Exception("Du lieu chu xe loi: " + e.Message);
             }
         }
     }

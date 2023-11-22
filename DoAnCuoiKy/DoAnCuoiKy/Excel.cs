@@ -10,28 +10,32 @@ using System.Runtime.InteropServices;
 
 namespace DoAnCuoiKy
 {
-    internal class Excel
+    static internal class Excel
     {
-        const string tenThuMucDauVao = "Input";
-        public static void KhoiTao(out Application excel, out Workbook trang, out Worksheet bangTinh, string tenDuongDan)
+        private const string duongDan = "DuLieu.xlsx";
+        public static Application excel = new Application();
+        public static Workbook trang = excel.Workbooks.Open(DuongDan(duongDan));
+        static Excel()
         {
-            excel = new Application();
-            trang = excel.Workbooks.Open(DuongDan(tenThuMucDauVao, tenDuongDan));
-            bangTinh = trang.Sheets[1];
+            Console.WriteLine("Khoi tao excel.");
+            AppDomain.CurrentDomain.ProcessExit += (sender, e) => { Dong(); };
         }
-        public static void LuuDuLieu(Worksheet bangTinh, string tenThuMuc)
+        public static Worksheet BangTinh(ELoaiDuLieu loaiDuLieu)
+        {
+            return trang.Sheets[(int)loaiDuLieu];
+        }
+        public static void LuuDuLieu(Worksheet bangTinh)
         {
             bangTinh.UsedRange.Columns.AutoFit();
             bangTinh.UsedRange.Rows.AutoFit();
-            bangTinh.SaveAs(DuongDan(tenThuMucDauVao, tenThuMuc));
+            bangTinh.SaveAs(DuongDan(duongDan));
         }
-        public static string DuongDan(string thuMuc, string tenFile)
+        private static string DuongDan(string tenFile)
         {
-            thuMuc = AppDomain.CurrentDomain.BaseDirectory + thuMuc;
-            string duongDan = Path.Combine(thuMuc, tenFile);
-            return duongDan;
+            string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
+            return Path.Combine(thuMuc, tenFile);
         }
-        public static void Dong(Application excel, Workbook trang)
+        private static void Dong()
         {
             if (trang != null)
             {
@@ -44,12 +48,23 @@ namespace DoAnCuoiKy
                 excel.Quit();
                 Marshal.FinalReleaseComObject(excel);
             }
+            Console.WriteLine("Da dong excel.");
         }
         public static void XoaHang(Worksheet bangTinh, int hang)
         {
             Range hangXoa = (Range)bangTinh.Rows[hang, Type.Missing];
             hangXoa.Delete(XlDeleteShiftDirection.xlShiftUp);
             Marshal.ReleaseComObject(hangXoa);
+        }
+        public enum ELoaiDuLieu
+        {
+            NganHang = 1,
+            ChuXe = 2,
+            TaiXe = 3,
+            KhachThueXe = 4,
+            XeMay = 5,
+            XeBonCho = 6,
+            XeBayCho = 7
         }
     }
 }

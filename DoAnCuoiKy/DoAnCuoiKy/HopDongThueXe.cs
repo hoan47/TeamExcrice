@@ -25,7 +25,7 @@ namespace DoAnCuoiKy
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
         }
-        public static new HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuXe chuXe, Xe xeChoThue)
+        public static HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuXe chuXe, Xe xeChoThue)
         {
             return new HopDongThueXe(khachThue, chuXe, TaiXe.ChonTaiXe(null), xeChoThue, DauVaoBanPhim.Int(1, 365, "Chon tu 1 toi 365 ngay: "), DauVaoBanPhim.DateTime_("Ngay thue xe: "));
         }

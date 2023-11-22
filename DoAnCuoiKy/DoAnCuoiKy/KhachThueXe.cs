@@ -6,7 +6,6 @@ namespace DoAnCuoiKy
 {
     class KhachThueXe : ThongTinCoBan
     {
-        private static string duongDanDuLieu = "DanhSachKhachThueXe.xlsx";
         private QuanLyDanhGia danhGia;
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
         public KhachThueXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
@@ -26,7 +25,7 @@ namespace DoAnCuoiKy
         static public List<KhachThueXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<KhachThueXe> danhSachKhachThueXe = new List<KhachThueXe>();
-            DocDuLieu(null, null, danhSachKhachThueXe, danhSachNganHang, duongDanDuLieu);
+            DocDuLieu(null, null, danhSachKhachThueXe, danhSachNganHang, Excel.ELoaiDuLieu.KhachThueXe);
             return danhSachKhachThueXe;
         }
     }

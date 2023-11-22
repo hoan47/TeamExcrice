@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
-    public class NganHang
+    internal class NganHang
     {
-        private static string duongDanDuLieu = "DanhSachNganHang.xlsx";
         private string soTaiKhoan;
         private decimal soDu;
         public string SoTaiKhoan { get { return soTaiKhoan; } }
@@ -34,14 +33,11 @@ namespace DoAnCuoiKy
         }
         static public List<NganHang> DocDuLieu()
         {
-            List<NganHang> danhSachNganHang = null;
-            Application excel = null;
-            Workbook trang = null;
-            Worksheet bangTinh;
+            Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
 
+            List<NganHang> danhSachNganHang = null;
             try
             {
-                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 danhSachNganHang = new List<NganHang>();
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
                 {
@@ -50,11 +46,7 @@ namespace DoAnCuoiKy
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine("Du lieu ngan hang loi: " + e.Message);
-            }
-            finally
-            {
-                Excel.Dong(excel, trang);
+                throw new Exception("Du lieu ngan hang loi: " + e.Message);
             }
             return danhSachNganHang;
         }

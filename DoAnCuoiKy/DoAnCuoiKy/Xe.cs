@@ -106,15 +106,12 @@ namespace DoAnCuoiKy
                 }
             }
         }
-        static protected void DocDuLieu(List<XeMay> danhSachXeMay, List<XeBonCho> danhSachXeBonCho, List<XeBayCho> danhSachXeBayCho, List<ChuXe> danhSachChuXe, string duongDanDuLieu)
+        static protected void DocDuLieu(List<XeMay> danhSachXeMay, List<XeBonCho> danhSachXeBonCho, List<XeBayCho> danhSachXeBayCho, List<ChuXe> danhSachChuXe, Excel.ELoaiDuLieu loaiDuLieu)
         {
-            Application excel = null;
-            Workbook trang = null;
-            Worksheet bangTinh;
+            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
 
             try
             {
-                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 DateTime ngayThangNam;
 
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
@@ -142,22 +139,15 @@ namespace DoAnCuoiKy
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine("Loi du lieu xe: " + e.Message);
-            }
-            finally
-            {
-                Excel.Dong(excel, trang);
+                throw new Exception("Loi du lieu xe: " + e.Message);
             }
         }
-        protected void ThemXeVaoDuLieu(ChuXe chuXe, string duongDanDuLieu)
+        protected void ThemXeVaoDuLieu(ChuXe chuXe, Excel.ELoaiDuLieu loaiDuLieu)
         {
-            Application excel = null;
-            Workbook trang = null;
-            Worksheet bangTinh;
+            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
 
             try
             {
-                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 int hang = 1;
                 while (bangTinh.Cells[hang, 1].Value != null) hang++;
                 bangTinh.Cells[hang, 1].Value = chuXe.NganHang.SoTaiKhoan;
@@ -187,26 +177,18 @@ namespace DoAnCuoiKy
                 bangTinh.Cells[hang, 11].Value = giaDenHuDen;
                 bangTinh.Cells[hang, 12].Value = uuDai;
                 bangTinh.Cells[hang, 13].Value = tangGia;
-                Excel.LuuDuLieu(bangTinh, duongDanDuLieu);
+                Excel.LuuDuLieu(bangTinh);
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine("Loi du lieu xe: " + e.Message);
-            }
-            finally
-            {
-                Excel.Dong(excel, trang);
+                throw new Exception("Loi du lieu xe: " + e.Message);
             }
         }
-        protected void XoaXeTrongDuLieu(ChuXe chuXe, string duongDanDuLieu)
+        protected void XoaXeTrongDuLieu(ChuXe chuXe, Excel.ELoaiDuLieu loaiDuLieu)
         {
-            Application excel = null;
-            Workbook trang = null;
-            Worksheet bangTinh;
-
+            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
             try
             {
-                Excel.KhoiTao(out excel, out trang, out bangTinh, duongDanDuLieu);
                 int hang = 2;
                 DateTime ngayThangNam;
                 do
@@ -228,15 +210,11 @@ namespace DoAnCuoiKy
                         Convert.ToDecimal(bangTinh.Cells[hang][13].Text != HangXe) != tangGia
                         );
                 Excel.XoaHang(bangTinh, hang);
-                Excel.LuuDuLieu(bangTinh, duongDanDuLieu);
+                Excel.LuuDuLieu(bangTinh);
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine("Loi du lieu xe: " + e.Message);
-            }
-            finally
-            {
-                Excel.Dong(excel, trang);
             }
         }
         public enum EPhanLoai

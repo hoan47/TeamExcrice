@@ -275,7 +275,7 @@ namespace DoAnCuoiKy
                                         Console.WriteLine("Chon:\n1. De xoa xe.\n2. Quay lai.");
                                         if (DauVaoBanPhim.Int(1, 2, "Chon 1 hoac 2: ") == 1)
                                         {
-                                            int soThuTu = DauVaoBanPhim.Int(1, chuChoThue.DanhSachXe[luaChon - 1].Count, "Chon 1 trong " + chuChoThue.DanhSachXe[luaChon - 1].Count + " can xoa: ");
+                                            int soThuTu = DauVaoBanPhim.Int(1, chuChoThue.DanhSachXe[luaChon - 1].Count, "Chon 1 trong " + chuChoThue.DanhSachXe[luaChon - 1].Count + " xe can xoa: ");
 
                                             switch (luaChon)
                                             {
