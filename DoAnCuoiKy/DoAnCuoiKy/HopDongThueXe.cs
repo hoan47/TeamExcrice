@@ -25,9 +25,9 @@ namespace DoAnCuoiKy
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
         }
-        public static HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuXe chuXe, Xe xeChoThue)
+        public static HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuXe chuXe, Xe xeChoThue, List<TaiXe>danhSachTaiXe)
         {
-            return new HopDongThueXe(khachThue, chuXe, TaiXe.ChonTaiXe(null), xeChoThue, DauVaoBanPhim.Int(1, 365, "Chon tu 1 toi 365 ngay: "), DauVaoBanPhim.DateTime_("Ngay thue xe: "));
+            return new HopDongThueXe(khachThue, chuXe, TaiXe.ChonTaiXe(danhSachTaiXe), xeChoThue, DauVaoBanPhim.Int(1, 365, "Chon so ngay thue xe (tu 1 toi 365 ngay): "), DauVaoBanPhim.DateTime_("Ngay thue xe: "));
         }
         private decimal TienKhuyenMai()
         {
@@ -135,23 +135,18 @@ namespace DoAnCuoiKy
         }
         public void XemHopDong()
         {
-            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: ");
-            chuThue.ThongTin();
-            Console.WriteLine("Khach thue xe la: ");
-            khachThue.ThongTin();
+            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: \n");
+            Console.WriteLine("Khach thue xe la: \n");
             Console.WriteLine("Thong tin loai xe hop dong: ");
             xeChoThue.XuatThongTinXe();
-            Console.WriteLine();
-            Console.WriteLine("So ngay thue: "+soNgay);
+            Console.WriteLine("\nSo ngay thue: "+soNgay);
             Console.WriteLine("Ngay bat dau thue: "+ngayThue.ToString("dd/MM/yyyy"));
-            Console.WriteLine();
-            Console.WriteLine("Noi dung cac chi phi phat sinh bao gom: ");
+            Console.WriteLine("\nNoi dung cac chi phi phat sinh bao gom: ");
             Console.WriteLine("Chi phi gia han (tre han tra xe)= So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
             Console.WriteLine("Tien boi thuong hu hong gom: ");
             Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
             Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
             Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
-            Console.WriteLine();
         }
     }
 }

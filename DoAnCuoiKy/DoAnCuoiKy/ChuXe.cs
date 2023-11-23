@@ -132,5 +132,9 @@ namespace DoAnCuoiKy
                 return soLanDaThue.Keys.ToList();
             }
         }
+        public bool KiemTraXeSauKhiTra(string tinhTrang)
+        {
+            return DauVaoBanPhim.Bool(tinhTrang);
+        }
     }
 }

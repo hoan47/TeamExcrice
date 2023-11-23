@@ -7,6 +7,7 @@ namespace DoAnCuoiKy
         static void Main(string[] args)
         {
             ChayChuongTrinh.ChuongTrinh();
+            Console.ReadKey();
         }
     }
 }
