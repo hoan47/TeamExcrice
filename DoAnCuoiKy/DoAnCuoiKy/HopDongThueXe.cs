@@ -125,7 +125,7 @@ namespace DoAnCuoiKy
             {
                 taiXe.TrangThai(false);
                 xeChoThue.TraXe();
-                Console.WriteLine("Thanh cong tong chi phi phat sinh phai tra: " + chiPhiDen);
+                Console.WriteLine("Thanh cong, tong chi phi phat sinh phai tra: " + string.Format("{0:N0}", chiPhiDen) + " VND");
                 chuThue.KhachHangQuen.ThueXe(khachThue);
             }
             else
@@ -135,12 +135,16 @@ namespace DoAnCuoiKy
         }
         public void XemHopDong()
         {
-            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: \n");
-            Console.WriteLine("Khach thue xe la: \n");
+            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: ");
+            chuThue.ThongTin();
+            Console.WriteLine("Khach thue xe la: ");
+            khachThue.ThongTin();
             Console.WriteLine("Thong tin loai xe hop dong: ");
             xeChoThue.XuatThongTinXe();
             Console.WriteLine("\nSo ngay thue: "+soNgay);
             Console.WriteLine("Ngay bat dau thue: "+ngayThue.ToString("dd/MM/yyyy"));
+            Console.WriteLine("Uu dai: "+ string.Format("{0:N0}", TienKhuyenMai()) + " VND");
+            Console.WriteLine("Tang gia: "+ string.Format("{0:N0}", TienTangGia()) + " VND");
             Console.WriteLine("\nNoi dung cac chi phi phat sinh bao gom: ");
             Console.WriteLine("Chi phi gia han (tre han tra xe)= So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
             Console.WriteLine("Tien boi thuong hu hong gom: ");

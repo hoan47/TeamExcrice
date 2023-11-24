@@ -75,7 +75,7 @@ namespace DoAnCuoiKy
             return danhSachXeTimDuoc;
         }
         static public void XuatDanhSachChuXe(List<ChuXe> danhSachChuChoThue)
-        {
+        {5
             Console.WriteLine("Danh sach chu cho thue xe:");
             XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
         }

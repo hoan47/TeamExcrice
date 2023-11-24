@@ -24,7 +24,7 @@ namespace DoAnCuoiKy
             this.ngaySinh = ngaySinh;
             this.nganHang = nganHang;
         }
-        static public void XuatDanhSachThongTin(List<ThongTinCoBan> danhSach)
+        static protected void XuatDanhSachThongTin(List<ThongTinCoBan> danhSach)
         {
             for (int i = 0; i < danhSach.Count; i++)
             {
@@ -39,7 +39,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("Dia chi: " + diaChi);
             Console.WriteLine("So dien thoai: " + soDienThoai);
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
-            Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan);
+            Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan+"\n");
         }
         static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Excel.ELoaiDuLieu loaiDuLieu)
         {

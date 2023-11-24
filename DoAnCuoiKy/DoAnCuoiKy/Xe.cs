@@ -96,7 +96,9 @@ namespace DoAnCuoiKy
         }
         static public void XuatDanhSachXe(List<Xe> danhSachXe, bool daThue)
         {
+            Console.WriteLine("Danh sach xe " + (daThue == true ? "da co nguo thue" : "chua co nguoi thue") + ":");
             int soThuTu = 1;
+
             foreach (Xe xe in danhSachXe)
             {
                 if (xe.daThue == daThue)
@@ -187,6 +189,7 @@ namespace DoAnCuoiKy
         protected void XoaXeTrongDuLieu(ChuXe chuXe, Excel.ELoaiDuLieu loaiDuLieu)
         {
             Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
+
             try
             {
                 int hang = 2;
@@ -197,17 +200,17 @@ namespace DoAnCuoiKy
                 }
                 while (bangTinh.Cells[hang][1].Text != chuXe.NganHang.SoTaiKhoan &&
                         bangTinh.Cells[hang][2].Text != HangXe &&
-                        ngayThangNam != NamMua &&
-                        Convert.ToDouble(bangTinh.Cells[hang][4].Text != HangXe) != kilometDaDi &&
+                        ngayThangNam != NamMua && 
+                        Convert.ToDouble(bangTinh.Cells[hang][4].Text) != kilometDaDi &&
                         bangTinh.Cells[hang][5].Text != (baoHiem == true ? "Có" : "Không") &&
                         MucDichCuaXe(bangTinh.Cells[hang][6].Text) != mucDich &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][7].Text != HangXe) != giaThueMotNgay &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][8].Text != HangXe) != tienCoc &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][9].Text != HangXe) != giaDenXuotXe &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][10].Text != HangXe) != giaDenBeBanh &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][11].Text != HangXe) != giaDenHuDen &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][12].Text != HangXe) != uuDai &&
-                        Convert.ToDecimal(bangTinh.Cells[hang][13].Text != HangXe) != tangGia
+                        Convert.ToDecimal(bangTinh.Cells[hang][7].Text) != giaThueMotNgay &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][8].Text) != tienCoc &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][9].Text) != giaDenXuotXe &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][10].Text) != giaDenBeBanh &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][11].Text) != giaDenHuDen &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][12].Text) != uuDai &&
+                        Convert.ToDecimal(bangTinh.Cells[hang][13].Text) != tangGia
                         );
                 Excel.XoaHang(bangTinh, hang);
                 Excel.LuuDuLieu(bangTinh);

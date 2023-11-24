@@ -13,12 +13,14 @@ namespace DoAnCuoiKy
     static internal class Excel
     {
         private const string duongDan = "DuLieu.xlsx";
-        public static Application excel = new Application();
-        public static Workbook trang = excel.Workbooks.Open(DuongDan(duongDan));
+        public static Application excel;
+        public static Workbook trang;
+
         static Excel()
         {
-            Console.WriteLine("Khoi tao excel.");
-            AppDomain.CurrentDomain.ProcessExit += (sender, e) => { Dong(); };
+            excel = new Application();
+            trang = excel.Workbooks.Open(DuongDan(duongDan));
+            AppDomain.CurrentDomain.ProcessExit += (_, _e) => { Dong(); };
         }
         public static Worksheet BangTinh(ELoaiDuLieu loaiDuLieu)
         {
@@ -48,7 +50,6 @@ namespace DoAnCuoiKy
                 excel.Quit();
                 Marshal.FinalReleaseComObject(excel);
             }
-            Console.WriteLine("Da dong excel.");
         }
         public static void XoaHang(Worksheet bangTinh, int hang)
         {

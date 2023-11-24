@@ -140,5 +140,25 @@ namespace DoAnCuoiKy
                 }
             }
         }
+
+        public static Xe.EPhanLoai LoaiXe()
+        {
+            Console.WriteLine("Loai xe: ");
+            Console.WriteLine("1. Xe may");
+            Console.WriteLine("2. Xe bon cho");
+            Console.WriteLine("3. Xe bay cho");
+            while (true)
+            {
+                switch (Int(1, 3, "Chon 1 trong 3: "))
+                {
+                    case 1:
+                        return Xe.EPhanLoai.XeMay;
+                    case 2:
+                        return Xe.EPhanLoai.XeBonCho;
+                    case 3:
+                        return Xe.EPhanLoai.XeBayCho;
+                }
+            }
+        }
     }
 }

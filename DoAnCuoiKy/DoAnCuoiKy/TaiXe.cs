@@ -22,6 +22,11 @@ namespace DoAnCuoiKy
         {
             this.daThue = daThue;
         }
+        static public void XuatDanhSachTaiXe(List<TaiXe> danhSachKhachThueXe)
+        {
+            Console.WriteLine("Danh sach tai xe:");
+            XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
+        }
         static public List<TaiXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
             List<TaiXe> danhSachTaiXe = new List<TaiXe>();
