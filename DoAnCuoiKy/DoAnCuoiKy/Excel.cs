@@ -65,7 +65,8 @@ namespace DoAnCuoiKy
             KhachThueXe = 4,
             XeMay = 5,
             XeBonCho = 6,
-            XeBayCho = 7
+            XeBayCho = 7,
+            HopDong = 8
         }
     }
 }

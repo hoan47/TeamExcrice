@@ -6,8 +6,8 @@ namespace DoAnCuoiKy
     {
         static void Main(string[] args)
         {
+            DuLieu.KhoiTaoDuLieu();
             ChayChuongTrinh.ChuongTrinh();
-            Console.ReadKey();
         }
     }
 }

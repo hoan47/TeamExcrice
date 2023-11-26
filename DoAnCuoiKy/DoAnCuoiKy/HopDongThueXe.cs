@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace DoAnCuoiKy
         private Xe xeChoThue;
         private DateTime ngayThue;
         private int soNgay;
+        static private Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> danhSachHopDong;
+        public static Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> DanhSachHopDong { get { return danhSachHopDong; } }
 
         public HopDongThueXe(KhachThueXe khachThue, ChuXe chuThue, TaiXe taiXe, Xe xeChoThue, int soNgay, DateTime ngayThue)
         {
@@ -24,10 +27,7 @@ namespace DoAnCuoiKy
             this.xeChoThue = xeChoThue;
             this.soNgay = soNgay;
             this.ngayThue = ngayThue;
-        }
-        public static HopDongThueXe KhoiTaoHopDong(KhachThueXe khachThue, ChuXe chuXe, Xe xeChoThue, List<TaiXe>danhSachTaiXe)
-        {
-            return new HopDongThueXe(khachThue, chuXe, TaiXe.ChonTaiXe(danhSachTaiXe), xeChoThue, DauVaoBanPhim.Int(1, 365, "Chon so ngay thue xe (tu 1 toi 365 ngay): "), DauVaoBanPhim.DateTime_("Ngay thue xe: "));
+            danhSachHopDong = new Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe>();
         }
         private decimal TienKhuyenMai()
         {
@@ -61,25 +61,19 @@ namespace DoAnCuoiKy
         }
         public void ThanhToan()
         {
-            if (xeChoThue.DaThue == false)
-            {
-                decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay;
+            decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay;
 
-                Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
-                if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
-                {
-                    Console.WriteLine("Thue xe thanh cong");
-                    taiXe.TrangThai(true);
-                    xeChoThue.DaThueXe();
-                }
-                else
-                {
-                    Console.WriteLine("Thue xe khong thanh cong");
-                }
+            Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
+            if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
+            {
+                chuThue.ChoThueXe(xeChoThue);
+                khachThue.ThemXeDaThue(xeChoThue);
+                danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(chuThue, khachThue, xeChoThue), this);
+                Console.WriteLine("Thue xe thanh cong");
             }
             else
             {
-                Console.WriteLine("Xe da co nguoi thue");
+                Console.WriteLine("Thue xe khong thanh cong");
             }
         }
         public void CacChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
@@ -100,6 +94,7 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0) + " VND");
             }
+            Console.WriteLine();
         }
         public void KetThucThueXe(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
         {
@@ -123,10 +118,11 @@ namespace DoAnCuoiKy
             }
             if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, chiPhiDen) == true || chiPhiDen == 0)
             {
-                taiXe.TrangThai(false);
-                xeChoThue.TraXe();
+                chuThue.KhachTraXe(xeChoThue);
                 Console.WriteLine("Thanh cong, tong chi phi phat sinh phai tra: " + string.Format("{0:N0}", chiPhiDen) + " VND");
                 chuThue.KhachHangQuen.ThueXe(khachThue);
+                khachThue.KetThucThueXe(xeChoThue);
+                danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(chuThue, khachThue, xeChoThue));
             }
             else
             {
@@ -135,22 +131,66 @@ namespace DoAnCuoiKy
         }
         public void XemHopDong()
         {
-            Console.WriteLine("\nHop dong thue xe giua chu cho thue la: ");
+            Console.WriteLine("\nHop dong thue xe giua khach va chu xe la:\nChu xe:");
             chuThue.ThongTin();
-            Console.WriteLine("Khach thue xe la: ");
+            if (taiXe == null)
+            {
+                Console.WriteLine("Khong co tai xe.\n");
+            }
+            else
+            { 
+                Console.WriteLine("Tai xe:");
+                taiXe.ThongTin();
+            }
+            Console.WriteLine("Khach thue xe:");
             khachThue.ThongTin();
-            Console.WriteLine("Thong tin loai xe hop dong: ");
+            Console.WriteLine("Thong tin xe:");
             xeChoThue.XuatThongTinXe();
-            Console.WriteLine("\nSo ngay thue: "+soNgay);
-            Console.WriteLine("Ngay bat dau thue: "+ngayThue.ToString("dd/MM/yyyy"));
-            Console.WriteLine("Uu dai: "+ string.Format("{0:N0}", TienKhuyenMai()) + " VND");
-            Console.WriteLine("Tang gia: "+ string.Format("{0:N0}", TienTangGia()) + " VND");
-            Console.WriteLine("\nNoi dung cac chi phi phat sinh bao gom: ");
-            Console.WriteLine("Chi phi gia han (tre han tra xe)= So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
+            Console.WriteLine("So ngay thue: " + soNgay);
+            Console.WriteLine("Ngay bat dau thue: " + ngayThue.ToString("dd/MM/yyyy"));
+            Console.WriteLine("Uu dai: " + string.Format("{0:N0}", TienKhuyenMai()) + " VND");
+            Console.WriteLine("Tang gia: " + string.Format("{0:N0}", TienTangGia()) + " VND");
+            Console.WriteLine("Noi dung cac chi phi phat sinh bao gom: ");
+            Console.WriteLine("Chi phi gia han (tre han tra xe) = So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
             Console.WriteLine("Tien boi thuong hu hong gom: ");
             Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
             Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
             Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
+            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay + xeChoThue.TienCoc) + " VND");
+        }
+        public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
+        {
+            return new HopDongThueXe(khachThueXe, xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (toi da 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
+        }
+        static protected void DocDuLieu(List<ChuXe> danhSachChuXe, List<KhachThueXe> danhSachKhachThueXe, List<TaiXe> danhSachTaiXe, Excel.ELoaiDuLieu loaiDuLieu)
+        {
+            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
+
+            try
+            {
+                DateTime ngayThangNam;
+
+                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
+                {
+                    DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
+
+                    ChuXe chuXe = danhSachChuXe.Find(chu => chu.NganHang.SoTaiKhoan == bangTinh.Cells[i,2].Text);
+                    Xe xeChoThue;
+                    foreach(List<Xe> danhSach in chuXe.DanhSachXeChuaThue)
+                    {
+                        xeChoThue = danhSach.Find(xe => xe.BienSoXe == bangTinh.Cells[i, 3].Text);
+                        if(xeChoThue != null)
+                        {
+                            break;
+                        }
+                    }
+                    new HopDongThueXe(danhSachKhachThueXe.Find(khach => khach.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), chuXe, bangTinh.Cells[i, 3].Text == "Không có tài xế" ? null : danhSachTaiXe.Find(taiXe => taiXe.NganHang.SoTaiKhoan == bangTinh.Cells[i, 3].Text), xeChoThue)
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Loi du lieu hop dong: " + e.Message);
+            }
         }
     }
 }

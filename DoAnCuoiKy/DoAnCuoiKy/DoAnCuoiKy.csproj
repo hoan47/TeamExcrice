@@ -69,11 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChayChuongTrinh.cs" />
-    <Compile Include="ChuongTrinhChuXe.cs" />
-    <Compile Include="ChuongTrinhKhachThueXe.cs" />
+    <Compile Include="ChayChuongTrinhChuXe.cs" />
+    <Compile Include="ChayChuongTrinhKhachThueXe.cs" />
     <Compile Include="ChuXe.cs" />
     <Compile Include="DanhGia.cs" />
     <Compile Include="DauVaoBanPhim.cs" />
+    <Compile Include="DuLieu.cs" />
     <Compile Include="QuanLyDanhGia.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="HopDongThueXe.cs" />

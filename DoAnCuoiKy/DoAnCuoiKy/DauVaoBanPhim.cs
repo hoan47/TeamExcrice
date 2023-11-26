@@ -72,7 +72,12 @@ namespace DoAnCuoiKy
                 try
                 {
                     Console.Write(noiDung);
-                    giaTri = decimal.Parse(Console.ReadLine());
+                    string duLieu = Console.ReadLine();
+                    if(duLieu.Length > 20)
+                    {
+                        continue;
+                    }
+                    giaTri = decimal.Parse(duLieu);
                     return giaTri;
                 }
                 catch (FormatException)
@@ -100,11 +105,7 @@ namespace DoAnCuoiKy
         }
         static public Xe.EMucDich MucDich()
         {
-            Console.WriteLine("Muc dich mua xe: ");
-            Console.WriteLine("1. Du lich");
-            Console.WriteLine("2. Dam cuoi");
-            Console.WriteLine("3. Tap lai");
-            Console.WriteLine("4. Khac");
+            Console.WriteLine("Muc dich mua xe:\n1. Du lich.\n2. Dam cuoi.\n3. Tap lai.\n4. Khac");
             while (true)
             {
                 switch (Int(1, 4, "Chon 1 trong 4: "))
@@ -143,10 +144,7 @@ namespace DoAnCuoiKy
 
         public static Xe.EPhanLoai LoaiXe()
         {
-            Console.WriteLine("Loai xe: ");
-            Console.WriteLine("1. Xe may");
-            Console.WriteLine("2. Xe bon cho");
-            Console.WriteLine("3. Xe bay cho");
+            Console.WriteLine("Loai xe:\n1. Xe may.\n2. Xe bon cho.\n3. Xe bay cho");
             while (true)
             {
                 switch (Int(1, 3, "Chon 1 trong 3: "))

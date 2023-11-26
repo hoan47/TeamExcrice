@@ -9,18 +9,12 @@ namespace DoAnCuoiKy
 {
     class TaiXe : ThongTinCoBan
     {
-        private bool daThue;
-        public bool DaThue { get { return daThue; } }
         private QuanLyDanhGia danhGia;
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
         public TaiXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             danhGia = new QuanLyDanhGia();
-        }
-        public void TrangThai(bool daThue)
-        {
-            this.daThue = daThue;
         }
         static public void XuatDanhSachTaiXe(List<TaiXe> danhSachKhachThueXe)
         {
@@ -39,7 +33,10 @@ namespace DoAnCuoiKy
         }
         static public TaiXe ChonTaiXe(List<TaiXe>danhSachTaiXe)
         {
-            return danhSachTaiXe[DauVaoBanPhim.Int(1, danhSachTaiXe.Count, "Chon 1 trong " + danhSachTaiXe.Count.ToString() + " tai xe: ") - 1];
+            Console.WriteLine((danhSachTaiXe.Count + 1).ToString() + ". Khong can tai xe");
+            int luaChon = DauVaoBanPhim.Int(1, danhSachTaiXe.Count + 1, "Chon 1 trong " + danhSachTaiXe.Count.ToString() + " tai xe: ");
+
+            return luaChon == danhSachTaiXe.Count + 1 ? null : danhSachTaiXe[luaChon - 1];
         }
     }
 }

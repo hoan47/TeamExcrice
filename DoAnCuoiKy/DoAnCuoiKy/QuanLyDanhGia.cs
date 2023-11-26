@@ -21,6 +21,11 @@ namespace DoAnCuoiKy
         }
         public void XuatToanBoDanhGia()
         {
+            if(danhSachDanhGia.Count == 0)
+            {
+                Console.WriteLine("Chua co danh gia nao het.");
+                return;
+            }
             foreach (DanhGia danhGia in DanhSachDanhGia)
             {
                 Console.WriteLine("Danh gia:");

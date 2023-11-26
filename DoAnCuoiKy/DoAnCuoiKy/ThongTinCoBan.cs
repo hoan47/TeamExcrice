@@ -43,10 +43,9 @@ namespace DoAnCuoiKy
         }
         static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Excel.ELoaiDuLieu loaiDuLieu)
         {
-            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-
             try
             {
+                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
                 DateTime ngayThangNam;
 
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)

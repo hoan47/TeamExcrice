@@ -10,80 +10,93 @@ namespace DoAnCuoiKy
 {
     internal class ChuXe : ThongTinCoBan
     {
-        private List<Xe>[] danhSachXe;
+        private List<Xe>[] danhSachXeChuaThue;
+        private List<Xe>[] danhSachXeDaThue;
         private QuanLyDanhGia danhGia;
         private KhachQuen khachHangQuen;
-        public List<Xe>[] DanhSachXe { get { return danhSachXe; } }
+        public List<Xe>[] DanhSachXeChuaThue { get { return danhSachXeChuaThue; } }
+        public List<Xe>[] DanhSachXeDaThue { get { return danhSachXeDaThue; } }
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
         public KhachQuen KhachHangQuen { get { return khachHangQuen; } }
 
-        public ChuXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
+        public ChuXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang)
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
-            KhoiTaoDanhSachXe();
+            KhoiTaoDanhSachXe(out danhSachXeChuaThue);
+            KhoiTaoDanhSachXe(out danhSachXeDaThue);
             danhGia = new QuanLyDanhGia();
             khachHangQuen = new KhachQuen();
         }
-        private void KhoiTaoDanhSachXe()
+        private void KhoiTaoDanhSachXe(out List<Xe>[] danhSach)
         {
-            danhSachXe = new List<Xe>[3];
+            danhSach = new List<Xe>[3];
             for (int i = 0; i < 3; i++)
             {
-                danhSachXe[i] = new List<Xe>();
+                danhSach[i] = new List<Xe>();
             }
         }
-        public void ThemXe(Xe xe)
+        private static void ThayDoiDuLieuTrangThai(Xe xe, bool x)
         {
-            if (xe is XeMay)
+            if (xe is XeMay xeMay)
             {
-                if (danhSachXe[(int)Xe.EPhanLoai.XeMay].Contains(xe) == false)
-                {
-                    danhSachXe[(int)Xe.EPhanLoai.XeMay].Add(xe);
-                }
+                xeMay.DuLieuTrangThai(x);
             }
-            else if (xe is XeBonCho)
+            if (xe is XeBonCho xeBonCho)
             {
-                if (danhSachXe[(int)Xe.EPhanLoai.XeBonCho].Contains(xe) == false)
-                {
-                    danhSachXe[(int)Xe.EPhanLoai.XeBonCho].Add(xe);
-                }
+                xeBonCho.DuLieuTrangThai(x);
             }
-            else
+            if (xe is XeBayCho xeBayCho)
             {
-                if (danhSachXe[(int)Xe.EPhanLoai.XeBayCho].Contains(xe) == false)
-                {
-                    danhSachXe[(int)Xe.EPhanLoai.XeBayCho].Add(xe);
-                }
+                xeBayCho.DuLieuTrangThai(x);
             }
+        }
+        public void ThemXeChuaThue(Xe xe)
+        {
+            danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Add(xe);
+        }
+        public void ThemXeDaThue(Xe xe)
+        {
+            danhSachXeDaThue[(int)Xe.PhanLoai(xe)].Add(xe);
         }
         public List<Xe> TimXe(Xe.EPhanLoai loaiXe, decimal giaTu, decimal giaDen)
         {
             List<Xe> danhSachXeTimDuoc = new List<Xe>();
 
             Console.WriteLine("Ket qua tim kiem: ");
-            foreach (Xe xe in danhSachXe[(int)loaiXe])
+            foreach (Xe xe in danhSachXeChuaThue[(int)loaiXe])
             {
                 if (giaTu <= xe.GiaThueMotNgay && xe.GiaThueMotNgay <= giaDen)
                 {
-                    Console.WriteLine("\nXe thu: " + (danhSachXeTimDuoc.Count + 1).ToString());
+                    Console.WriteLine("Xe thu: " + (danhSachXeTimDuoc.Count + 1).ToString());
                     xe.XuatThongTinXe();
                     danhSachXeTimDuoc.Add(xe);
                 }
             }
-            Console.WriteLine("\nSo xe tim duoc nam trong muc gia [" + giaTu.ToString() + ";  " 
-                + giaDen.ToString()  + "] la: " + danhSachXeTimDuoc.Count);
+            Console.WriteLine("So xe tim duoc nam trong muc gia [" + giaTu.ToString() + ";  " + giaDen.ToString() + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
-        static public void XuatDanhSachChuXe(List<ChuXe> danhSachChuChoThue)
-        {5
-            Console.WriteLine("Danh sach chu cho thue xe:");
-            XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
-        }
-        static public void XuatToanBoDanhGiaXe(List<Xe>[] danhSachXe)
+        public void ChoThueXe(Xe xe)
         {
-            foreach(List<Xe> xe in danhSachXe)
+            danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Remove(xe);
+            danhSachXeDaThue[(int)Xe.PhanLoai(xe)].Add(xe);
+            ThayDoiDuLieuTrangThai(xe, true);
+        }
+        public void KhachTraXe(Xe xe)
+        {
+            danhSachXeDaThue[(int)Xe.PhanLoai(xe)].Remove(xe);
+            danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Add(xe);
+            ThayDoiDuLieuTrangThai(xe, false);
+        }
+        public void XuatToanBoDanhGiaXe()
+        {
+            XuatToanBoDanhGiaXe(danhSachXeChuaThue);
+            XuatToanBoDanhGiaXe(danhSachXeDaThue);
+        }
+        public void XuatToanBoDanhGiaXe(List<Xe>[] danhSach)
+        {
+            foreach (List<Xe> xe in danhSach)
             {
-                foreach(Xe xe_ in xe)
+                foreach (Xe xe_ in xe)
                 {
                     if (xe_.DanhGia.DanhSachDanhGia.Count != 0)
                     {
@@ -92,6 +105,11 @@ namespace DoAnCuoiKy
                     }
                 }
             }
+        }
+        static public void XuatDanhSachChuXe(List<ChuXe> danhSachChuChoThue)
+        {
+            Console.WriteLine("Danh sach chu cho thue xe:");
+            XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
         }
         static public List<ChuXe> DocDuLieu(List<NganHang> danhSachNganHang)
         {
@@ -102,7 +120,7 @@ namespace DoAnCuoiKy
         public override void ThongTin()
         {
             base.ThongTin();
-            Console.WriteLine("Hien co " + danhSachXe.Sum(ds => ds.Count) + " xe cho thue\n");
+            Console.WriteLine("Hien co " + (danhSachXeChuaThue.Sum(ds => ds.Count) + danhSachXeDaThue.Sum(ds => ds.Count)).ToString() + " xe cho thue\n");
         }
         public class KhachQuen
         {
@@ -120,7 +138,7 @@ namespace DoAnCuoiKy
                 }
                 else
                 {
-                    soLanDaThue[khach] ++;
+                    soLanDaThue[khach]++;
                 }
             }
             public int SoLanThueXe(KhachThueXe khach)
@@ -131,10 +149,6 @@ namespace DoAnCuoiKy
             {
                 return soLanDaThue.Keys.ToList();
             }
-        }
-        public bool KiemTraXeSauKhiTra(string tinhTrang)
-        {
-            return DauVaoBanPhim.Bool(tinhTrang);
         }
     }
 }

@@ -19,9 +19,10 @@ namespace DoAnCuoiKy
         }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
-            if (soDu >= tien && tien != 0)
+            if (soDu >= tien && tien > 0)
             {
-                soDu -= tien;
+                soDu = soDu - tien;
+                ThayDoiDuLieu();
                 nguoiNhan.NhanTien(tien);
                 return true;
             }
@@ -29,15 +30,16 @@ namespace DoAnCuoiKy
         }
         private void NhanTien(decimal tien)
         {
-            soDu += -tien;
+            soDu = soDu + tien;
+            ThayDoiDuLieu();
         }
         static public List<NganHang> DocDuLieu()
         {
-            Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
+            List<NganHang> danhSachNganHang;
 
-            List<NganHang> danhSachNganHang = null;
             try
             {
+                Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
                 danhSachNganHang = new List<NganHang>();
                 for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
                 {
@@ -49,6 +51,24 @@ namespace DoAnCuoiKy
                 throw new Exception("Du lieu ngan hang loi: " + e.Message);
             }
             return danhSachNganHang;
+        }
+        private void ThayDoiDuLieu()
+        {
+            try
+            {
+                Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
+                int hang = 3;
+
+                while (bangTinh.Cells[hang, 1].Text != soTaiKhoan)
+                {
+                    hang++;
+                }
+                bangTinh.Cells[hang, 2].Value = soDu;
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Loi du lieu ngan hang: " + e.Message);
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DoAnCuoiKy
             this.noiDung = noiDung;
             this.sao = sao;
         }
-        static public DanhGia KhoiTaoDanhGia(ThongTinCoBan nguoiDanhGia)
+        static public DanhGia KhoiTao(ThongTinCoBan nguoiDanhGia)
         {
             return new DanhGia(nguoiDanhGia, DauVaoBanPhim.String("Noi dung danh gia: "), DauVaoBanPhim.DanhGia_());
         }

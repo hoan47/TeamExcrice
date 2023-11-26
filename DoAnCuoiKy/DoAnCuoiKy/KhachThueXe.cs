@@ -7,15 +7,31 @@ namespace DoAnCuoiKy
     class KhachThueXe : ThongTinCoBan
     {
         private QuanLyDanhGia danhGia;
+        private List<Xe> danhSachXeDaThue;
         public QuanLyDanhGia DanhGia { get { return danhGia; } }
+        public List<Xe> DanhSachXeDaThue { get { return danhSachXeDaThue; } }
+
         public KhachThueXe(string hoTen, string diaChi, string soDienThoai, DateTime ngaySinh, NganHang nganHang) 
             : base(hoTen, diaChi, soDienThoai, ngaySinh, nganHang)
         {
             danhGia = new QuanLyDanhGia();
+            danhSachXeDaThue = new List<Xe>();
         }
-        public List<Xe> KhachYeuCauTimVaChonXe(ChuXe chu, Xe.EPhanLoai loaiXe, decimal giaTu, decimal giaDen)
+        public void ThemXeDaThue(Xe xe)
         {
-            return chu.TimXe(loaiXe, giaTu, giaDen);
+            danhSachXeDaThue.Add(xe);
+        }
+        public void KetThucThueXe(Xe xe)
+        {
+            danhSachXeDaThue.Remove(xe);
+        }
+        public void XuatDanhSachXeDaThue()
+        {
+            Console.WriteLine("Danh sach xe da thue:");
+            foreach(Xe xe in danhSachXeDaThue)
+            {
+                xe.XuatThongTinXe();
+            }
         }
         static public void XuatDanhSachKhachThueXe(List<KhachThueXe> danhSachKhachThueXe)
         {
