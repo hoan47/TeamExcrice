@@ -1,10 +1,6 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
@@ -33,21 +29,6 @@ namespace DoAnCuoiKy
             for (int i = 0; i < 3; i++)
             {
                 danhSach[i] = new List<Xe>();
-            }
-        }
-        private static void ThayDoiDuLieuTrangThai(Xe xe, bool x)
-        {
-            if (xe is XeMay xeMay)
-            {
-                xeMay.DuLieuTrangThai(x);
-            }
-            if (xe is XeBonCho xeBonCho)
-            {
-                xeBonCho.DuLieuTrangThai(x);
-            }
-            if (xe is XeBayCho xeBayCho)
-            {
-                xeBayCho.DuLieuTrangThai(x);
             }
         }
         public void ThemXeChuaThue(Xe xe)
@@ -79,13 +60,11 @@ namespace DoAnCuoiKy
         {
             danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Remove(xe);
             danhSachXeDaThue[(int)Xe.PhanLoai(xe)].Add(xe);
-            ThayDoiDuLieuTrangThai(xe, true);
         }
         public void KhachTraXe(Xe xe)
         {
             danhSachXeDaThue[(int)Xe.PhanLoai(xe)].Remove(xe);
             danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Add(xe);
-            ThayDoiDuLieuTrangThai(xe, false);
         }
         public void XuatToanBoDanhGiaXe()
         {
@@ -110,12 +89,6 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("Danh sach chu cho thue xe:");
             XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
-        }
-        static public List<ChuXe> DocDuLieu(List<NganHang> danhSachNganHang)
-        {
-            List<ChuXe> danhSachChuXe = new List<ChuXe>();
-            DocDuLieu(danhSachChuXe, null, null, danhSachNganHang, Excel.ELoaiDuLieu.ChuXe);
-            return danhSachChuXe;
         }
         public override void ThongTin()
         {

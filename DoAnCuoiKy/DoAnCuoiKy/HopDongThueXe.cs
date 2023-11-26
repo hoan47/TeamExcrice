@@ -1,37 +1,38 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static DoAnCuoiKy.HopDongThueXe;
 
 namespace DoAnCuoiKy
 {
     class HopDongThueXe
     {
-        private KhachThueXe khachThue;
-        private ChuXe chuThue;
+        private ChuXe chuXe;
         private TaiXe taiXe;
+        private KhachThueXe khachThue;
         private Xe xeChoThue;
         private DateTime ngayThue;
-        private int soNgay;
+        private int soNgayThue;
         static private Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> danhSachHopDong;
+        public KhachThueXe KhachThue { get { return khachThue; } }
+        public ChuXe ChuXe { get { return chuXe; } }
+        public TaiXe TaiXe { get { return taiXe; } }
+        public Xe XeChoThue { get { return xeChoThue; } }
+        public DateTime NgayThue { get { return ngayThue; } }
+        public int SoNgayThue { get { return soNgayThue; } }
         public static Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> DanhSachHopDong { get { return danhSachHopDong; } }
 
-        public HopDongThueXe(KhachThueXe khachThue, ChuXe chuThue, TaiXe taiXe, Xe xeChoThue, int soNgay, DateTime ngayThue)
+        public HopDongThueXe(ChuXe chuXe, TaiXe taiXe, KhachThueXe khachThue, Xe xeChoThue, int soNgayThue, DateTime ngayThue)
         {
-            this.khachThue = khachThue;
-            this.chuThue = chuThue;
+            this.chuXe = chuXe;
             this.taiXe = taiXe;
+            this.khachThue = khachThue;
             this.xeChoThue = xeChoThue;
-            this.soNgay = soNgay;
+            this.soNgayThue = soNgayThue;
             this.ngayThue = ngayThue;
             danhSachHopDong = new Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe>();
         }
         private decimal TienKhuyenMai()
         {
-            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? chuThue.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
+            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? ChuXe.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
         }
         private decimal TienTangGia()
         {
@@ -61,14 +62,15 @@ namespace DoAnCuoiKy
         }
         public void ThanhToan()
         {
-            decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay;
+            decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue;
 
             Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
-            if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
+            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
             {
-                chuThue.ChoThueXe(xeChoThue);
+                ChuXe.ChoThueXe(xeChoThue);
                 khachThue.ThemXeDaThue(xeChoThue);
-                danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(chuThue, khachThue, xeChoThue), this);
+                danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue), this);
+                ChuXe.KhachHangQuen.ThueXe(khachThue);
                 Console.WriteLine("Thue xe thanh cong");
             }
             else
@@ -116,13 +118,12 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", TienGiaHanTraXe(soNgayTre)) + " VND");
             }
-            if (khachThue.NganHang.ChuyenTien(chuThue.NganHang, chiPhiDen) == true || chiPhiDen == 0)
+            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, chiPhiDen) == true || chiPhiDen == 0)
             {
-                chuThue.KhachTraXe(xeChoThue);
+                ChuXe.KhachTraXe(xeChoThue);
                 Console.WriteLine("Thanh cong, tong chi phi phat sinh phai tra: " + string.Format("{0:N0}", chiPhiDen) + " VND");
-                chuThue.KhachHangQuen.ThueXe(khachThue);
                 khachThue.KetThucThueXe(xeChoThue);
-                danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(chuThue, khachThue, xeChoThue));
+                danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue));
             }
             else
             {
@@ -132,7 +133,7 @@ namespace DoAnCuoiKy
         public void XemHopDong()
         {
             Console.WriteLine("\nHop dong thue xe giua khach va chu xe la:\nChu xe:");
-            chuThue.ThongTin();
+            ChuXe.ThongTin();
             if (taiXe == null)
             {
                 Console.WriteLine("Khong co tai xe.\n");
@@ -146,7 +147,7 @@ namespace DoAnCuoiKy
             khachThue.ThongTin();
             Console.WriteLine("Thong tin xe:");
             xeChoThue.XuatThongTinXe();
-            Console.WriteLine("So ngay thue: " + soNgay);
+            Console.WriteLine("So ngay thue: " + soNgayThue);
             Console.WriteLine("Ngay bat dau thue: " + ngayThue.ToString("dd/MM/yyyy"));
             Console.WriteLine("Uu dai: " + string.Format("{0:N0}", TienKhuyenMai()) + " VND");
             Console.WriteLine("Tang gia: " + string.Format("{0:N0}", TienTangGia()) + " VND");
@@ -156,41 +157,11 @@ namespace DoAnCuoiKy
             Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
             Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
             Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
-            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgay + xeChoThue.TienCoc) + " VND");
+            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue + xeChoThue.TienCoc) + " VND");
         }
         public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
         {
-            return new HopDongThueXe(khachThueXe, xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (toi da 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
-        }
-        static protected void DocDuLieu(List<ChuXe> danhSachChuXe, List<KhachThueXe> danhSachKhachThueXe, List<TaiXe> danhSachTaiXe, Excel.ELoaiDuLieu loaiDuLieu)
-        {
-            Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-
-            try
-            {
-                DateTime ngayThangNam;
-
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
-
-                    ChuXe chuXe = danhSachChuXe.Find(chu => chu.NganHang.SoTaiKhoan == bangTinh.Cells[i,2].Text);
-                    Xe xeChoThue;
-                    foreach(List<Xe> danhSach in chuXe.DanhSachXeChuaThue)
-                    {
-                        xeChoThue = danhSach.Find(xe => xe.BienSoXe == bangTinh.Cells[i, 3].Text);
-                        if(xeChoThue != null)
-                        {
-                            break;
-                        }
-                    }
-                    new HopDongThueXe(danhSachKhachThueXe.Find(khach => khach.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), chuXe, bangTinh.Cells[i, 3].Text == "Không có tài xế" ? null : danhSachTaiXe.Find(taiXe => taiXe.NganHang.SoTaiKhoan == bangTinh.Cells[i, 3].Text), xeChoThue)
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Loi du lieu hop dong: " + e.Message);
-            }
+            return new HopDongThueXe(xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), khachThueXe, xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (toi da 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
         }
     }
 }

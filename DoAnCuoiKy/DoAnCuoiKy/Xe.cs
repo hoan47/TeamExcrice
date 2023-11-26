@@ -1,7 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace DoAnCuoiKy
 {
@@ -96,7 +94,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("Bien so xe: " + bienSoXe);
             Console.WriteLine();
         }
-        static protected EMucDich MucDichCuaXe(string duLieu)
+        static public EMucDich MucDichCuaXe(string duLieu)
         {
             switch (duLieu)
             {
@@ -108,6 +106,20 @@ namespace DoAnCuoiKy
                     return EMucDich.TapLai;
                 default:
                     return EMucDich.Khac;
+            }
+        }
+        static public string MucDichCuaXe(EMucDich mucDich)
+        {
+            switch (mucDich)
+            {
+                case EMucDich.DuLich:
+                    return "Du lịch";
+                case EMucDich.DamCuoi: 
+                    return "Đám cưới";
+                case EMucDich.TapLai: 
+                    return "Tập lái";
+                default:
+                    return "Khác";
             }
         }
         static public EPhanLoai PhanLoai(Xe xe)
@@ -137,128 +149,6 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine("So thu tu: " + soThuTu++.ToString());
                 xe.XuatThongTinXe();
-            }
-        }
-
-        static protected void DocDuLieu(List<XeMay> danhSachXeMay, List<XeBonCho> danhSachXeBonCho, List<XeBayCho> danhSachXeBayCho, List<ChuXe> danhSachChuXe, Excel.ELoaiDuLieu loaiDuLieu)
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-                DateTime ngayThangNam;
-
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
-                    if (danhSachXeMay != null)
-                    {
-                        danhSachXeMay.Add(new XeMay(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                    else if (danhSachXeBonCho != null)
-                    {
-                        danhSachXeBonCho.Add(new XeBonCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                              bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                    else
-                    {
-                        danhSachXeBayCho.Add(new XeBayCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Loi du lieu xe: " + e.Message);
-            }
-        }
-        protected void ThemXeVaoDuLieu(Excel.ELoaiDuLieu loaiDuLieu)
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-                int hang = 1;
-
-                while (bangTinh.Cells[hang, 1].Value != null) hang++;
-                bangTinh.Cells[hang, 1].Value = chuXe.NganHang.SoTaiKhoan;
-                bangTinh.Cells[hang, 2].Value = hangXe;
-                bangTinh.Cells[hang, 3].Value = namMua.ToString("yyyy-MM-dd");
-                bangTinh.Cells[hang, 4].Value = kilometDaDi;
-                bangTinh.Cells[hang, 5].Value = baoHiem ? "Có" : "Không";
-                switch (mucDich)
-                {
-                    case EMucDich.DamCuoi:
-                        bangTinh.Cells[hang, 6].Value = "Đám cưới";
-                        break;
-                    case EMucDich.DuLich:
-                        bangTinh.Cells[hang, 6].Value = "Du lịch";
-                        break;
-                    case EMucDich.TapLai:
-                        bangTinh.Cells[hang, 6].Value = "Tập lái";
-                        break;
-                    default:
-                        bangTinh.Cells[hang, 6].Value = "Khác";
-                        break;
-                }
-                bangTinh.Cells[hang, 7].Value = giaThueMotNgay;
-                bangTinh.Cells[hang, 8].Value = tienCoc;
-                bangTinh.Cells[hang, 9].Value = giaDenXuotXe;
-                bangTinh.Cells[hang, 10].Value = giaDenBeBanh;
-                bangTinh.Cells[hang, 11].Value = giaDenHuDen;
-                bangTinh.Cells[hang, 12].Value = uuDai;
-                bangTinh.Cells[hang, 13].Value = tangGia;
-                bangTinh.Cells[hang, 14].Value = bienSoXe;
-                bangTinh.Cells[hang, 15].Value = chuXe.DanhSachXeDaThue[(int)PhanLoai(this)].Contains(this) == true ? "Đúng" : "Sai";
-                Excel.LuuDuLieu(bangTinh);
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Loi du lieu xe: " + e.Message);
-            }
-        }
-        protected void XoaXeTrongDuLieu(Excel.ELoaiDuLieu loaiDuLieu)
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-                int hang = 2;
-
-                DateTime ngayThangNam;
-                do
-                {
-                    DateTime.TryParse(bangTinh.Cells[++hang, 3].Text, out ngayThangNam);
-                }
-                while (bangTinh.Cells[hang, 14].Value != bienSoXe);
-                Excel.XoaHang(bangTinh, hang);
-                Excel.LuuDuLieu(bangTinh);
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine("Loi du lieu xe: " + e.Message);
-            }
-        }
-        protected void DuLieuTrangThai(Excel.ELoaiDuLieu loaiDuLieu, bool daThue)
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-                int hang = 2;
-
-                DateTime ngayThangNam;
-                do
-                {
-                    DateTime.TryParse(bangTinh.Cells[++hang, 3].Text, out ngayThangNam);
-                }
-                while (bangTinh.Cells[hang, 14].Text != bienSoXe);
-                bangTinh.Cells[hang, 15].Value = daThue == true ? "Đúng" : "Sai";
-                Excel.LuuDuLieu(bangTinh);
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine("Loi du lieu xe: " + e.Message);
             }
         }
         public enum EPhanLoai

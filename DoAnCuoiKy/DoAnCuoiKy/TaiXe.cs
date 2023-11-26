@@ -1,9 +1,6 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
@@ -20,12 +17,6 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("Danh sach tai xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
-        }
-        static public List<TaiXe> DocDuLieu(List<NganHang> danhSachNganHang)
-        {
-            List<TaiXe> danhSachTaiXe = new List<TaiXe>();
-            DocDuLieu(null, danhSachTaiXe, null, danhSachNganHang, Excel.ELoaiDuLieu.TaiXe);
-            return danhSachTaiXe;
         }
         public override void ThongTin()
         {

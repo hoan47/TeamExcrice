@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DoAnCuoiKy
@@ -40,35 +39,6 @@ namespace DoAnCuoiKy
             Console.WriteLine("So dien thoai: " + soDienThoai);
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
             Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan+"\n");
-        }
-        static public void DocDuLieu(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Excel.ELoaiDuLieu loaiDuLieu)
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(loaiDuLieu);
-                DateTime ngayThangNam;
-
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
-                    if (danhSachChuXe != null)
-                    {
-                        danhSachChuXe.Add(new ChuXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                    else if (danhSachTaiXe != null)
-                    {
-                        danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                    else
-                    {
-                        danhSachKhachThueXe.Add(new KhachThueXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Du lieu chu xe loi: " + e.Message);
-            }
         }
     }
 }

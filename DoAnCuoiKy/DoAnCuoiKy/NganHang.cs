@@ -1,28 +1,41 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
     internal class NganHang
     {
+        public static List<string> danhSachSoTaiKhoan;
         private string soTaiKhoan;
         private decimal soDu;
         public string SoTaiKhoan { get { return soTaiKhoan; } }
+        public decimal SoDu { get { return soDu; } }
+        static NganHang()
+        {
+            danhSachSoTaiKhoan = new List<string>();
+        }
         public NganHang(string soTaiKhoan, decimal soDu)
         {
+            KiemTraSoTaiKhoan(soTaiKhoan);
             this.soTaiKhoan = soTaiKhoan;
             this.soDu = soDu;
+        }
+        private void KiemTraSoTaiKhoan(string soTaiKhoan)
+        {
+            if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true)
+            {
+                throw new Exception("So tai khoan da ton tai");
+            }
+            else
+            {
+                danhSachSoTaiKhoan.Add(soTaiKhoan);
+            }
         }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
             if (soDu >= tien && tien > 0)
             {
                 soDu = soDu - tien;
-                ThayDoiDuLieu();
                 nguoiNhan.NhanTien(tien);
                 return true;
             }
@@ -31,44 +44,6 @@ namespace DoAnCuoiKy
         private void NhanTien(decimal tien)
         {
             soDu = soDu + tien;
-            ThayDoiDuLieu();
-        }
-        static public List<NganHang> DocDuLieu()
-        {
-            List<NganHang> danhSachNganHang;
-
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
-                danhSachNganHang = new List<NganHang>();
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    danhSachNganHang.Add(new NganHang((string)bangTinh.Cells[i, 1].Text, Convert.ToDecimal(bangTinh.Cells[i, 2].Value)));
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Du lieu ngan hang loi: " + e.Message);
-            }
-            return danhSachNganHang;
-        }
-        private void ThayDoiDuLieu()
-        {
-            try
-            {
-                Worksheet bangTinh = Excel.BangTinh(Excel.ELoaiDuLieu.NganHang);
-                int hang = 3;
-
-                while (bangTinh.Cells[hang, 1].Text != soTaiKhoan)
-                {
-                    hang++;
-                }
-                bangTinh.Cells[hang, 2].Value = soDu;
-            }
-            catch(Exception e)
-            {
-                throw new Exception("Loi du lieu ngan hang: " + e.Message);
-            }
         }
     }
 }

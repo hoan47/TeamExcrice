@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
@@ -11,16 +7,14 @@ namespace DoAnCuoiKy
         private ThongTinCoBan nguoiDanhGia;
         private string noiDung;
         private EDanhGia sao;
-
+        public ThongTinCoBan NguoiDanhGia { get { return nguoiDanhGia; } }
+        public string NoiDung { get { return noiDung; } }
+        public EDanhGia Sao { get { return sao; } }
         public DanhGia(ThongTinCoBan nguoiDanhGia, string noiDung, EDanhGia sao)
         {
             this.nguoiDanhGia = nguoiDanhGia;
             this.noiDung = noiDung;
             this.sao = sao;
-        }
-        static public DanhGia KhoiTao(ThongTinCoBan nguoiDanhGia)
-        {
-            return new DanhGia(nguoiDanhGia, DauVaoBanPhim.String("Noi dung danh gia: "), DauVaoBanPhim.DanhGia_());
         }
         public void ThongTin()
         {
@@ -30,6 +24,26 @@ namespace DoAnCuoiKy
             Console.WriteLine("Noi dung: " + noiDung);
             Console.WriteLine("Sao: " + (int)sao);
             Console.WriteLine();
+        }
+        static public DanhGia KhoiTao(ThongTinCoBan nguoiDanhGia)
+        {
+            return new DanhGia(nguoiDanhGia, DauVaoBanPhim.String("Noi dung danh gia: "), DauVaoBanPhim.DanhGia_());
+        }
+        static public EDanhGia SaoDanhGia(int sao)
+        {
+            switch(sao)
+            {
+                case 1:
+                    return EDanhGia.Sao1;
+                case 2:
+                    return EDanhGia.Sao2;
+                case 3:
+                    return EDanhGia.Sao3;
+                case 4:
+                    return EDanhGia.Sao4;
+                default:
+                    return EDanhGia.Sao5;
+            }
         }
         public enum EDanhGia
         {

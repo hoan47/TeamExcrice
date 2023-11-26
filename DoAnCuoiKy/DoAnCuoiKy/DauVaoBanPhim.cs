@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAnCuoiKy
 {
@@ -16,7 +12,12 @@ namespace DoAnCuoiKy
                 try
                 {
                     Console.Write(noiDung);
-                    giaTri = int.Parse(Console.ReadLine());
+                    string duLieu = Console.ReadLine();
+                    if(duLieu.Length >= 8)
+                    {
+                        continue;
+                    }
+                    giaTri = int.Parse(duLieu);
                     if ((batDau <= giaTri && giaTri <= ketThuc) == false)
                     {
                         continue;
@@ -55,7 +56,12 @@ namespace DoAnCuoiKy
                 try
                 {
                     Console.Write(noiDung);
-                    giaTri = double.Parse(Console.ReadLine());
+                    string duLieu = Console.ReadLine();
+                    if(duLieu.Length >= 8)
+                    {
+                        continue;
+                    }
+                    giaTri = double.Parse(duLieu);
                     return giaTri;
                 }
                 catch (FormatException)

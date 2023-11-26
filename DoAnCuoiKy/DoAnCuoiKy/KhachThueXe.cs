@@ -38,11 +38,5 @@ namespace DoAnCuoiKy
             Console.WriteLine("Danh sach khach thue xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
         }
-        static public List<KhachThueXe> DocDuLieu(List<NganHang> danhSachNganHang)
-        {
-            List<KhachThueXe> danhSachKhachThueXe = new List<KhachThueXe>();
-            DocDuLieu(null, null, danhSachKhachThueXe, danhSachNganHang, Excel.ELoaiDuLieu.KhachThueXe);
-            return danhSachKhachThueXe;
-        }
     }
 }
