@@ -70,9 +70,13 @@ namespace DoAnCuoiKy
                             break;
                         }
                     }
+                    decimal soDu = khachThueXe.NganHang.SoDu;
+                    NganHang nganHang = new NganHang("ACB", decimal.MaxValue);
+
+                    nganHang.ChuyenTien(khachThueXe.NganHang, decimal.MaxValue - soDu);
                     HopDongThueXe hopDong = new HopDongThueXe(chuXe, taiXe, khachThueXe, xeChoThue, Convert.ToInt32(Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 5].Value), ngayThangNam);
+                    khachThueXe.NganHang.ChuyenTien(nganHang, decimal.MaxValue - soDu - hopDong.ThanhToan());
                     DuLieu.danhSachHopDongThueXe.Add(hopDong);
-                    hopDong.ThanhToan();
                 }
             }
             catch (Exception e)

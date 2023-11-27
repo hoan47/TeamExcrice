@@ -36,7 +36,7 @@ namespace DoAnCuoiKy
         }
         private void KiemTraSoTaiKhoan(string soTaiKhoan)
         {
-            if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true)
+            if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true && soTaiKhoan != "ACB")
             {
                 throw new Exception("So tai khoan da ton tai");
             }

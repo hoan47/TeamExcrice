@@ -23,9 +23,8 @@ namespace DoAnCuoiKy
             {
                 bangTinh[i - 1] = trang.Sheets[i];
             }
-            AppDomain.CurrentDomain.ProcessExit += DongUngDung;
         }
-        private static void DongUngDung(Object nguoiGui, EventArgs suKien)
+        public static void DongUngDung()
         {
             Console.WriteLine("Dong excel.");
             if (trang != null)

@@ -30,7 +30,7 @@ namespace DoAnCuoiKy
             this.ngayThue = ngayThue;
             danhSachHopDong = new Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe>();
         }
-        public void ThanhToan()
+        public decimal ThanhToan()
         {
             decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue;
 
@@ -42,11 +42,10 @@ namespace DoAnCuoiKy
                 danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue), this);
                 ChuXe.KhachHangQuen.ThueXe(khachThue);
                 Console.WriteLine("Thue xe thanh cong");
+                return giaThueChinhThuc + xeChoThue.TienCoc;
             }
-            else
-            {
-                Console.WriteLine("Thue xe khong thanh cong");
-            }
+            Console.WriteLine("Thue xe khong thanh cong");
+            return 0;
         }
         public void CacChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
         {
@@ -131,7 +130,7 @@ namespace DoAnCuoiKy
         }
         public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
         {
-            return new HopDongThueXe(xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), khachThueXe, xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (toi da 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
+            return new HopDongThueXe(xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), khachThueXe, xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (1 - 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
         }
         private decimal TienKhuyenMai()
         {

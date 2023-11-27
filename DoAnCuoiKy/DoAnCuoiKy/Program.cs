@@ -9,6 +9,7 @@ namespace DoAnCuoiKy
             DuLieu.KhoiTaoDuLieu();
             ChayChuongTrinh.ChuongTrinh();
             DuLieu.LuuToanBoDuLieu();
+            Excel.DongUngDung();
         }
     }
 }
