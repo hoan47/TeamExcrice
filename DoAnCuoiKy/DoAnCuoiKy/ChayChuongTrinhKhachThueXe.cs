@@ -46,7 +46,7 @@ namespace DoAnCuoiKy
         private static void ChuongTrinhTimXe(KhachThueXe khachThueXe)
         {
             Console.WriteLine("Ban muon tim loai xe:\n1. Xe may.\n2. Xe bon cho.\n3. Xe bay cho.\n4. Quay lai.");
-            List<Xe> danhSachXeTimDuoc = null;
+            List<Xe> danhSachXeTimDuoc = new List<Xe>();
 
             switch (DauVaoBanPhim.Int(1, 4, "Chon 1 trong 4: "))
             {
@@ -68,16 +68,15 @@ namespace DoAnCuoiKy
             {
                 ChuongTrinhTimXe(khachThueXe);
             }
+
             List<Xe> TimXe(Xe.EPhanLoai loaiXe)
             {
                 List<Xe> danhSachTimDuoc = new List<Xe>();
-                decimal giaTu = DauVaoBanPhim.Decimal("Gia tu: ");
-                decimal giaDen = DauVaoBanPhim.Decimal("Gia den: ");
 
                 foreach (ChuXe chuXe in DuLieu.danhSachChuXe)
                 {
                     Console.WriteLine("\nHo ten chu xe: " + chuXe.HoTen);
-                    foreach (Xe xe in chuXe.TimXe(loaiXe, giaTu, giaDen))
+                    foreach (Xe xe in chuXe.TimXe(loaiXe, DauVaoBanPhim.Decimal("Gia tu: "), DauVaoBanPhim.Decimal("Gia den: ")))
                     {
                         danhSachTimDuoc.Add(xe);
                     }

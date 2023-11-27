@@ -23,14 +23,6 @@ namespace DoAnCuoiKy
             danhGia = new QuanLyDanhGia();
             khachHangQuen = new KhachQuen();
         }
-        private void KhoiTaoDanhSachXe(out List<Xe>[] danhSach)
-        {
-            danhSach = new List<Xe>[3];
-            for (int i = 0; i < 3; i++)
-            {
-                danhSach[i] = new List<Xe>();
-            }
-        }
         public void ThemXeChuaThue(Xe xe)
         {
             danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Add(xe);
@@ -121,6 +113,14 @@ namespace DoAnCuoiKy
             public List<KhachThueXe> DanhSachKhachDaThueXe()
             {
                 return soLanDaThue.Keys.ToList();
+            }
+        }
+        private void KhoiTaoDanhSachXe(out List<Xe>[] danhSach)
+        {
+            danhSach = new List<Xe>[3];
+            for (int i = 0; i < 3; i++)
+            {
+                danhSach[i] = new List<Xe>();
             }
         }
     }

@@ -20,17 +20,6 @@ namespace DoAnCuoiKy
             this.soTaiKhoan = soTaiKhoan;
             this.soDu = soDu;
         }
-        private void KiemTraSoTaiKhoan(string soTaiKhoan)
-        {
-            if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true)
-            {
-                throw new Exception("So tai khoan da ton tai");
-            }
-            else
-            {
-                danhSachSoTaiKhoan.Add(soTaiKhoan);
-            }
-        }
         public bool ChuyenTien(NganHang nguoiNhan, decimal tien)
         {
             if (soDu >= tien && tien > 0)
@@ -44,6 +33,17 @@ namespace DoAnCuoiKy
         private void NhanTien(decimal tien)
         {
             soDu = soDu + tien;
+        }
+        private void KiemTraSoTaiKhoan(string soTaiKhoan)
+        {
+            if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true)
+            {
+                throw new Exception("So tai khoan da ton tai");
+            }
+            else
+            {
+                danhSachSoTaiKhoan.Add(soTaiKhoan);
+            }
         }
     }
 }

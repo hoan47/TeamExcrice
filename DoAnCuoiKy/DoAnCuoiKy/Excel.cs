@@ -14,35 +14,20 @@ namespace DoAnCuoiKy
         public static Workbook trang;
         public static Worksheet[] bangTinh;
 
-        static Excel()
+        public static void MoUngDung() 
         {
             excel = new Application();
             trang = excel.Workbooks.Open(DuongDan(duongDan));
             bangTinh = new Worksheet[trang.Sheets.Count];
-            for(int i = 1; i <= trang.Sheets.Count; i++)
+            for (int i = 1; i <= trang.Sheets.Count; i++)
             {
-                bangTinh[i - 1] = trang.Sheets[i]; 
+                bangTinh[i - 1] = trang.Sheets[i];
             }
+            AppDomain.CurrentDomain.ProcessExit += DongUngDung;
         }
-        public static void KhoiTaoExcel() { }
-        static public void LuuToanBoDuLieu()
+        private static void DongUngDung(Object nguoiGui, EventArgs suKien)
         {
-            for (int i = 0; i < trang.Sheets.Count; i++)
-            {
-                XoaHang(bangTinh[i]);
-            }
-            VietDuLieu.VietDuLieuNganHang();
-            VietDuLieu.VietDuLieuChuXe();
-            VietDuLieu.VietDuLieuTaiXe();
-            VietDuLieu.VietDuLieuKhachThueXe();
-            VietDuLieu.VietDuLieuXeMay();
-            VietDuLieu.VietDuLieuXeBonCho();
-            VietDuLieu.VietDuLieuXeBayCho();
-            VietDuLieu.VietDuLieuHopDongThueXe();
-            for (int i = 0; i < trang.Sheets.Count; i++)
-            {
-                LuuDuLieu(bangTinh[i]);
-            }
+            Console.WriteLine("Dong excel.");
             if (trang != null)
             {
                 trang.Close(false);
@@ -55,27 +40,47 @@ namespace DoAnCuoiKy
                 Marshal.FinalReleaseComObject(excel);
             }
         }
-        private static void LuuDuLieu(Worksheet bangTinh)
+        public static void LuuDuLieu()
         {
-            bangTinh.UsedRange.Columns.AutoFit();
-            bangTinh.UsedRange.Rows.AutoFit();
-            bangTinh.SaveAs(DuongDan(duongDan));
+            try
+            {
+                for (int i = 0; i < trang.Sheets.Count; i++)
+                {
+                    bangTinh[i].UsedRange.Columns.AutoFit();
+                    bangTinh[i].UsedRange.Rows.AutoFit();
+                    bangTinh[i].SaveAs(DuongDan(duongDan));
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Loi luu du lieu: " + e.Message);
+            }
+        }
+        public static void XoaDuLieu()
+        {
+            try
+            {
+                for (int i = 0; i < trang.Sheets.Count; i++)
+                {
+                    int lastRow = bangTinh[i].Cells.SpecialCells(XlCellType.xlCellTypeLastCell).Row;
+
+                    for (int j = lastRow; j >= 3; j--)
+                    {
+                        Range hangXoa = (Range)bangTinh[i].Rows[j, Type.Missing];
+                        hangXoa.Delete(Type.Missing);
+                        Marshal.ReleaseComObject(hangXoa);
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Loi xoa du lieu: " + e.Message);
+            }
         }
         private static string DuongDan(string tenFile)
         {
             string thuMuc = AppDomain.CurrentDomain.BaseDirectory;
             return Path.Combine(thuMuc, tenFile);
-        }
-        private static void XoaHang(Worksheet bangTinh)
-        {
-            int lastRow = bangTinh.Cells.SpecialCells(XlCellType.xlCellTypeLastCell).Row;
-
-            for (int i = lastRow; i >= 3; i--)
-            {
-                Range hangXoa = (Range)bangTinh.Rows[i, Type.Missing];
-                hangXoa.Delete(Type.Missing);
-                Marshal.ReleaseComObject(hangXoa);
-            }
         }
         public enum ELoaiDuLieu
         {
@@ -87,8 +92,6 @@ namespace DoAnCuoiKy
             XeBonCho = 5,
             XeBayCho = 6,
             HopDong = 7,
-            DanhGiaNguoi = 8,
-            DanhGiaXe = 9
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DoAnCuoiKy
         public static List<XeBayCho> danhSachXeBayCho;
         public static List<HopDongThueXe> danhSachHopDongThueXe;
 
-        static DuLieu()
+        static public void KhoiTaoDuLieu()
         {
             danhSachNganHang = new List<NganHang>();
             danhSachChuXe = new List<ChuXe>();
@@ -24,7 +24,6 @@ namespace DoAnCuoiKy
             danhSachXeBonCho = new List<XeBonCho>();
             danhSachXeBayCho = new List<XeBayCho>();
             danhSachHopDongThueXe = new List<HopDongThueXe>();
-
             DocDuLieu.DocDuLieuNganHang();
             DocDuLieu.DocDuLieuChuXe();
             DocDuLieu.DocDuLieuTaiXe();
@@ -35,6 +34,19 @@ namespace DoAnCuoiKy
             DocDuLieu.DocDuLieuHopDong();
             Console.Clear();
         }
-        static public void KhoiTaoDuLieu() { }
+
+        static public void LuuToanBoDuLieu()
+        {
+            Excel.XoaDuLieu();
+            VietDuLieu.VietDuLieuNganHang();
+            VietDuLieu.VietDuLieuChuXe();
+            VietDuLieu.VietDuLieuTaiXe();
+            VietDuLieu.VietDuLieuKhachThueXe();
+            VietDuLieu.VietDuLieuXeMay();
+            VietDuLieu.VietDuLieuXeBonCho();
+            VietDuLieu.VietDuLieuXeBayCho();
+            VietDuLieu.VietDuLieuHopDongThueXe();
+            Excel.LuuDuLieu();
+        }
     }
 }

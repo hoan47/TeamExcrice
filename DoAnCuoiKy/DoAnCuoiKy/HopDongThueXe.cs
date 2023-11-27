@@ -30,36 +30,6 @@ namespace DoAnCuoiKy
             this.ngayThue = ngayThue;
             danhSachHopDong = new Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe>();
         }
-        private decimal TienKhuyenMai()
-        {
-            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? ChuXe.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
-        }
-        private decimal TienTangGia()
-        {
-            return 4 <= ngayThue.Month && ngayThue.Month <= 6 ? xeChoThue.TangGia : ngayThue.Month == 2 ? xeChoThue.TangGia * 2 : 0;
-        }
-        private decimal TienGiaHanTraXe(int soNgayTre)
-        {
-            return soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0;
-        }
-        private decimal TongChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
-        {
-            decimal chiPhiDen = 0;
-
-            if (kiemTraXuot == true)
-            {
-                chiPhiDen += xeChoThue.GiaDenXuotXe;
-            }
-            if (kiemTraBeBanh == true)
-            {
-                chiPhiDen += xeChoThue.GiaDenBeBanh;
-            }
-            if (kiemTraHuDen == true)
-            {
-                chiPhiDen += xeChoThue.GiaDenHuDen;
-            }
-            return chiPhiDen + TienGiaHanTraXe(soNgayTre);
-        }
         public void ThanhToan()
         {
             decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue;
@@ -162,6 +132,36 @@ namespace DoAnCuoiKy
         public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
         {
             return new HopDongThueXe(xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), khachThueXe, xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (toi da 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
+        }
+        private decimal TienKhuyenMai()
+        {
+            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? ChuXe.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
+        }
+        private decimal TienTangGia()
+        {
+            return 4 <= ngayThue.Month && ngayThue.Month <= 6 ? xeChoThue.TangGia : ngayThue.Month == 2 ? xeChoThue.TangGia * 2 : 0;
+        }
+        private decimal TienGiaHanTraXe(int soNgayTre)
+        {
+            return soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0;
+        }
+        private decimal TongChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
+        {
+            decimal chiPhiDen = 0;
+
+            if (kiemTraXuot == true)
+            {
+                chiPhiDen += xeChoThue.GiaDenXuotXe;
+            }
+            if (kiemTraBeBanh == true)
+            {
+                chiPhiDen += xeChoThue.GiaDenBeBanh;
+            }
+            if (kiemTraHuDen == true)
+            {
+                chiPhiDen += xeChoThue.GiaDenHuDen;
+            }
+            return chiPhiDen + TienGiaHanTraXe(soNgayTre);
         }
     }
 }

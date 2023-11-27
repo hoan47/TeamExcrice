@@ -9,68 +9,6 @@ namespace DoAnCuoiKy
 {
     internal static class DocDuLieu
     {
-        private static void DocNguoi(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Worksheet bangTinh)
-        {
-            try
-            {
-                DateTime ngayThangNam;
-
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
-                    if (danhSachChuXe != null)
-                    {
-                        danhSachChuXe.Add(new ChuXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                    else if (danhSachTaiXe != null)
-                    {
-                        danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                    else
-                    {
-                        danhSachKhachThueXe.Add(new KhachThueXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Du lieu nguoi loi: " + e.Message);
-            }
-        }
-        private static void DocXe(List<XeMay> danhSachXeMay, List<XeBonCho> danhSachXeBonCho, List<XeBayCho> danhSachXeBayCho, List<ChuXe> danhSachChuXe, Worksheet bangTinh)
-        {
-            try
-            {
-                DateTime ngayThangNam;
-
-                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
-                {
-                    DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
-                    if (danhSachXeMay != null)
-                    {
-                        danhSachXeMay.Add(new XeMay(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                    else if (danhSachXeBonCho != null)
-                    {
-                        danhSachXeBonCho.Add(new XeBonCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                              bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                    else
-                    {
-                        danhSachXeBayCho.Add(new XeBayCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
-                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
-                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Loi du lieu xe: " + e.Message);
-            }
-        }
         static public List<NganHang> DocDuLieuNganHang()
         {
             try
@@ -140,6 +78,68 @@ namespace DoAnCuoiKy
             catch (Exception e)
             {
                 throw new Exception("Loi du lieu hop dong: " + e.Message);
+            }
+        }
+        private static void DocNguoi(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Worksheet bangTinh)
+        {
+            try
+            {
+                DateTime ngayThangNam;
+
+                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
+                {
+                    DateTime.TryParse(bangTinh.Cells[i, 4].Text, out ngayThangNam);
+                    if (danhSachChuXe != null)
+                    {
+                        danhSachChuXe.Add(new ChuXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
+                    }
+                    else if (danhSachTaiXe != null)
+                    {
+                        danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
+                    }
+                    else
+                    {
+                        danhSachKhachThueXe.Add(new KhachThueXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Du lieu nguoi loi: " + e.Message);
+            }
+        }
+        private static void DocXe(List<XeMay> danhSachXeMay, List<XeBonCho> danhSachXeBonCho, List<XeBayCho> danhSachXeBayCho, List<ChuXe> danhSachChuXe, Worksheet bangTinh)
+        {
+            try
+            {
+                DateTime ngayThangNam;
+
+                for (int i = 3; bangTinh.Cells[i, 1].Value != null; i++)
+                {
+                    DateTime.TryParse(bangTinh.Cells[i, 3].Text, out ngayThangNam);
+                    if (danhSachXeMay != null)
+                    {
+                        danhSachXeMay.Add(new XeMay(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
+                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
+                    }
+                    else if (danhSachXeBonCho != null)
+                    {
+                        danhSachXeBonCho.Add(new XeBonCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
+                              bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
+                    }
+                    else
+                    {
+                        danhSachXeBayCho.Add(new XeBayCho(danhSachChuXe.Find(x => x.NganHang.SoTaiKhoan == bangTinh.Cells[i, 1].Text), bangTinh.Cells[i, 2].Text, ngayThangNam, Convert.ToDouble(bangTinh.Cells[i, 4].Value),
+                            bangTinh.Cells[i, 5].Text == "Có" ? true : false, Xe.MucDichCuaXe(bangTinh.Cells[i, 6].Text), Convert.ToDecimal(bangTinh.Cells[i, 7].Value), Convert.ToDecimal(bangTinh.Cells[i, 8].Value), Convert.ToDecimal(bangTinh.Cells[i, 9].Value),
+                            Convert.ToDecimal(bangTinh.Cells[i, 10].Value), Convert.ToDecimal(bangTinh.Cells[i, 11].Value), Convert.ToDecimal(bangTinh.Cells[i, 12].Value), Convert.ToDecimal(bangTinh.Cells[i, 13].Value), bangTinh.Cells[i, 14].Text, false));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Loi du lieu xe: " + e.Message);
             }
         }
     }

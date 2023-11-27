@@ -5,10 +5,10 @@ namespace DoAnCuoiKy
     {
         static void Main(string[] args)
         {
-            Excel.KhoiTaoExcel();
+            Excel.MoUngDung();
             DuLieu.KhoiTaoDuLieu();
             ChayChuongTrinh.ChuongTrinh();
-            Excel.LuuToanBoDuLieu();
+            DuLieu.LuuToanBoDuLieu();
         }
     }
 }

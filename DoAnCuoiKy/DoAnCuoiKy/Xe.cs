@@ -61,30 +61,7 @@ namespace DoAnCuoiKy
             ThemXe(daThue);
         }
 
-        private void ThemXe(bool daThue)
-        {
-            if (daThue == false)
-            {
-                chuXe.ThemXeChuaThue(this);
-            }
-            else
-            {
-                chuXe.ThemXeDaThue(this);
-            }
-        }
-
-        private void KiemTraBienSoXe(string bienSoXe)
-        {
-            if (danhSachBienSoXe.Contains(bienSoXe) == true)
-            {
-                throw new Exception("Bien so xe da ton tai");
-            }
-            else
-            {
-                danhSachBienSoXe.Add(bienSoXe);
-            }
-        }
-        public virtual void XuatThongTinXe()
+        public void XuatThongTinXe()
         {
             Console.WriteLine("Hang xe: " + HangXe);
             Console.WriteLine("Nam mua: " + NamMua.ToString("dd/MM/yyyy"));
@@ -114,9 +91,9 @@ namespace DoAnCuoiKy
             {
                 case EMucDich.DuLich:
                     return "Du lịch";
-                case EMucDich.DamCuoi: 
+                case EMucDich.DamCuoi:
                     return "Đám cưới";
-                case EMucDich.TapLai: 
+                case EMucDich.TapLai:
                     return "Tập lái";
                 default:
                     return "Khác";
@@ -149,6 +126,28 @@ namespace DoAnCuoiKy
             {
                 Console.WriteLine("So thu tu: " + soThuTu++.ToString());
                 xe.XuatThongTinXe();
+            }
+        }
+        private void KiemTraBienSoXe(string bienSoXe)
+        {
+            if (danhSachBienSoXe.Contains(bienSoXe) == true)
+            {
+                throw new Exception("Bien so xe da ton tai");
+            }
+            else
+            {
+                danhSachBienSoXe.Add(bienSoXe);
+            }
+        }
+        private void ThemXe(bool daThue)
+        {
+            if (daThue == false)
+            {
+                chuXe.ThemXeChuaThue(this);
+            }
+            else
+            {
+                chuXe.ThemXeDaThue(this);
             }
         }
         public enum EPhanLoai

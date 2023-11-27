@@ -18,10 +18,6 @@ namespace DoAnCuoiKy
             Console.WriteLine("Danh sach tai xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
         }
-        public override void ThongTin()
-        {
-            base.ThongTin();
-        }
         static public TaiXe ChonTaiXe(List<TaiXe>danhSachTaiXe)
         {
             Console.WriteLine((danhSachTaiXe.Count + 1).ToString() + ". Khong can tai xe");

@@ -9,52 +9,6 @@ namespace DoAnCuoiKy
 {
     static internal class VietDuLieu
     {
-        private static void VietNguoi(List<ThongTinCoBan> danhSachKhachNguoi, Worksheet bangTinh)
-        {
-            try
-            {
-                for (int i = 0, hang = 3; i < danhSachKhachNguoi.Count; i++, hang++)
-                {
-                    bangTinh.Cells[hang, 1].Value = danhSachKhachNguoi[i].HoTen;
-                    bangTinh.Cells[hang, 2].Value = danhSachKhachNguoi[i].DiaChi;
-                    bangTinh.Cells[hang, 3].Value = danhSachKhachNguoi[i].SoDienThoai;
-                    bangTinh.Cells[hang, 4].Value = danhSachKhachNguoi[i].NgaySinh.ToString("yyyy-MM-dd");
-                    bangTinh.Cells[hang, 5].Value = danhSachKhachNguoi[i].NganHang.SoTaiKhoan;
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Du lieu nguoi loi: " + e.Message);
-            }
-        }
-        private static void VietXe(List<Xe> danhSachXe, Worksheet bangTinh)
-        {
-            try
-            {
-                for (int i = 0, hang = 3; i < danhSachXe.Count; i++, hang++)
-                {
-                    bangTinh.Cells[hang, 1].Value = danhSachXe[i].ChuXe.NganHang.SoTaiKhoan;
-                    bangTinh.Cells[hang, 2].Value = danhSachXe[i].HangXe;
-                    bangTinh.Cells[hang, 3].Value = danhSachXe[i].NamMua.ToString("yyyy-MM-dd");
-                    bangTinh.Cells[hang, 4].Value = danhSachXe[i].KilometDaDi;
-                    bangTinh.Cells[hang, 5].Value = danhSachXe[i].BaoHiem ? "Có" : "Không";
-                    bangTinh.Cells[hang, 6].Value = Xe.MucDichCuaXe(danhSachXe[i].MucDich);
-                    bangTinh.Cells[hang, 7].Value = danhSachXe[i].GiaThueMotNgay;
-                    bangTinh.Cells[hang, 8].Value = danhSachXe[i].TienCoc;
-                    bangTinh.Cells[hang, 9].Value = danhSachXe[i].GiaDenXuotXe;
-                    bangTinh.Cells[hang, 10].Value = danhSachXe[i].GiaDenBeBanh;
-                    bangTinh.Cells[hang, 11].Value = danhSachXe[i].GiaDenHuDen;
-                    bangTinh.Cells[hang, 12].Value = danhSachXe[i].UuDai;
-                    bangTinh.Cells[hang, 13].Value = danhSachXe[i].TangGia;
-                    bangTinh.Cells[hang, 14].Value = danhSachXe[i].BienSoXe;
-                    bangTinh.Cells[hang, 15].Value = danhSachXe[i].ChuXe.DanhSachXeDaThue[(int)Xe.PhanLoai(danhSachXe[i])].Contains(danhSachXe[i]) == true ? "Đúng" : "Sai";
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Loi du lieu xe: " + e.Message);
-            }
-        }
         static public void VietDuLieuNganHang()
         {
             try
@@ -111,6 +65,52 @@ namespace DoAnCuoiKy
             catch (Exception e)
             {
                 throw new Exception("Du lieu ngan hang loi: " + e.Message);
+            }
+        }
+        private static void VietNguoi(List<ThongTinCoBan> danhSachKhachNguoi, Worksheet bangTinh)
+        {
+            try
+            {
+                for (int i = 0, hang = 3; i < danhSachKhachNguoi.Count; i++, hang++)
+                {
+                    bangTinh.Cells[hang, 1].Value = danhSachKhachNguoi[i].HoTen;
+                    bangTinh.Cells[hang, 2].Value = danhSachKhachNguoi[i].DiaChi;
+                    bangTinh.Cells[hang, 3].Value = danhSachKhachNguoi[i].SoDienThoai;
+                    bangTinh.Cells[hang, 4].Value = danhSachKhachNguoi[i].NgaySinh.ToString("yyyy-MM-dd");
+                    bangTinh.Cells[hang, 5].Value = danhSachKhachNguoi[i].NganHang.SoTaiKhoan;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Du lieu nguoi loi: " + e.Message);
+            }
+        }
+        private static void VietXe(List<Xe> danhSachXe, Worksheet bangTinh)
+        {
+            try
+            {
+                for (int i = 0, hang = 3; i < danhSachXe.Count; i++, hang++)
+                {
+                    bangTinh.Cells[hang, 1].Value = danhSachXe[i].ChuXe.NganHang.SoTaiKhoan;
+                    bangTinh.Cells[hang, 2].Value = danhSachXe[i].HangXe;
+                    bangTinh.Cells[hang, 3].Value = danhSachXe[i].NamMua.ToString("yyyy-MM-dd");
+                    bangTinh.Cells[hang, 4].Value = danhSachXe[i].KilometDaDi;
+                    bangTinh.Cells[hang, 5].Value = danhSachXe[i].BaoHiem ? "Có" : "Không";
+                    bangTinh.Cells[hang, 6].Value = Xe.MucDichCuaXe(danhSachXe[i].MucDich);
+                    bangTinh.Cells[hang, 7].Value = danhSachXe[i].GiaThueMotNgay;
+                    bangTinh.Cells[hang, 8].Value = danhSachXe[i].TienCoc;
+                    bangTinh.Cells[hang, 9].Value = danhSachXe[i].GiaDenXuotXe;
+                    bangTinh.Cells[hang, 10].Value = danhSachXe[i].GiaDenBeBanh;
+                    bangTinh.Cells[hang, 11].Value = danhSachXe[i].GiaDenHuDen;
+                    bangTinh.Cells[hang, 12].Value = danhSachXe[i].UuDai;
+                    bangTinh.Cells[hang, 13].Value = danhSachXe[i].TangGia;
+                    bangTinh.Cells[hang, 14].Value = danhSachXe[i].BienSoXe;
+                    bangTinh.Cells[hang, 15].Value = danhSachXe[i].ChuXe.DanhSachXeDaThue[(int)Xe.PhanLoai(danhSachXe[i])].Contains(danhSachXe[i]) == true ? "Đúng" : "Sai";
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Loi du lieu xe: " + e.Message);
             }
         }
     }
