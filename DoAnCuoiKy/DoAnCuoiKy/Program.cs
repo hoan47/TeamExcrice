@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace DoAnCuoiKy
 {
     internal class Program

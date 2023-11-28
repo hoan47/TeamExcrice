@@ -9,7 +9,7 @@ namespace DoAnCuoiKy
 {
     internal static class DocDuLieu
     {
-        static public List<NganHang> DocDuLieuNganHang()
+        static public void DocDuLieuNganHang()
         {
             try
             {
@@ -22,7 +22,6 @@ namespace DoAnCuoiKy
             {
                 throw new Exception("Du lieu ngan hang loi: " + e.Message);
             }
-            return DuLieu.danhSachNganHang;
         }
         static public void DocDuLieuChuXe()
         {

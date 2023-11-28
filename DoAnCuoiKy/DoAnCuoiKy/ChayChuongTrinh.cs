@@ -6,8 +6,7 @@ namespace DoAnCuoiKy
     {
         public static void ChuongTrinh()
         {
-            Console.WriteLine("Chuong trinh quan li thue xe vui long chon doi tuong.\n1. Chu cho thue\n2. Khach thue xe\n3. Dong chuong trinh");
-            switch (DauVaoBanPhim.Int(1, 3, "Chon 1 trong 3: "))
+            switch (DauVaoBanPhim.Int(1, 3, "Chuong trinh quan li thue xe vui long chon doi tuong.\n1. Chu cho thue\n2. Khach thue xe\n3. Dong chuong trinh.\nChon 1 trong 3: "))
             {
                 case 1:
                     ChayChuongTrinhChuXe.ChuongTrinhChonChuXe();

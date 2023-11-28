@@ -35,7 +35,7 @@ namespace DoAnCuoiKy
         {
             List<Xe> danhSachXeTimDuoc = new List<Xe>();
 
-            Console.WriteLine("Ket qua tim kiem: ");
+            Console.WriteLine("Ten chu xe: " + HoTen + " ket qua tim kiem:");
             foreach (Xe xe in danhSachXeChuaThue[(int)loaiXe])
             {
                 if (giaTu <= xe.GiaThueMotNgay && xe.GiaThueMotNgay <= giaDen)

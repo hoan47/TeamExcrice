@@ -23,6 +23,7 @@ namespace DoAnCuoiKy
             {
                 bangTinh[i - 1] = trang.Sheets[i];
             }
+            excel.DisplayAlerts = false;
         }
         public static void DongUngDung()
         {
