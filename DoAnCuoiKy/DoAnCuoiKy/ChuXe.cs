@@ -108,7 +108,7 @@ namespace DoAnCuoiKy
             }
             public int SoLanThueXe(KhachThueXe khach)
             {
-                return soLanDaThue[khach];
+                return soLanDaThue.ContainsKey(khach) == true ? soLanDaThue[khach] : 0;
             }
             public List<KhachThueXe> DanhSachKhachDaThueXe()
             {

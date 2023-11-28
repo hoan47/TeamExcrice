@@ -90,12 +90,12 @@ namespace DoAnCuoiKy
         {
             TaiXe.XuatDanhSachTaiXe(DuLieu.danhSachTaiXe);
             HopDongThueXe hopDong = HopDongThueXe.KhoiTao(xe, DuLieu.danhSachTaiXe, khachThueXe);
-            DuLieu.danhSachHopDongThueXe.Add(hopDong);
             hopDong.XemHopDong();
             switch(DauVaoBanPhim.Int(1, 2, "Ban muon:\n1. Thue xe.\n2. Quay lai.\nChon 1 trong 2: "))
             {
                 case 1:
                     hopDong.ThanhToan();
+                    DuLieu.danhSachHopDongThueXe.Add(hopDong);
                     XuLyhachThueXe(khachThueXe);
                     break;
                 case 2:
