@@ -103,6 +103,7 @@ namespace DoAnCuoiKy
         {
             if (xe == null)
             {
+                Excel.DongUngDung();
                 throw new Exception("Khong co du lieu.");
             }
             if (xe is XeMay)
@@ -132,7 +133,7 @@ namespace DoAnCuoiKy
         {
             if (danhSachBienSoXe.Contains(bienSoXe) == true)
             {
-                Console.WriteLine("Bien so xe da ton tai.\n");
+                throw new Exception("Bien so xe da ton tai.");
             }
             else
             {

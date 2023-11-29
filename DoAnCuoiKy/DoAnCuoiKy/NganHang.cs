@@ -42,7 +42,7 @@ namespace DoAnCuoiKy
         {
             if (danhSachSoTaiKhoan.Contains(soTaiKhoan) == true && soTaiKhoan != "ACB")
             {
-                Console.WriteLine("So tai khoan da ton tai.\n");
+                throw new Exception("So tai khoan da ton tai.");
             }
             else
             {

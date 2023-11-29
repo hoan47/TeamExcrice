@@ -7,11 +7,17 @@ namespace DoAnCuoiKy
     {
         static void Main(string[] args)
         {
-            Excel.MoUngDung();
-            DuLieu.KhoiTaoDuLieu();
-            ChayChuongTrinh.ChuongTrinh();
-            DuLieu.LuuToanBoDuLieu();
-            Excel.DongUngDung();
+            try
+            {
+                Excel.MoUngDung();
+                DuLieu.KhoiTaoDuLieu();
+                ChayChuongTrinh.ChuongTrinh();
+                DuLieu.LuuToanBoDuLieu();
+            }
+            finally
+            {
+                Excel.DongUngDung();
+            }
         }
     }
 }
