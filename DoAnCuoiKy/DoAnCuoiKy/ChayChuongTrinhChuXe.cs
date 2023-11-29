@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DoAnCuoiKy
@@ -7,7 +8,7 @@ namespace DoAnCuoiKy
     {
         static public void ChuongTrinhChuXe()
         {
-            switch(DauVaoBanPhim.Int(1, 4, "Ban muon:\n1. Chon chu xe.\n2. Them chu xe.\n3. Xoa chu xe.\n4. Quay lai.\nChon 1 trong 4: "))
+            switch(DauVaoBanPhim.Int(1, 3, "Ban muon:\n1. Chon chu xe.\n2. Them chu xe.\n3. Quay lai.\nChon 1 trong 3: "))
             {
                 case 1:
                     XulyChonChuXe();
@@ -16,9 +17,6 @@ namespace DoAnCuoiKy
                     XyLyKhoiTaoChuXe();
                     break;
                 case 3:
-                    XuLyXoaChuXe();
-                    break;
-                case 4:
                     ChayChuongTrinh.ChuongTrinh();
                     break;
             }
@@ -183,20 +181,11 @@ namespace DoAnCuoiKy
         }
         private static void XyLyKhoiTaoChuXe()
         {
-            DuLieu.danhSachChuXe.Add(ChuXe.KhoiTao());
+            NganHang nganHang = NganHang.KhoiTao();
+
+            DuLieu.danhSachNganHang.Add(nganHang);
+            DuLieu.danhSachChuXe.Add(ChuXe.KhoiTao(nganHang));
             Console.WriteLine("Khoi tao thanh cong.\n");
-            ChuongTrinhChuXe();
-        }
-        private static void XuLyXoaChuXe()
-        {
-            ChuXe.XuatDanhSachChuXe(DuLieu.danhSachChuXe);
-            int soThuTu = DauVaoBanPhim.Int(1, DuLieu.danhSachChuXe.Count + 1, (DuLieu.danhSachChuXe.Count + 1).ToString() + ". Quay lai.\nChon 1 trong " + DuLieu.danhSachChuXe.Count.ToString() + " xe can xoa: ");
-            
-            if(soThuTu != DuLieu.danhSachChuXe.Count + 1)
-            {
-                DuLieu.danhSachChuXe.RemoveAt(soThuTu - 1);
-                Console.WriteLine("Da xoa.\n");
-            }
             ChuongTrinhChuXe();
         }
     }

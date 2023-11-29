@@ -26,15 +26,15 @@ namespace DoAnCuoiKy
         }
         static public void VietDuLieuChuXe()
         {
-            VietNguoi(DuLieu.danhSachChuXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.ChuXe]);
+            VietDuLieuThongTinCoBan(DuLieu.danhSachChuXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.ChuXe]);
         }
         static public void VietDuLieuTaiXe()
         {
-            VietNguoi(DuLieu.danhSachTaiXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
+            VietDuLieuThongTinCoBan(DuLieu.danhSachTaiXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
         }
         static public void VietDuLieuKhachThueXe()
         {
-            VietNguoi(DuLieu.danhSachKhachThueXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.KhachThueXe]);
+            VietDuLieuThongTinCoBan(DuLieu.danhSachKhachThueXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.KhachThueXe]);
         }
         public static void VietDuLieuXeMay()
         {
@@ -67,17 +67,17 @@ namespace DoAnCuoiKy
                 throw new Exception("Du lieu ngan hang loi: " + e.Message);
             }
         }
-        private static void VietNguoi(List<ThongTinCoBan> danhSachKhachNguoi, Worksheet bangTinh)
+        private static void VietDuLieuThongTinCoBan(List<ThongTinCoBan> danhSachThongTinCoBan, Worksheet bangTinh)
         {
             try
             {
-                for (int i = 0, hang = 3; i < danhSachKhachNguoi.Count; i++, hang++)
+                for (int i = 0, hang = 3; i < danhSachThongTinCoBan.Count; i++, hang++)
                 {
-                    bangTinh.Cells[hang, 1].Value = danhSachKhachNguoi[i].HoTen;
-                    bangTinh.Cells[hang, 2].Value = danhSachKhachNguoi[i].DiaChi;
-                    bangTinh.Cells[hang, 3].Value = danhSachKhachNguoi[i].SoDienThoai;
-                    bangTinh.Cells[hang, 4].Value = danhSachKhachNguoi[i].NgaySinh.ToString("yyyy-MM-dd");
-                    bangTinh.Cells[hang, 5].Value = danhSachKhachNguoi[i].NganHang.SoTaiKhoan;
+                    bangTinh.Cells[hang, 1].Value = danhSachThongTinCoBan[i].HoTen;
+                    bangTinh.Cells[hang, 2].Value = danhSachThongTinCoBan[i].DiaChi;
+                    bangTinh.Cells[hang, 3].Value = danhSachThongTinCoBan[i].SoDienThoai;
+                    bangTinh.Cells[hang, 4].Value = danhSachThongTinCoBan[i].NgaySinh.ToString("yyyy-MM-dd");
+                    bangTinh.Cells[hang, 5].Value = danhSachThongTinCoBan[i].NganHang.SoTaiKhoan;
                 }
             }
             catch (Exception e)

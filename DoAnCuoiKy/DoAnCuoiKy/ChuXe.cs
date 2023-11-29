@@ -82,9 +82,9 @@ namespace DoAnCuoiKy
             Console.WriteLine("Danh sach chu cho thue xe:");
             XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
         }
-        static public ChuXe KhoiTao()
+        static public ChuXe KhoiTao(NganHang nganHang)
         {
-            return new ChuXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Nam thang ngay sinh: "), NganHang.KhoiTao());
+            return new ChuXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Nam thang ngay sinh: "), nganHang);
         }
         public override void ThongTin()
         {

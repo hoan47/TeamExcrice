@@ -29,7 +29,7 @@ namespace DoAnCuoiKy
             Console.WriteLine("Dia chi: " + diaChi);
             Console.WriteLine("So dien thoai: " + soDienThoai);
             Console.WriteLine("Ngay sinh: " + ngaySinh.ToString("dd/MM/yyyy"));
-            Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan+"\n");
+            Console.WriteLine("So tai khoan ngan hang: " + nganHang.SoTaiKhoan + "\n");
         }
         static protected void XuatDanhSachThongTin(List<ThongTinCoBan> danhSach)
         {

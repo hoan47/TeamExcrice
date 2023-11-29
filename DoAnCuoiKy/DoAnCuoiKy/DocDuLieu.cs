@@ -25,15 +25,15 @@ namespace DoAnCuoiKy
         }
         static public void DocDuLieuChuXe()
         {
-            DocNguoi(DuLieu.danhSachChuXe, null, null, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.ChuXe]);
+            DocDuLieuThongTinCoBan(DuLieu.danhSachChuXe, null, null, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.ChuXe]);
         }
         static public void DocDuLieuTaiXe()
         {
-            DocNguoi(null, DuLieu.danhSachTaiXe, null, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
+            DocDuLieuThongTinCoBan(null, DuLieu.danhSachTaiXe, null, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
         }
         static public void DocDuLieuKhachThueXe()
         {
-            DocNguoi(null, null, DuLieu.danhSachKhachThueXe, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.KhachThueXe]);
+            DocDuLieuThongTinCoBan(null, null, DuLieu.danhSachKhachThueXe, DuLieu.danhSachNganHang, Excel.bangTinh[(int)Excel.ELoaiDuLieu.KhachThueXe]);
         }
         public static void DocDuLieuXeMay()
         {
@@ -83,7 +83,7 @@ namespace DoAnCuoiKy
                 throw new Exception("Loi du lieu hop dong: " + e.Message);
             }
         }
-        private static void DocNguoi(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Worksheet bangTinh)
+        private static void DocDuLieuThongTinCoBan(List<ChuXe> danhSachChuXe, List<TaiXe> danhSachTaiXe, List<KhachThueXe> danhSachKhachThueXe, List<NganHang> danhSachNganHang, Worksheet bangTinh)
         {
             try
             {

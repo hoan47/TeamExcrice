@@ -132,7 +132,7 @@ namespace DoAnCuoiKy
         {
             if (danhSachBienSoXe.Contains(bienSoXe) == true)
             {
-                throw new Exception("Bien so xe da ton tai");
+                Console.WriteLine("Bien so xe da ton tai.\n");
             }
             else
             {

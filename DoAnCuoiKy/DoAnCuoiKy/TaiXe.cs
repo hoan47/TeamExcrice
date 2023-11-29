@@ -25,9 +25,9 @@ namespace DoAnCuoiKy
 
             return luaChon == danhSachTaiXe.Count + 1 ? null : danhSachTaiXe[luaChon - 1];
         }
-        static public TaiXe KhoiTao()
+        static public TaiXe KhoiTao(NganHang nganHang)
         {
-            return new TaiXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Ngay sinh: "), NganHang.KhoiTao());
+            return new TaiXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Ngay sinh: "), nganHang);
         }
     }
 }

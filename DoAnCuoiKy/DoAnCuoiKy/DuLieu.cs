@@ -34,7 +34,6 @@ namespace DoAnCuoiKy
             DocDuLieu.DocDuLieuHopDong();
             Console.Clear();
         }
-
         static public void LuuToanBoDuLieu()
         {
             Excel.XoaDuLieu();
