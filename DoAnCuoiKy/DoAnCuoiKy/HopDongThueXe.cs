@@ -32,17 +32,19 @@ namespace DoAnCuoiKy
         }
         public decimal ThanhToan()
         {
-            decimal giaThueChinhThuc = TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue;
+            decimal giaThueChinhThuc = TienTangGia() - TienKhuyenMai() + xeChoThue.GiaThueMotNgay * soNgayThue;
+            decimal thanhToan = giaThueChinhThuc + xeChoThue.TienCoc;
 
             Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
-            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, giaThueChinhThuc + xeChoThue.TienCoc) == true)
+            Console.WriteLine($"\nSo tien coc khach phai tra: " + string.Format("{0:N0}", xeChoThue.TienCoc) + " VND");
+            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, thanhToan) == true)
             {
                 ChuXe.ChoThueXe(xeChoThue);
                 khachThue.ThemXeDaThue(xeChoThue);
                 danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue), this);
                 ChuXe.KhachHangQuen.ThueXe(khachThue);
                 Console.WriteLine("Thue xe thanh cong");
-                return giaThueChinhThuc + xeChoThue.TienCoc;
+                return thanhToan;
             }
             Console.WriteLine("Thue xe khong thanh cong");
             return 0;
@@ -92,7 +94,11 @@ namespace DoAnCuoiKy
                 ChuXe.KhachTraXe(xeChoThue);
                 Console.WriteLine("Thanh cong, tong chi phi phat sinh phai tra: " + string.Format("{0:N0}", chiPhiDen) + " VND");
                 khachThue.KetThucThueXe(xeChoThue);
-                danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue));
+                if(chuXe.NganHang.ChuyenTien(khachThue.NganHang, xeChoThue.TienCoc) == true)
+                {
+                    Console.WriteLine("Da tra lai tien coc cho khach!");
+                    danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue));
+                }
             }
             else
             {
@@ -116,6 +122,7 @@ namespace DoAnCuoiKy
             khachThue.ThongTin();
             Console.WriteLine("Thong tin xe:");
             xeChoThue.XuatThongTinXe();
+            Console.WriteLine("Tien coc: " + string.Format("{0:N0}", xeChoThue.TienCoc) + " VND");
             Console.WriteLine("So ngay thue: " + soNgayThue);
             Console.WriteLine("Ngay bat dau thue: " + ngayThue.ToString("dd/MM/yyyy"));
             Console.WriteLine("Uu dai: " + string.Format("{0:N0}", TienKhuyenMai()) + " VND");
@@ -126,7 +133,7 @@ namespace DoAnCuoiKy
             Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
             Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
             Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
-            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienKhuyenMai() + TienTangGia() + xeChoThue.GiaThueMotNgay * soNgayThue + xeChoThue.TienCoc) + " VND");
+            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienTangGia() - TienKhuyenMai() + xeChoThue.GiaThueMotNgay * soNgayThue + xeChoThue.TienCoc) + " VND");
         }
         public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
         {

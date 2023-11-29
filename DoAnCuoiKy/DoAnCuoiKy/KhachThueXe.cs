@@ -28,10 +28,7 @@ namespace DoAnCuoiKy
         public void XuatDanhSachXeDaThue()
         {
             Console.WriteLine("Danh sach xe da thue:");
-            foreach(Xe xe in danhSachXeDaThue)
-            {
-                xe.XuatThongTinXe();
-            }
+            Xe.XuatDanhSachXe(danhSachXeDaThue);
         }
         static public void XuatDanhSachKhachThueXe(List<KhachThueXe> danhSachKhachThueXe)
         {
