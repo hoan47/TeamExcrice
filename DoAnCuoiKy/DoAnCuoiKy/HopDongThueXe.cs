@@ -5,44 +5,52 @@ namespace DoAnCuoiKy
 {
     class HopDongThueXe
     {
-        private ChuXe chuXe;
         private TaiXe taiXe;
         private KhachThueXe khachThue;
-        private Xe xeChoThue;
+        private Xe xe;
         private DateTime ngayThue;
         private int soNgayThue;
-        static private Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> danhSachHopDong;
+        static private Dictionary<KeyValuePair<KhachThueXe, Xe>, HopDongThueXe> danhSachHopDong;
         public KhachThueXe KhachThue { get { return khachThue; } }
-        public ChuXe ChuXe { get { return chuXe; } }
         public TaiXe TaiXe { get { return taiXe; } }
-        public Xe XeChoThue { get { return xeChoThue; } }
+        public Xe XeChoThue { get { return xe; } }
         public DateTime NgayThue { get { return ngayThue; } }
         public int SoNgayThue { get { return soNgayThue; } }
-        public static Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe> DanhSachHopDong { get { return danhSachHopDong; } }
+        public static Dictionary<KeyValuePair<KhachThueXe, Xe>, HopDongThueXe> DanhSachHopDong { get { return danhSachHopDong; } }
 
-        public HopDongThueXe(ChuXe chuXe, TaiXe taiXe, KhachThueXe khachThue, Xe xeChoThue, int soNgayThue, DateTime ngayThue)
+        static HopDongThueXe()
         {
-            this.chuXe = chuXe;
+            danhSachHopDong = new Dictionary<KeyValuePair<KhachThueXe, Xe>, HopDongThueXe>();
+        }
+        public HopDongThueXe(TaiXe taiXe, KhachThueXe khachThue, Xe xe, int soNgayThue, DateTime ngayThue)
+        {
             this.taiXe = taiXe;
             this.khachThue = khachThue;
-            this.xeChoThue = xeChoThue;
+            this.xe = xe;
             this.soNgayThue = soNgayThue;
             this.ngayThue = ngayThue;
-            danhSachHopDong = new Dictionary<Tuple<ChuXe, KhachThueXe, Xe>, HopDongThueXe>();
+        }
+        public HopDongThueXe(KhachThueXe khachThue, Xe xe)
+        {
+            taiXe = TaiXe.ChonTaiXe();
+            this.khachThue = khachThue;
+            this.xe = xe;
+            soNgayThue = DauVaoBanPhim.Int(1, 365, "So ngay thue (1-365): ");
+            ngayThue = DauVaoBanPhim.DateTime_("(Nam thang ngay) thue xe: ");
         }
         public decimal ThanhToan()
         {
-            decimal giaThueChinhThuc = TienTangGia() - TienKhuyenMai() + xeChoThue.GiaThueMotNgay * soNgayThue;
-            decimal thanhToan = giaThueChinhThuc + xeChoThue.TienCoc;
+            decimal giaThueChinhThuc = TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue;
+            decimal thanhToan = giaThueChinhThuc + xe.TienCoc;
 
             Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
-            Console.WriteLine($"\nSo tien coc khach phai tra: " + string.Format("{0:N0}", xeChoThue.TienCoc) + " VND");
-            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, thanhToan) == true)
+            Console.WriteLine($"\nSo tien coc khach phai tra: " + string.Format("{0:N0}", xe.TienCoc) + " VND");
+            if (khachThue.NganHang.ChuyenTien(xe.ChuXe.NganHang, thanhToan) == true)
             {
-                ChuXe.ChoThueXe(xeChoThue);
-                khachThue.ThemXeDaThue(xeChoThue);
-                danhSachHopDong.Add(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue), this);
-                ChuXe.KhachHangQuen.ThueXe(khachThue);
+                xe.ChuXe.ChoThueXe(xe);
+                khachThue.ThemXeDaThue(xe);
+                danhSachHopDong.Add(new KeyValuePair<KhachThueXe, Xe>(khachThue, xe), this);
+                xe.ChuXe.KhachHangQuen.ThueXe(khachThue);
                 Console.WriteLine("Thue xe thanh cong");
                 return thanhToan;
             }
@@ -53,19 +61,19 @@ namespace DoAnCuoiKy
         {
             if (kiemTraXuot == true)
             {
-                Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
+                Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xe.GiaDenXuotXe) + " VND");
             }
             if (kiemTraBeBanh == true)
             {
-                Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
+                Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xe.GiaDenBeBanh) + " VND");
             }
             if (kiemTraHuDen == true)
             {
-                Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
+                Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xe.GiaDenHuDen) + " VND");
             }
             if (soNgayTre > 0)
             {
-                Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0) + " VND");
+                Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", soNgayTre > 0 ? xe.GiaThueMotNgay * soNgayTre : 0) + " VND");
             }
             Console.WriteLine();
         }
@@ -75,30 +83,27 @@ namespace DoAnCuoiKy
 
             if (kiemTraXuot == true)
             {
-                Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
+                Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xe.GiaDenXuotXe) + " VND");
             }
             if (kiemTraBeBanh == true)
             {
-                Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
+                Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xe.GiaDenBeBanh) + " VND");
             }
             if (kiemTraHuDen == true)
             {
-                Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
+                Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xe.GiaDenHuDen) + " VND");
             }
             if (soNgayTre > 0)
             {
                 Console.WriteLine($"Tien gia han: " + string.Format("{0:N0}", TienGiaHanTraXe(soNgayTre)) + " VND");
             }
-            if (khachThue.NganHang.ChuyenTien(ChuXe.NganHang, chiPhiDen) == true || chiPhiDen == 0)
+            if ((khachThue.NganHang.ChuyenTien(xe.ChuXe.NganHang, chiPhiDen) == true || chiPhiDen == 0) && xe.ChuXe.NganHang.ChuyenTien(khachThue.NganHang, xe.TienCoc) == true)
             {
-                ChuXe.KhachTraXe(xeChoThue);
                 Console.WriteLine("Thanh cong, tong chi phi phat sinh phai tra: " + string.Format("{0:N0}", chiPhiDen) + " VND");
-                khachThue.KetThucThueXe(xeChoThue);
-                if(chuXe.NganHang.ChuyenTien(khachThue.NganHang, xeChoThue.TienCoc) == true)
-                {
-                    Console.WriteLine("Da tra lai tien coc cho khach!");
-                    danhSachHopDong.Remove(new Tuple<ChuXe, KhachThueXe, Xe>(ChuXe, khachThue, xeChoThue));
-                }
+                Console.WriteLine("Chu xe tra lai tien coc cho khach: " + string.Format("{0:N0}", xe.TienCoc) + " VND");
+                xe.ChuXe.KhachTraXe(xe);
+                khachThue.KetThucThueXe(xe);
+                danhSachHopDong.Remove(new KeyValuePair<KhachThueXe, Xe>(khachThue, xe));
             }
             else
             {
@@ -108,7 +113,7 @@ namespace DoAnCuoiKy
         public void XemHopDong()
         {
             Console.WriteLine("\nHop dong thue xe giua khach va chu xe la:\nChu xe:");
-            ChuXe.ThongTin();
+            xe.ChuXe.ThongTin();
             if (taiXe == null)
             {
                 Console.WriteLine("Khong co tai xe.\n");
@@ -121,35 +126,31 @@ namespace DoAnCuoiKy
             Console.WriteLine("Khach thue xe:");
             khachThue.ThongTin();
             Console.WriteLine("Thong tin xe:");
-            xeChoThue.XuatThongTinXe();
-            Console.WriteLine("Tien coc: " + string.Format("{0:N0}", xeChoThue.TienCoc) + " VND");
+            xe.XuatThongTinXe();
+            Console.WriteLine("Tien coc: " + string.Format("{0:N0}", xe.TienCoc) + " VND");
             Console.WriteLine("So ngay thue: " + soNgayThue);
             Console.WriteLine("Ngay bat dau thue: " + ngayThue.ToString("dd/MM/yyyy"));
             Console.WriteLine("Uu dai: " + string.Format("{0:N0}", TienKhuyenMai()) + " VND");
             Console.WriteLine("Tang gia: " + string.Format("{0:N0}", TienTangGia()) + " VND");
             Console.WriteLine("Noi dung cac chi phi phat sinh bao gom: ");
-            Console.WriteLine("Chi phi gia han (tre han tra xe) = So ngay tre * " + xeChoThue.GiaThueMotNgay + "(VND)");
+            Console.WriteLine("Chi phi gia han (tre han tra xe) = So ngay tre * " + xe.GiaThueMotNgay + "(VND)");
             Console.WriteLine("Tien boi thuong hu hong gom: ");
-            Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xeChoThue.GiaDenXuotXe) + " VND");
-            Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xeChoThue.GiaDenBeBanh) + " VND");
-            Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xeChoThue.GiaDenHuDen) + " VND");
-            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienTangGia() - TienKhuyenMai() + xeChoThue.GiaThueMotNgay * soNgayThue + xeChoThue.TienCoc) + " VND");
-        }
-        public static HopDongThueXe KhoiTao(Xe xe, List<TaiXe> danhSachTaiXe, KhachThueXe khachThueXe)
-        {
-            return new HopDongThueXe(xe.ChuXe, TaiXe.ChonTaiXe(danhSachTaiXe), khachThueXe, xe, DauVaoBanPhim.Int(1, 365, "So ngay thue (1 - 365 ngay): "), DauVaoBanPhim.DateTime_("(Nam/thang/ngay) bat dau thue xe: "));
+            Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xe.GiaDenXuotXe) + " VND");
+            Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xe.GiaDenBeBanh) + " VND");
+            Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xe.GiaDenHuDen) + " VND");
+            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue + xe.TienCoc) + " VND");
         }
         private decimal TienKhuyenMai()
         {
-            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? ChuXe.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xeChoThue.UuDai * 1.5m : xeChoThue.UuDai : 0;
+            return ngayThue.Day == khachThue.NgaySinh.Day && ngayThue.Month == khachThue.NgaySinh.Month ? xe.ChuXe.KhachHangQuen.SoLanThueXe(khachThue) >= 3 ? xe.UuDai * 1.5m : xe.UuDai : 0;
         }
         private decimal TienTangGia()
         {
-            return 4 <= ngayThue.Month && ngayThue.Month <= 6 ? xeChoThue.TangGia : ngayThue.Month == 2 ? xeChoThue.TangGia * 2 : 0;
+            return 4 <= ngayThue.Month && ngayThue.Month <= 6 ? xe.TangGia : ngayThue.Month == 2 ? xe.TangGia * 2 : 0;
         }
         private decimal TienGiaHanTraXe(int soNgayTre)
         {
-            return soNgayTre > 0 ? xeChoThue.GiaThueMotNgay * soNgayTre : 0;
+            return soNgayTre > 0 ? xe.GiaThueMotNgay * soNgayTre : 0;
         }
         private decimal TongChiPhiPhatSinh(bool kiemTraXuot, bool kiemTraBeBanh, bool kiemTraHuDen, int soNgayTre)
         {
@@ -157,15 +158,15 @@ namespace DoAnCuoiKy
 
             if (kiemTraXuot == true)
             {
-                chiPhiDen += xeChoThue.GiaDenXuotXe;
+                chiPhiDen += xe.GiaDenXuotXe;
             }
             if (kiemTraBeBanh == true)
             {
-                chiPhiDen += xeChoThue.GiaDenBeBanh;
+                chiPhiDen += xe.GiaDenBeBanh;
             }
             if (kiemTraHuDen == true)
             {
-                chiPhiDen += xeChoThue.GiaDenHuDen;
+                chiPhiDen += xe.GiaDenHuDen;
             }
             return chiPhiDen + TienGiaHanTraXe(soNgayTre);
         }

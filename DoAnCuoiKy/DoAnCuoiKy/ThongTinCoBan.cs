@@ -23,6 +23,14 @@ namespace DoAnCuoiKy
             this.ngaySinh = ngaySinh;
             this.nganHang = nganHang;
         }
+        public ThongTinCoBan(NganHang nganHang)
+        {
+            hoTen = DauVaoBanPhim.String("Ho ten: ");
+            diaChi = DauVaoBanPhim.String("Dia chi: ");
+            soDienThoai = DauVaoBanPhim.String("So dien thoai: ");
+            ngaySinh = DauVaoBanPhim.DateTime_("Ngay sinh: ");
+            this.nganHang = nganHang;
+        }
         public virtual void ThongTin()
         {
             Console.WriteLine("Ho ten: " + hoTen);

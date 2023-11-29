@@ -13,21 +13,18 @@ namespace DoAnCuoiKy
         {
             danhGia = new QuanLyDanhGia();
         }
+        public TaiXe(NganHang nganHang) : base(nganHang) { }
         static public void XuatDanhSachTaiXe(List<TaiXe> danhSachKhachThueXe)
         {
             Console.WriteLine("Danh sach tai xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
         }
-        static public TaiXe ChonTaiXe(List<TaiXe>danhSachTaiXe)
+        static public TaiXe ChonTaiXe()
         {
-            Console.WriteLine((danhSachTaiXe.Count + 1).ToString() + ". Khong can tai xe");
-            int luaChon = DauVaoBanPhim.Int(1, danhSachTaiXe.Count + 1, "Chon 1 trong " + danhSachTaiXe.Count.ToString() + " tai xe: ");
+            Console.WriteLine((DuLieu.danhSachTaiXe.Count + 1).ToString() + ". Khong can tai xe");
+            int luaChon = DauVaoBanPhim.Int(1, DuLieu.danhSachTaiXe.Count + 1, "Chon 1 trong " + DuLieu.danhSachTaiXe.Count.ToString() + " tai xe: ");
 
-            return luaChon == danhSachTaiXe.Count + 1 ? null : danhSachTaiXe[luaChon - 1];
-        }
-        static public TaiXe KhoiTao(NganHang nganHang)
-        {
-            return new TaiXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Ngay sinh: "), nganHang);
+            return luaChon == DuLieu.danhSachTaiXe.Count + 1 ? null : DuLieu.danhSachTaiXe[luaChon - 1];
         }
     }
 }

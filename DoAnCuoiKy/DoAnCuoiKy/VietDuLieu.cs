@@ -54,12 +54,11 @@ namespace DoAnCuoiKy
             {
                 for (int i = 0, hang = 3; i < DuLieu.danhSachHopDongThueXe.Count; i++, hang++)
                 {
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 1].Value = DuLieu.danhSachHopDongThueXe[i].ChuXe.NganHang.SoTaiKhoan;
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 2].Value = DuLieu.danhSachHopDongThueXe[i].TaiXe == null ? "Không có tài xế" : DuLieu.danhSachHopDongThueXe[i].TaiXe.NganHang.SoTaiKhoan;
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 3].Value = DuLieu.danhSachHopDongThueXe[i].KhachThue.NganHang.SoTaiKhoan;
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 4].Value = DuLieu.danhSachHopDongThueXe[i].XeChoThue.BienSoXe;
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 5].Value = DuLieu.danhSachHopDongThueXe[i].SoNgayThue;
-                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 6].Value = DuLieu.danhSachHopDongThueXe[i].NgayThue.ToString("yyyy-MM-dd");
+                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 1].Value = DuLieu.danhSachHopDongThueXe[i].TaiXe == null ? "Không có tài xế" : DuLieu.danhSachHopDongThueXe[i].TaiXe.NganHang.SoTaiKhoan;
+                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 2].Value = DuLieu.danhSachHopDongThueXe[i].KhachThue.NganHang.SoTaiKhoan;
+                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 3].Value = DuLieu.danhSachHopDongThueXe[i].XeChoThue.BienSoXe;
+                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 4].Value = DuLieu.danhSachHopDongThueXe[i].SoNgayThue;
+                    Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[hang, 5].Value = DuLieu.danhSachHopDongThueXe[i].NgayThue.ToString("yyyy-MM-dd");
                 }
             }
             catch (Exception e)

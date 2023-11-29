@@ -55,25 +55,23 @@ namespace DoAnCuoiKy
 
                 for (int i = 3; Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 1].Value != null; i++)
                 {
-                    DateTime.TryParse(Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 6].Text, out ngayThangNam);
-                    ChuXe chuXe = DuLieu.danhSachChuXe.Find(chu => chu.NganHang.SoTaiKhoan == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 1].Text);
-                    TaiXe taiXe = Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 2].Text == "Không có tài xế" ? null : DuLieu.danhSachTaiXe.Find(tai => tai.NganHang.SoTaiKhoan == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 2].Text);
-                    KhachThueXe khachThueXe = DuLieu.danhSachKhachThueXe.Find(khach => khach.NganHang.SoTaiKhoan == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 3].Text);
-                    Xe xeChoThue = null;
-
-                    foreach (List<Xe> danhSach in chuXe.DanhSachXeChuaThue)
+                    DateTime.TryParse(Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 5].Text, out ngayThangNam);
+                    TaiXe taiXe = Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 1].Text == "Không có tài xế" ? null : DuLieu.danhSachTaiXe.Find(tai => tai.NganHang.SoTaiKhoan == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 1].Text);
+                    KhachThueXe khachThueXe = DuLieu.danhSachKhachThueXe.Find(khach => khach.NganHang.SoTaiKhoan == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 2].Text);
+                    Xe xeChoThue = DuLieu.danhSachXeMay.Find(xe => xe.BienSoXe == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 3].Text);
+                    if(xeChoThue == null)
                     {
-                        xeChoThue = danhSach.Find(xe => xe.BienSoXe == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 4].Text);
-                        if (xeChoThue != null)
+                        xeChoThue = DuLieu.danhSachXeBonCho.Find(xe => xe.BienSoXe == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 3].Text);            
+                        if(xeChoThue == null)
                         {
-                            break;
+                            xeChoThue = DuLieu.danhSachXeBayCho.Find(xe => xe.BienSoXe == Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 3].Text);
                         }
                     }
                     decimal soDu = khachThueXe.NganHang.SoDu;
                     NganHang nganHang = new NganHang("ACB", decimal.MaxValue);
 
                     nganHang.ChuyenTien(khachThueXe.NganHang, decimal.MaxValue - soDu);
-                    HopDongThueXe hopDong = new HopDongThueXe(chuXe, taiXe, khachThueXe, xeChoThue, Convert.ToInt32(Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 5].Value), ngayThangNam);
+                    HopDongThueXe hopDong = new HopDongThueXe(taiXe, khachThueXe, xeChoThue, Convert.ToInt32(Excel.bangTinh[(int)Excel.ELoaiDuLieu.HopDong].Cells[i, 4].Value), ngayThangNam);
                     khachThueXe.NganHang.ChuyenTien(nganHang, decimal.MaxValue - soDu - hopDong.ThanhToan());
                     DuLieu.danhSachHopDongThueXe.Add(hopDong);
                 }

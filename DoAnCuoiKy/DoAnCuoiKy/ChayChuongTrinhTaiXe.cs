@@ -33,7 +33,7 @@ namespace DoAnCuoiKy
             NganHang nganHang = NganHang.KhoiTao();
 
             DuLieu.danhSachNganHang.Add(nganHang);
-            DuLieu.danhSachTaiXe.Add(TaiXe.KhoiTao(nganHang));
+            DuLieu.danhSachTaiXe.Add(new TaiXe(nganHang));
             Console.WriteLine("Khoi tao thanh cong.\n");
             ChuongTrinhTaiXe();
         }

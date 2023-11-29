@@ -121,13 +121,13 @@ namespace DoAnCuoiKy
             switch (DauVaoBanPhim.Int(1, 4, "Chon loai xe: \n1. Xe may.\n2. Xe bon cho.\n3. Xe bay cho.\n4. Quay lai.\nChon 1 trong 4: "))
             {
                 case 1:
-                    DuLieu.danhSachXeMay.Add(XeMay.KhoiTao(chuChoThue));
+                    DuLieu.danhSachXeMay.Add(new XeMay(chuChoThue));
                     break;
                 case 2:
-                    DuLieu.danhSachXeBonCho.Add(XeBonCho.KhoiTao(chuChoThue));
+                    DuLieu.danhSachXeBonCho.Add(new XeBonCho(chuChoThue));
                     break;
                 case 3:
-                    DuLieu.danhSachXeBayCho.Add(XeBayCho.KhoiTao(chuChoThue));
+                    DuLieu.danhSachXeBayCho.Add(new XeBayCho(chuChoThue));
                     break;
                 case 4:
                     XuLyChuXe(chuChoThue);
@@ -184,7 +184,7 @@ namespace DoAnCuoiKy
             NganHang nganHang = NganHang.KhoiTao();
 
             DuLieu.danhSachNganHang.Add(nganHang);
-            DuLieu.danhSachChuXe.Add(ChuXe.KhoiTao(nganHang));
+            DuLieu.danhSachChuXe.Add(new ChuXe(nganHang));
             Console.WriteLine("Khoi tao thanh cong.\n");
             ChuongTrinhChuXe();
         }

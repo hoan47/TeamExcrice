@@ -23,6 +23,13 @@ namespace DoAnCuoiKy
             danhGia = new QuanLyDanhGia();
             khachHangQuen = new KhachQuen();
         }
+        public ChuXe(NganHang nganHang) : base(nganHang)
+        {
+            KhoiTaoDanhSachXe(out danhSachXeChuaThue);
+            KhoiTaoDanhSachXe(out danhSachXeDaThue);
+            danhGia = new QuanLyDanhGia();
+            khachHangQuen = new KhachQuen();
+        }
         public void ThemXeChuaThue(Xe xe)
         {
             danhSachXeChuaThue[(int)Xe.PhanLoai(xe)].Add(xe);
@@ -35,17 +42,13 @@ namespace DoAnCuoiKy
         {
             List<Xe> danhSachXeTimDuoc = new List<Xe>();
 
-            Console.WriteLine("Ten chu xe: " + HoTen + " ket qua tim kiem:");
             foreach (Xe xe in danhSachXeChuaThue[(int)loaiXe])
             {
                 if (giaTu <= xe.GiaThueMotNgay && xe.GiaThueMotNgay <= giaDen)
                 {
-                    Console.WriteLine("Xe thu: " + (danhSachXeTimDuoc.Count + 1).ToString());
-                    xe.XuatThongTinXe();
                     danhSachXeTimDuoc.Add(xe);
                 }
             }
-            Console.WriteLine("So xe tim duoc nam trong muc gia [" + giaTu.ToString() + ";  " + giaDen.ToString() + "] la: " + danhSachXeTimDuoc.Count);
             return danhSachXeTimDuoc;
         }
         public void ChoThueXe(Xe xe)
@@ -81,10 +84,6 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("Danh sach chu cho thue xe:");
             XuatDanhSachThongTin(danhSachChuChoThue.ToList<ThongTinCoBan>());
-        }
-        static public ChuXe KhoiTao(NganHang nganHang)
-        {
-            return new ChuXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Nam thang ngay sinh: "), nganHang);
         }
         public override void ThongTin()
         {

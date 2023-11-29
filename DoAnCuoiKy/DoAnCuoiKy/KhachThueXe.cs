@@ -17,6 +17,11 @@ namespace DoAnCuoiKy
             danhGia = new QuanLyDanhGia();
             danhSachXeDaThue = new List<Xe>();
         }
+        public KhachThueXe(NganHang nganHang) : base(nganHang)
+        {
+            danhGia = new QuanLyDanhGia();
+            danhSachXeDaThue = new List<Xe>();
+        }
         public void ThemXeDaThue(Xe xe)
         {
             danhSachXeDaThue.Add(xe);
@@ -34,10 +39,6 @@ namespace DoAnCuoiKy
         {
             Console.WriteLine("Danh sach khach thue xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
-        }
-        static public KhachThueXe KhoiTao(NganHang nganHang)
-        {
-            return new KhachThueXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Ngay sinh: "), nganHang);
         }
     }
 }

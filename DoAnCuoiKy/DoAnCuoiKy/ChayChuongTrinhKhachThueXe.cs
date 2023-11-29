@@ -8,7 +8,7 @@ namespace DoAnCuoiKy
     {
         static public void ChuongTrinhKhachThueXe()
         {
-            switch (DauVaoBanPhim.Int(1, 3, "Ban muon:\n1. Chon khach thue xe.\n2. Them khach xe.\n3. Quay lai.\nChon 1 trong 3: "))
+            switch (DauVaoBanPhim.Int(1, 3, "Ban muon:\n1. Chon khach thue xe.\n2. Them khach thue xe.\n3. Quay lai.\nChon 1 trong 3: "))
             {
                 case 1:
                     XuLyChonKhachThueXe();
@@ -40,10 +40,10 @@ namespace DoAnCuoiKy
             {
                 KhachThueXe khachThueXe = DuLieu.danhSachKhachThueXe[luaChon - 1];
                 Console.WriteLine("Ban co ten la: " + khachThueXe.HoTen);
-                XuLyhachThueXe(khachThueXe);
+                XuLykhachThueXe(khachThueXe);
             }
         }
-        private static void XuLyhachThueXe(KhachThueXe khachThueXe)
+        private static void XuLykhachThueXe(KhachThueXe khachThueXe)
         {
             switch (DauVaoBanPhim.Int(1, 3, "Ban muon:\n1. Tim xe.\n2. Xem xe dang thue.\n3. Quay lai.\nChon 1 trong 3: "))
             {
@@ -76,7 +76,7 @@ namespace DoAnCuoiKy
         }
         private static void XuLyChonXe(KhachThueXe khachThueXe , List<Xe> danhSachXe)
         {
-            Xe.XuatDanhSachXe(danhSachXe);
+            Console.WriteLine("Danh sach xe tim duoc:\n");
             Xe.XuatDanhSachXe(danhSachXe);
             Xe xe = danhSachXe[DauVaoBanPhim.Int(1, danhSachXe.Count, "Chon 1 trong " + danhSachXe.Count.ToString() + " xe: ") - 1];
 
@@ -90,7 +90,7 @@ namespace DoAnCuoiKy
                     XuLyXemDanhGia(xe);
                     break;
                 case 3:
-                    XuLyhachThueXe(khachThueXe);
+                    XuLykhachThueXe(khachThueXe);
                     break;
             }
         }
@@ -104,17 +104,17 @@ namespace DoAnCuoiKy
         private static void XuLyKhoiTaoHopDong(KhachThueXe khachThueXe, Xe xe)
         {
             TaiXe.XuatDanhSachTaiXe(DuLieu.danhSachTaiXe);
-            HopDongThueXe hopDong = HopDongThueXe.KhoiTao(xe, DuLieu.danhSachTaiXe, khachThueXe);
+            HopDongThueXe hopDong = new HopDongThueXe(khachThueXe, xe);
             hopDong.XemHopDong();
             switch(DauVaoBanPhim.Int(1, 2, "Ban muon:\n1. Thue xe.\n2. Quay lai.\nChon 1 trong 2: "))
             {
                 case 1:
                     hopDong.ThanhToan();
                     DuLieu.danhSachHopDongThueXe.Add(hopDong);
-                    XuLyhachThueXe(khachThueXe);
+                    XuLykhachThueXe(khachThueXe);
                     break;
                 case 2:
-                    XuLyhachThueXe(khachThueXe);
+                    XuLykhachThueXe(khachThueXe);
                     break;
             }
         }
@@ -124,7 +124,7 @@ namespace DoAnCuoiKy
             if (khachThueXe.DanhSachXeDaThue.Count == 0)
             {
                 Console.WriteLine("Khong ton tai xe da thue.\n");
-                XuLyhachThueXe(khachThueXe);
+                XuLykhachThueXe(khachThueXe);
             }
             else
             {
@@ -132,7 +132,7 @@ namespace DoAnCuoiKy
                 
                 if (luaChon == khachThueXe.DanhSachXeDaThue.Count + 1)
                 {
-                    XuLyhachThueXe(khachThueXe);
+                    XuLykhachThueXe(khachThueXe);
                     return;
                 }
                 XuLyXemHopDong(khachThueXe, khachThueXe.DanhSachXeDaThue[luaChon - 1]);
@@ -140,24 +140,26 @@ namespace DoAnCuoiKy
         }
         private static void XuLyXemHopDong(KhachThueXe khachThueXe, Xe xe)
         {
-            HopDongThueXe hopDong = HopDongThueXe.DanhSachHopDong[new Tuple<ChuXe, KhachThueXe, Xe>(xe.ChuXe, khachThueXe, xe)];
+            HopDongThueXe hopDong = HopDongThueXe.DanhSachHopDong[new KeyValuePair<KhachThueXe, Xe>(khachThueXe, xe)];
 
             switch (DauVaoBanPhim.Int(1, 4, "Ban muon:\n1. Xem cac chi phi phat sinh.\n2. Ket thuc hop dong.\n3. Ban muon danh gia.\n4. Quay lai.\nChon 1 trong 4: "))
             {
                 case 1:
                     hopDong.CacChiPhiPhatSinh(DauVaoBanPhim.Bool("Lam xuoc xe (true hoac false): "), DauVaoBanPhim.Bool("Ban lam be banh (true hoac false): "), DauVaoBanPhim.Bool("Lam hu den (true hoac false): "), DauVaoBanPhim.Int(0, 365, "So ngay tra tre: "));
+                    XuLyXemHopDong(khachThueXe, xe);
                     break;
                 case 2:
                     DuLieu.danhSachHopDongThueXe.Remove(hopDong);
                     hopDong.KetThucThueXe(DauVaoBanPhim.Bool("Lam xuoc xe (true hoac false): "), DauVaoBanPhim.Bool("Ban lam be banh (true hoac false): "), DauVaoBanPhim.Bool("Lam hu den (true hoac false): "), DauVaoBanPhim.Int(0, 365, "So ngay tra tre: "));
+                    XuLyXemXeDaThue(khachThueXe);
                     break;
                 case 3:
                     ChuongTrinhDanhGia(khachThueXe, xe);
                     break;
                 case 4:
+                    XuLyXemXeDaThue(khachThueXe);
                     break;
             }
-            XuLyXemXeDaThue(khachThueXe);
         }
         private static void ChuongTrinhDanhGia(KhachThueXe khachThueXe, Xe xe)
         {
@@ -165,17 +167,17 @@ namespace DoAnCuoiKy
             {
                 case 1:
                     xe.ChuXe.DanhGia.ThemDanhGia(DanhGia.KhoiTao(khachThueXe));
-                    DanhGiaThanhCong();
+                    Console.WriteLine("Danh gia thanh cong.\n");
                     break;
                 case 2:
                     xe.DanhGia.ThemDanhGia(DanhGia.KhoiTao(khachThueXe));
-                    DanhGiaThanhCong();
+                    Console.WriteLine("Danh gia thanh cong.\n");
                     break;
                 case 3:
                     XuLyXemDanhGia(xe);
                     break;
                 case 4:
-                    TaiXe taiXe = HopDongThueXe.DanhSachHopDong[new Tuple<ChuXe, KhachThueXe, Xe>(xe.ChuXe, khachThueXe, xe)].TaiXe;
+                    TaiXe taiXe = HopDongThueXe.DanhSachHopDong[new KeyValuePair<KhachThueXe, Xe>(khachThueXe, xe)].TaiXe;
 
                     if (taiXe == null)
                     {
@@ -184,26 +186,21 @@ namespace DoAnCuoiKy
                     else
                     {
                         taiXe.DanhGia.ThemDanhGia(DanhGia.KhoiTao(khachThueXe));
-                        DanhGiaThanhCong();
+                        Console.WriteLine("Danh gia thanh cong.\n");
                     }
                     break;
                 case 5:
                     XuLyXemHopDong(khachThueXe, xe);
-                    break;
+                    return;
             }
-
-            void DanhGiaThanhCong()
-            {
-                Console.WriteLine("Danh gia thanh cong.\n");
-                ChuongTrinhDanhGia(khachThueXe, xe);
-            }
+            ChuongTrinhDanhGia(khachThueXe, xe);
         }
         private static void XyLyKhoiTaoKhachThueXe()
         {
             NganHang nganHang = NganHang.KhoiTao();
 
             DuLieu.danhSachNganHang.Add(nganHang);
-            DuLieu.danhSachKhachThueXe.Add(KhachThueXe.KhoiTao(nganHang));
+            DuLieu.danhSachKhachThueXe.Add(new KhachThueXe(nganHang));
             Console.WriteLine("Khoi tao thanh cong.\n");
             ChuongTrinhKhachThueXe();
         }

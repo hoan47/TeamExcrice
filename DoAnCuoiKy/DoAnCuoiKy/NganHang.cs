@@ -14,6 +14,12 @@ namespace DoAnCuoiKy
         {
             danhSachSoTaiKhoan = new List<string>();
         }
+        public NganHang()
+        {
+            soTaiKhoan = DauVaoBanPhim.String("So tai khoan ngan hang: ");
+            soDu = DauVaoBanPhim.Decimal("So du: ");
+            KiemTraSoTaiKhoan(soTaiKhoan);
+        }
         public NganHang(string soTaiKhoan, decimal soDu)
         {
             KiemTraSoTaiKhoan(soTaiKhoan);

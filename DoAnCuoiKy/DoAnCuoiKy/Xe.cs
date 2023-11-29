@@ -60,7 +60,23 @@ namespace DoAnCuoiKy
             danhGia = new QuanLyDanhGia();
             ThemXe(daThue);
         }
-
+        public Xe(ChuXe chuXe)
+        {
+            this.chuXe = chuXe;
+            hangXe = DauVaoBanPhim.String("Hang xe: ");
+            namMua = DauVaoBanPhim.DateTime_("Nam thang ngay mua: ");
+            kilometDaDi = DauVaoBanPhim.Double("Kilomet da di: ");
+            baoHiem = DauVaoBanPhim.Bool("Xe co bao hiem khong (true hoac false): ");
+            mucDich = DauVaoBanPhim.MucDich();
+            giaThueMotNgay = DauVaoBanPhim.Decimal("Gia thue 1 ngay: ");
+            tienCoc = DauVaoBanPhim.Decimal("Tien coc: ");
+            giaDenXuotXe = DauVaoBanPhim.Decimal("Den suc xe: ");
+            giaDenBeBanh = DauVaoBanPhim.Decimal("Den be banh xe: ");
+            giaDenHuDen = DauVaoBanPhim.Decimal("Den hu den xe: ");
+            uuDai = DauVaoBanPhim.Decimal("Uu dai: ");
+            tangGia = DauVaoBanPhim.Decimal("Tang gia: ");
+            bienSoXe = DauVaoBanPhim.String("Bien so xe: ");
+        }
         public void XuatThongTinXe()
         {
             Console.WriteLine("Hang xe: " + HangXe);
