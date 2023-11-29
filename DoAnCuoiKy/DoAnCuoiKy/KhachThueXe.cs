@@ -38,5 +38,9 @@ namespace DoAnCuoiKy
             Console.WriteLine("Danh sach khach thue xe:");
             XuatDanhSachThongTin(danhSachKhachThueXe.ToList<ThongTinCoBan>());
         }
+        static public KhachThueXe KhoiTao()
+        {
+            return new KhachThueXe(DauVaoBanPhim.String("Ho ten: "), DauVaoBanPhim.String("Dia chi: "), DauVaoBanPhim.String("So dien thoai: "), DauVaoBanPhim.DateTime_("Ngay sinh: "), NganHang.KhoiTao());
+        }
     }
 }

@@ -40,5 +40,11 @@ namespace DoAnCuoiKy
                 Console.WriteLine();
             }
         }
+        public enum ELoaiThongTin
+        {
+            ChuXe, 
+            KhachThueXe,
+            TaiXe
+        }
     }
 }

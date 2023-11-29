@@ -6,7 +6,25 @@ namespace DoAnCuoiKy
 {
     static internal class ChayChuongTrinhKhachThueXe
     {
-        public static void ChuongTrinhChonKhachThueXe()
+        static public void ChuongTrinhKhachThueXe()
+        {
+            switch (DauVaoBanPhim.Int(1, 4, "Ban muon:\n1. Chon khach thue xe.\n2. Them khach xe.\n3. Xoa khach thue xe.\n4. Quay lai.\nChon 1 trong 4: "))
+            {
+                case 1:
+                    XuLyChonKhachThueXe();
+                    break;
+                case 2:
+                    XyLyKhoiTaoKhachThueXe();
+                    break;
+                case 3:
+                    XuLyXoaKhachThueXe();
+                    break;
+                case 4:
+                    ChayChuongTrinh.ChuongTrinh();
+                    break;
+            }
+        }
+        private static void XuLyChonKhachThueXe()
         {
             if (DuLieu.danhSachKhachThueXe.Count == 0)
             {
@@ -39,7 +57,7 @@ namespace DoAnCuoiKy
                     XuLyXemXeDaThue(khachThueXe);
                     break;
                 case 3:
-                    ChuongTrinhChonKhachThueXe();
+                    XuLyChonKhachThueXe();
                     break;
             }
         }
@@ -164,7 +182,7 @@ namespace DoAnCuoiKy
 
                     if (taiXe == null)
                     {
-                        Console.WriteLine("Khong ton tai tai xe");
+                        Console.WriteLine("Khong ton tai tai xe.\n");
                     }
                     else
                     {
@@ -179,9 +197,27 @@ namespace DoAnCuoiKy
 
             void DanhGiaThanhCong()
             {
-                Console.WriteLine("Danh gia thanh cong.");
+                Console.WriteLine("Danh gia thanh cong.\n");
                 ChuongTrinhDanhGia(khachThueXe, xe);
             }
+        }
+        private static void XyLyKhoiTaoKhachThueXe()
+        {
+            DuLieu.danhSachKhachThueXe.Add(KhachThueXe.KhoiTao());
+            Console.WriteLine("Khoi tao thanh cong.\n");
+            ChuongTrinhKhachThueXe();
+        }
+        private static void XuLyXoaKhachThueXe()
+        {
+            ChuXe.XuatDanhSachChuXe(DuLieu.danhSachChuXe);
+            int soThuTu = DauVaoBanPhim.Int(1, DuLieu.danhSachKhachThueXe.Count + 1, (DuLieu.danhSachKhachThueXe.Count + 1).ToString() + ". Quay lai.\nChon 1 trong " + DuLieu.danhSachKhachThueXe.Count.ToString() + " xe can xoa: ");
+
+            if (soThuTu != DuLieu.danhSachKhachThueXe.Count + 1)
+            { 
+                DuLieu.danhSachKhachThueXe.RemoveAt(soThuTu - 1);
+                Console.WriteLine("Da xoa.\n");
+            }
+            ChuongTrinhKhachThueXe();
         }
     }
 }

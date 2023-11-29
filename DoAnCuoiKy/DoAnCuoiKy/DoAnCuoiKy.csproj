@@ -71,6 +71,7 @@
     <Compile Include="ChayChuongTrinh.cs" />
     <Compile Include="ChayChuongTrinhChuXe.cs" />
     <Compile Include="ChayChuongTrinhKhachThueXe.cs" />
+    <Compile Include="ChayChuongTrinhTaiXe.cs" />
     <Compile Include="ChuXe.cs" />
     <Compile Include="DanhGia.cs" />
     <Compile Include="DauVaoBanPhim.cs" />

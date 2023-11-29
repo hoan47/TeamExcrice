@@ -30,6 +30,10 @@ namespace DoAnCuoiKy
             }
             return false;
         }
+        public static NganHang KhoiTao()
+        {
+            return new NganHang(DauVaoBanPhim.String("So tai khoan ngan hang: "), DauVaoBanPhim.Decimal("So du: "));
+        }
         private void NhanTien(decimal tien)
         {
             soDu = soDu + tien;
