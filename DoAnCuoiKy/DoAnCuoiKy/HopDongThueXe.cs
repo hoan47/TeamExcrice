@@ -40,7 +40,12 @@ namespace DoAnCuoiKy
         }
         public decimal ThanhToan()
         {
-            decimal giaThueChinhThuc = TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue;
+            decimal giaThueChinhThuc = TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue; 
+
+            if (taiXe != null)
+            {
+                giaThueChinhThuc += taiXe.GiaThue;
+            }
             decimal thanhToan = giaThueChinhThuc + xe.TienCoc;
 
             Console.WriteLine($"\nSo tien thue khach phai tra: " + string.Format("{0:N0}", giaThueChinhThuc) + " VND");
@@ -112,6 +117,7 @@ namespace DoAnCuoiKy
         }
         public void XemHopDong()
         {
+            decimal thanhToan = TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue + xe.TienCoc;
             Console.WriteLine("\nHop dong thue xe giua khach va chu xe la:\nChu xe:");
             xe.ChuXe.ThongTin();
             if (taiXe == null)
@@ -122,6 +128,7 @@ namespace DoAnCuoiKy
             { 
                 Console.WriteLine("Tai xe:");
                 taiXe.ThongTin();
+                thanhToan += taiXe.GiaThue;
             }
             Console.WriteLine("Khach thue xe:");
             khachThue.ThongTin();
@@ -138,7 +145,7 @@ namespace DoAnCuoiKy
             Console.WriteLine($"Chi phi xuot xe: " + string.Format("{0:N0}", xe.GiaDenXuotXe) + " VND");
             Console.WriteLine($"Chi phi be banh: " + string.Format("{0:N0}", xe.GiaDenBeBanh) + " VND");
             Console.WriteLine($"Chi phi hu den: " + string.Format("{0:N0}", xe.GiaDenHuDen) + " VND");
-            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", TienTangGia() - TienKhuyenMai() + xe.GiaThueMotNgay * soNgayThue + xe.TienCoc) + " VND");
+            Console.WriteLine($"Tong so tien phai thanh toan: " + string.Format("{0:N0}", thanhToan) + " VND");
         }
         private decimal TienKhuyenMai()
         {

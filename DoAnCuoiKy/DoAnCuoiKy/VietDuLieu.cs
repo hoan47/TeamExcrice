@@ -30,7 +30,7 @@ namespace DoAnCuoiKy
         }
         static public void VietDuLieuTaiXe()
         {
-            VietDuLieuThongTinCoBan(DuLieu.danhSachTaiXe.ToList<ThongTinCoBan>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
+            VietDuLieuThongTinTaiXe(DuLieu.danhSachTaiXe.ToList<TaiXe>(), Excel.bangTinh[(int)Excel.ELoaiDuLieu.TaiXe]);
         }
         static public void VietDuLieuKhachThueXe()
         {
@@ -82,6 +82,25 @@ namespace DoAnCuoiKy
             catch (Exception e)
             {
                 throw new Exception("Du lieu nguoi loi: " + e.Message);
+            }
+        }
+        private static void VietDuLieuThongTinTaiXe(List<TaiXe> danhSachThongTinTaiXe, Worksheet bangTinh)
+        {
+            try
+            {
+                for (int i = 0, hang = 3; i < danhSachThongTinTaiXe.Count; i++, hang++)
+                {
+                    bangTinh.Cells[hang, 1].Value = danhSachThongTinTaiXe[i].HoTen;
+                    bangTinh.Cells[hang, 2].Value = danhSachThongTinTaiXe[i].DiaChi;
+                    bangTinh.Cells[hang, 3].Value = danhSachThongTinTaiXe[i].SoDienThoai;
+                    bangTinh.Cells[hang, 4].Value = danhSachThongTinTaiXe[i].NgaySinh.ToString("yyyy-MM-dd");
+                    bangTinh.Cells[hang, 5].Value = danhSachThongTinTaiXe[i].NganHang.SoTaiKhoan;
+                    bangTinh.Cells[hang, 6].Value = danhSachThongTinTaiXe[i].GiaThue;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Du lieu tai xe loi: " + e.Message);
             }
         }
         private static void VietXe(List<Xe> danhSachXe, Worksheet bangTinh)

@@ -96,7 +96,7 @@ namespace DoAnCuoiKy
                     }
                     else if (danhSachTaiXe != null)
                     {
-                        danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text)));
+                        danhSachTaiXe.Add(new TaiXe(bangTinh.Cells[i, 1].Text, bangTinh.Cells[i, 2].Text, bangTinh.Cells[i, 3].Text, ngayThangNam, danhSachNganHang.Find(nganHang => nganHang.SoTaiKhoan == bangTinh.Cells[i, 5].Text), Convert.ToDecimal(bangTinh.Cells[i, 6].Value)));
                     }
                     else
                     {
